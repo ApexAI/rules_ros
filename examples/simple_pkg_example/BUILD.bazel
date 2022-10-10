@@ -1,0 +1,17 @@
+load("@rules_ros//pkg:defs.bzl", "ros_pkg")
+
+cc_binary(
+    name = "hello_world",
+    srcs = ["main.cpp"],
+)
+
+ros_pkg(
+    name = "simple_pkg_example",
+    pkg_name = "simple_pkg_example",
+    description = "A simple hello word application.",
+    version = "1.0.0",
+    maintainer_name = "Kilian Funk",
+    maintainer_email = "kilian.funk@apex.ai",
+    license = "Apache 2.0",
+    lib_executables = [":hello_world"],
+)

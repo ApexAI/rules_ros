@@ -1,0 +1,8 @@
+cc_library(
+    name = "rmw",
+    srcs = glob(["src/**/*.c"]),
+    hdrs = glob(["include/**/*.h"]),
+    strip_include_prefix = "include",
+    deps = ["@ros2.rcutils//:rcutils"],
+    visibility = ["//visibility:public"],
+)

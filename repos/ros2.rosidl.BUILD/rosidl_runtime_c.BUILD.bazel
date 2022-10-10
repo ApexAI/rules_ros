@@ -1,0 +1,11 @@
+cc_library(
+    name = "rosidl_runtime_c",
+    srcs = glob(["src/*.c"]),
+    hdrs = glob(["include/**/*.h"]),
+    strip_include_prefix = "include",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@ros2.rcutils//:rcutils",
+        "@ros2.rosidl//rosidl_typesupport_interface",
+    ],
+)

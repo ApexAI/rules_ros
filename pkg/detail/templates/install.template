@@ -1,0 +1,21 @@
+#! /bin/bash
+
+ARCHIVE={{file}}
+
+if [ $# -ne 1 ]; then
+    echo "Please specify an install folder" && exit 1
+fi
+echo "Install dir: $1"
+mkdir -p $1
+
+pwd
+
+echo "Installing $ARCHIVE"
+tar -xf $ARCHIVE --directory=$1
+
+PREFIX=$1/{{name}}
+
+if command -v pip > /dev/null; then
+    echo "Installing Python wheels to $PREFIX"
+    pip install --prefix $PREFIX $PREFIX/share/*/*.whl
+fi

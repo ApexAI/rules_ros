@@ -1,0 +1,13 @@
+load("@rules_ros//rosidl:defs.bzl", "msgs_library")
+
+msgs_library(
+    name = "rcl_interfaces",
+    srcs = glob([
+        "msg/*.idl",
+        "srv/*.srv",
+    ]),
+    visibility = ["//visibility:public"],
+    deps = [
+        "//builtin_interfaces",
+    ],
+)

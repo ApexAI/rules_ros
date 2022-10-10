@@ -1,0 +1,10 @@
+load("@ros2_config//:repos_lock_file.bzl", "REPOS_LOCK_FILE")
+
+py_binary(
+    name = "repos_lock.update",
+    srcs = ["lock_repos.py"],
+    main = "lock_repos.py",
+    data = ["@ros2//:ros2.repos", REPOS_LOCK_FILE],
+    args = ["$(execpath @ros2//:ros2.repos)", "$(execpath {})".format(REPOS_LOCK_FILE)],
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,6 @@
+exports_files(["ros2_humble.lock"])
+
+alias(
+    name = "repos_lock.update",
+    actual = "//repos/config/detail:repos_lock.update"
+)

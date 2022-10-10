@@ -1,0 +1,19 @@
+cc_library(
+    name = "rcl_yaml_param_parser",
+    srcs = glob(["src/**/*.c"]),
+    hdrs = glob(["include/**/*.h"]),
+    strip_include_prefix = "include",
+    deps = [
+        ":internal_headers",
+        "@ros2.rcutils//:rcutils",
+        "@libyaml//:libyaml",
+        "@ros2.rmw//rmw",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "internal_headers",
+    hdrs = glob(["src/**/*.h"]),
+    strip_include_prefix = "src",
+)

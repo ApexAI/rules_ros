@@ -1,0 +1,11 @@
+cc_library(
+    name = "rclcpp",
+    srcs = glob(["src/**/*.cpp", "src/**/*.hpp"]),
+    hdrs = glob(["include/**/*.hpp"]),
+    strip_include_prefix = "include",
+    deps = [
+        "@ros2.rcl//rcl",
+        "@ros2.rcpputils//rcpputils",
+    ],
+    visibility = ["//visibility:public"],
+)
