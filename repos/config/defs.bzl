@@ -1,3 +1,17 @@
+# Copyright 2022 Apex.AI, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 load("@rules_ros//repos/config/detail:ros2_config.bzl", _ros2_config = "ros2_config")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", _maybe = "maybe")
 load("@bazel_tools//tools/build_defs/repo:git.bzl", _new_git_repository = "new_git_repository")
