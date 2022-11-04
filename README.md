@@ -1,43 +1,45 @@
-# ROS2 Rules for Bazel
+# ROS 2 Rules for Bazel
 
 ## Overview
 
 This repository contains all the setup, rules and build configuration to use
-[Bazel](http://bazel.build) with ROS2. As reccomended by Bazel, all ROS2 packages
+[Bazel](http://bazel.build) with ROS 2. As recommended by Bazel, all ROS 2 packages
 are built from source. They are loaded as needed, so no a priori loading or manual version
-management of ROS2 repos (e.g. via vcs tool) is required.
+management of ROS 2 repos (e.g., via vcs tool) is required.
 
-The neccessary BUILD files for ROS2 repos are injected while loading. In case bazel will
-gain some traction within the ROS community, Bazel BUILD files should ideally be provided
-directly by the ROS2 repositories.
+The neccessary BUILD files for ROS 2 repos are injected while loading. In case Bazel gains
+some traction within the ROS community, Bazel BUILD files should ideally be provided
+directly by the ROS 2 repositories.
 
 Specific rules for message generation and packaging are provided in this repository (see 
 [rosidl/defs.bzl](rosidl/defs.bzl) and [pkg/defs.bzl](pkg/defs.bzl)).
 
 ## ! Current Restrictions !
 
-This is still work in progress. Some essential parts are not complete yet. 
+This is still work in progress. Some essential parts are not complete yet.
 Here is a short list of major restrictions:
-* Only tested on Ubunut 20.04 linux (x86_64). Other linux distributions may work. Windows
+* Only tested on Ubunut 20.04 Linux (x86_64). Other Linux distributions may work. Windows
   will not be supported in the foreseeable future.
-* Only ROS2 humble supported. Other distros may work after extending
+* Only ROS 2 Humble is supported. Other distros may work after extending
   `@rules_ros//repos/config/defs.bzl` accordingly.
 * Message generation is still incomplete. Therefore even the simplest examples will not run
   due to not yet bazelized middleware.
 * Not all packages have been bazelized yet. Main focus currently lies on generating an
-  install space and providing message generation support. From the `ros2cli` only the `run`
-  command is currently bazelized.
+  install space and providing message generation support. Out of all the ROS 2 CLI commands,
+  (`ros2cli`), only the `run` command is currently bazelized.
 * The streamlined integration of custom packages into the repo setup is not yet available.
-  Same applies to adding additional python packages. 
+  Same applies to adding additional Python packages. 
   This will be added soon.
 
 ## Getting started
 
 ### Prerequisits
+
 Bazel needs to be available. We reccomend using [bazelisk](https://github.com/bazelbuild/bazelisk)
-as a launch tool for bazel.
+as a launch tool for Bazel.
 
 ### Workspace setup
+
 Create an empty folder and add the following files to it:
 * `WORKSPACE` file:
   ```python
@@ -64,7 +66,7 @@ Create an empty folder and add the following files to it:
   #)
 
   load("@rules_ros//repos/config:defs.bzl", "configure_ros2")
-  configure_ros2(distro = "humble") # currently only humble is supported
+  configure_ros2(distro = "humble") # currently only Humble is supported
 
   load("@ros2_config//:setup.bzl", "setup")
   setup()
@@ -83,13 +85,13 @@ Create an empty folder and add the following files to it:
   ```
 * `.bazelrc` file:
   ```bash
-  # enable incompatible python init mode
+  # enable incompatible Python init mode
   build --incompatible_default_to_explicit_init_py
 
   # enable implementation_deps on cc_library targets
   build --experimental_cc_implementation_deps
 
-  # set c++14 for all builds
+  # set C++14 for all builds
   build --cxxopt="-std=c++17"
   build --host_cxxopt="-std=c++17"
   ```
@@ -99,8 +101,9 @@ Create an empty folder and add the following files to it:
   5.3.1
   ```
 
-### Run bazel example
-To **build** an example delivered in the `rules_ros` repository run e.g.
+### Run Bazel example
+
+To **build** an example delivered in the `rules_ros` repository run, e.g.
 ```bash
 bazel build @rules_ros//examples/hello_world
 ```
@@ -126,36 +129,33 @@ ros2 run hello_world hello_world
 ```
 
 ## Features
+
 ### Python Interpreter
 
-In this setup a hermetic python interpreter is included. The version is specified in 
+In this setup, a hermetic Python interpreter is included. The version is specified in
 `thirdparty/python/repositories.bzl`. Python packages specified in
 `thirdparty/python/requirements_lock.in` are available for use. If you need to add a package,
-you must run 
+you must run
 ```console
 bazel run @rules_ros//thirdparty/python:requirements_lock.update
 ```
 to pin specific versions of the dependencies. In the future there will be a possibility to
 inject a customization in the WORKSPACE file.
 
-### ROS2 Repositories
+### ROS 2 Repositories
 
-ROS2 repositories are made available as external dependencies with the name specified in
-the `ros2.repos` file known from the original ros2 repository. E. g. the repo `ros2/rclcpp`
+ROS 2 repositories are made available as external dependencies with the name specified in
+the `ros2.repos` file known from the original ROS 2 repository, e.g., the `ros2/rclcpp` repo
 will be available as `@ros2.rclcpp` with all targets specified in the BUILD files in
 `repos/config/ros2.rclcpp.BUILD`. The precise location where the build files will be injected
-into the rclcpp repo is specified in the index file `repos/config/bazel.repos`.
+into the `rclcpp` repo is specified in the index file `repos/config/bazel.repos`.
 
-So, if you need to depend on `rclcpp` in you code, you would add `"@ros2.rclcpp//rclcpp"`
+Therefore, if you need to depend on `rclcpp` in you code, you need to add `"@ros2.rclcpp//rclcpp"`
 as a dependency in your `cc_binary` or `cc_library` target.
 
-The exact version of a ros2 repository is pinned in the file `repos/config/ros2_<distro>.lock`.
+The exact version of a ROS 2 repository is pinned in the file `repos/config/ros2_<distro>.lock`.
 This file can be updated for the configured distro by running:
 ```console
 bazel run @rules_ros//repos/config:repos_lock.update
 ```
- In the future there will be a possibility to inject any customization in the WORKSPACE file.
-
-
-
-
+In the future there will be a possibility to inject any customization in the WORKSPACE file.
