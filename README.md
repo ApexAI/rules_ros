@@ -33,9 +33,9 @@ Here is a short list of major restrictions:
 
 ## Getting started
 
-### Prerequisits
+### Prerequisites
 
-Bazel needs to be available. We reccomend using [bazelisk](https://github.com/bazelbuild/bazelisk)
+Bazel needs to be available. We recommend using [bazelisk](https://github.com/bazelbuild/bazelisk)
 as a launch tool for Bazel.
 
 ### Workspace setup
