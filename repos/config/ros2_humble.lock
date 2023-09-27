@@ -3,47 +3,47 @@
 #
 repositories:
   ament/ament_cmake:
-    hash: 8050b39fe960e0b6d12c4611ff2b258456138bbb
-    shallow_since: 1660310386 -0400
+    hash: 571379977af23528fb805f812c0e20466e140fb1
+    shallow_since: 1687452086 -0700
     type: git
     url: https://github.com/ament/ament_cmake.git
-    version: humble
+    version: 1.3.5
   ament/ament_index:
     hash: f019d6c40991799a13b18c9c3dcc583e3fde0381
     shallow_since: 1646168510 +0000
     type: git
     url: https://github.com/ament/ament_index.git
-    version: humble
+    version: 1.4.0
   ament/ament_lint:
-    hash: 159b10de6c710c7838da8cf8a7420245a9c8e89a
-    shallow_since: 1652131557 -0700
+    hash: 03609e90e76d9be745dfdf8846dd8ee1ba92f5ec
+    shallow_since: 1695129776 +0000
     type: git
     url: https://github.com/ament/ament_lint.git
-    version: humble
+    version: 0.12.8
   ament/ament_package:
     hash: f8ea958fd02cff6f4192425e28566369c92b5e34
     shallow_since: 1642531281 -0800
     type: git
     url: https://github.com/ament/ament_package.git
-    version: humble
+    version: 0.14.0
   ament/google_benchmark_vendor:
-    hash: f2ec348081b438f34c550123a8528d5e29482e81
-    shallow_since: 1648581335 +0000
+    hash: d75f3a8897a8846064e00c3ac3be46db1f98d51e
+    shallow_since: 1689716271 +0000
     type: git
     url: https://github.com/ament/google_benchmark_vendor.git
-    version: humble
+    version: 0.1.2
   ament/googletest:
     hash: 6df7425fdcbd368d2d1b99ffd89b9168014abb07
     shallow_since: 1642171980 -0800
     type: git
     url: https://github.com/ament/googletest.git
-    version: humble
+    version: 1.10.9004
   ament/uncrustify_vendor:
     hash: ec8f8b4d03483671e8ea2b3039f1015f92b0ef89
     shallow_since: 1648503100 +0000
     type: git
     url: https://github.com/ament/uncrustify_vendor.git
-    version: humble
+    version: 2.0.2
   eProsima/Fast-CDR:
     hash: da2987299ee3104bb0393cf0afc8aad6fb848dc1
     shallow_since: 1647345218 +0100
@@ -51,572 +51,572 @@ repositories:
     url: https://github.com/eProsima/Fast-CDR.git
     version: v1.0.24
   eProsima/Fast-DDS:
-    hash: 4b77c39e9bb263a7fe79310e9e9790512790c52f
-    shallow_since: 1664965571 +0200
+    hash: cffaa679ec8cd9c84b4d5b3fe1e3c22974d63be0
+    shallow_since: 1691144938 +0200
     type: git
     url: https://github.com/eProsima/Fast-DDS.git
-    version: 2.6.x
+    version: v2.6.6
   eProsima/foonathan_memory_vendor:
-    hash: 5d315b2147585688368ecd9657ab6d628d077949
-    shallow_since: 1645699214 +0100
+    hash: e91681a25711c1811b2eaf2ba1e6996e0d9ecc84
+    shallow_since: 1683727792 +0200
     type: git
     url: https://github.com/eProsima/foonathan_memory_vendor.git
-    version: master
+    version: v1.3.1
   eclipse-cyclonedds/cyclonedds:
-    hash: 0e2cd3e303be2171dd0e4fc685cc5031f70b0f52
-    shallow_since: 1652445884 +0200
+    hash: 63b6eab0e0660009eaf5e54d10509ea587ce199e
+    shallow_since: 1679487279 +0100
     type: git
     url: https://github.com/eclipse-cyclonedds/cyclonedds.git
-    version: releases/0.9.x
+    version: 0.10.3
   eclipse-iceoryx/iceoryx:
-    hash: f756b7c99ddf714d05929374492b34c5c69355bb
-    shallow_since: 1649434233 +0200
+    hash: 40ef24e9515940564af63987234d51dc7f02f6b3
+    shallow_since: 1675094707 +0100
     type: git
     url: https://github.com/eclipse-iceoryx/iceoryx.git
-    version: release_2.0
+    version: v2.0.3
   ignition/ignition_cmake2_vendor:
     hash: adcee1687a6f77bdc345702d7ce1f518e97a6a66
     shallow_since: 1648558265 +0000
     type: git
     url: https://github.com/ignition-release/ignition_cmake2_vendor.git
-    version: humble
+    version: 0.0.2
   ignition/ignition_math6_vendor:
     hash: 177e74c31767e60c5bd8167f9ec66017b8e8020b
     shallow_since: 1648558450 +0000
     type: git
     url: https://github.com/ignition-release/ignition_math6_vendor.git
-    version: humble
+    version: 0.0.2
   osrf/osrf_pycommon:
-    hash: d03cf0319c1110f0fa6fa66586e884ab87f5a516
-    shallow_since: 1652230841 -0700
+    hash: d70a3bd3c8aa23bc9c2fff267a5b12d674516646
+    shallow_since: 1649454420 -0700
     type: git
     url: https://github.com/osrf/osrf_pycommon.git
-    version: master
+    version: 2.0.2
   osrf/osrf_testing_tools_cpp:
-    hash: 330849044357701c83ce2222845e045eb3c622bf
-    shallow_since: 1662991356 -0500
+    hash: ccfe94a685884155cb619896df1e71b8507c5c70
+    shallow_since: 1667830580 -0600
     type: git
     url: https://github.com/osrf/osrf_testing_tools_cpp.git
-    version: master
+    version: 1.5.2
   ros-perception/image_common:
-    hash: 40e0df25928950d757058302c29526667c385cbe
-    shallow_since: 1648187870 +0000
+    hash: 7ebae2f92257e1746fd9ec7787fb820a6f28d91a
+    shallow_since: 1692024443 +0200
     type: git
     url: https://github.com/ros-perception/image_common.git
-    version: humble
+    version: 3.1.7
   ros-perception/laser_geometry:
     hash: ba53212e6908e6f4e022a1ae2fb3b5bb1388d1d0
     shallow_since: 1646168108 +0000
     type: git
     url: https://github.com/ros-perception/laser_geometry.git
-    version: humble
+    version: 2.4.0
   ros-planning/navigation_msgs:
     hash: 1d8683359734a2c829b5cdb6b5a4e015bbbcb6a5
     shallow_since: 1616703818 +0000
     type: git
     url: https://github.com/ros-planning/navigation_msgs.git
-    version: humble
+    version: 2.1.0
   ros-tooling/keyboard_handler:
-    hash: 404398000bc2b2483bb3e7f4e75ed6c4181da8cb
-    shallow_since: 1664424147 -0700
+    hash: a80cbfc93be6a545bb0892d1b5a408d2b5ef29b1
+    shallow_since: 1667916008 -0500
     type: git
     url: https://github.com/ros-tooling/keyboard_handler.git
-    version: humble
+    version: 0.0.5
   ros-tooling/libstatistics_collector:
-    hash: ed40c1825fb17c244ddf69fb6c7927060dff812b
-    shallow_since: 1649090613 +0000
+    hash: 6d473eb7533a3db385512d5721e3a46ceb06f96f
+    shallow_since: 1677042096 -0800
     type: git
     url: https://github.com/ros-tooling/libstatistics_collector.git
-    version: humble
+    version: 1.3.1
   ros-visualization/interactive_markers:
     hash: b4e6a0df87cddba49d844f6798387faf8db2dd37
     shallow_since: 1649450982 +0000
     type: git
     url: https://github.com/ros-visualization/interactive_markers.git
-    version: humble
+    version: 2.3.2
   ros-visualization/python_qt_binding:
     hash: 89492df890f390d956b7f829811f29ccc7f1cd87
     shallow_since: 1638839032 -0800
     type: git
     url: https://github.com/ros-visualization/python_qt_binding.git
-    version: humble
+    version: 1.1.1
   ros-visualization/qt_gui_core:
     hash: 4a1010a702ea4b922a25b0b1cebc33904de88c0c
     shallow_since: 1660584395 +0000
     type: git
     url: https://github.com/ros-visualization/qt_gui_core.git
-    version: humble
+    version: 2.2.2
   ros-visualization/rqt:
-    hash: 6cf57076b8501264497fd7355997335b3d05d511
-    shallow_since: 1652231633 -0700
+    hash: d954ac6727f873a2c2e1b7f9e7cb1bd7642fc461
+    shallow_since: 1682459372 +0000
     type: git
     url: https://github.com/ros-visualization/rqt.git
-    version: humble
+    version: 1.1.5
   ros-visualization/rqt_action:
     hash: 86e5c65a708b562f220cf6bafa7a3f10e075dad8
     shallow_since: 1642182537 -0800
     type: git
     url: https://github.com/ros-visualization/rqt_action.git
-    version: humble
+    version: 2.0.1
   ros-visualization/rqt_bag:
-    hash: 5ebb4cddd63efa75f3b25d8c9b9ce3adb9d1c4a1
-    shallow_since: 1662393474 -0300
+    hash: a860837d1a52459ed5a97674546faf526f175402
+    shallow_since: 1667831876 -0600
     type: git
     url: https://github.com/ros-visualization/rqt_bag.git
-    version: humble
+    version: 1.1.4
   ros-visualization/rqt_console:
-    hash: d293cc3423c23547dfc430dde293cc15304da88b
-    shallow_since: 1645062903 +0900
+    hash: 3f2fd4e066562e8a9b630bcba5dee95a20fbdca9
+    shallow_since: 1635300128 +0900
     type: git
     url: https://github.com/ros-visualization/rqt_console.git
-    version: humble
+    version: 2.0.2
   ros-visualization/rqt_graph:
     hash: e512cd7a246ca1032422c454bb103a5beb3cf4c1
     shallow_since: 1663109940 +0000
     type: git
     url: https://github.com/ros-visualization/rqt_graph.git
-    version: humble
+    version: 1.3.0
   ros-visualization/rqt_msg:
     hash: e73c05e6b4a2601a587231eacafad75e5fa07aa4
     shallow_since: 1663096424 -0700
     type: git
     url: https://github.com/ros-visualization/rqt_msg.git
-    version: humble
+    version: 1.2.0
   ros-visualization/rqt_plot:
     hash: d44f4a6b5ddb39d03ddc201dd202f1f8c324a262
     shallow_since: 1652231949 -0700
     type: git
     url: https://github.com/ros-visualization/rqt_plot.git
-    version: humble
+    version: 1.1.2
   ros-visualization/rqt_publisher:
     hash: db902c8dd75527dbc0e9e533b42f650a56dbe03e
     shallow_since: 1659477921 -0400
     type: git
     url: https://github.com/ros-visualization/rqt_publisher.git
-    version: humble
+    version: 1.5.0
   ros-visualization/rqt_py_console:
     hash: 36ad6e467f7add9279a4cd54d3e02ebcbd936d5b
     shallow_since: 1630451545 -0700
     type: git
     url: https://github.com/ros-visualization/rqt_py_console.git
-    version: humble
+    version: 1.0.2
   ros-visualization/rqt_reconfigure:
     hash: 3cdeeb3cb6bdf4931b8b49b87b6aa95c24e378ba
     shallow_since: 1663106666 +0000
     type: git
     url: https://github.com/ros-visualization/rqt_reconfigure.git
-    version: humble
+    version: 1.1.1
   ros-visualization/rqt_service_caller:
     hash: c9afeb84e9db4807c895e345294f2d521abf3859
     shallow_since: 1630451643 -0700
     type: git
     url: https://github.com/ros-visualization/rqt_service_caller.git
-    version: humble
+    version: 1.0.5
   ros-visualization/rqt_shell:
     hash: 50639b2252fc0d02bcc3361284b67baa44a87c3b
     shallow_since: 1630452741 -0700
     type: git
     url: https://github.com/ros-visualization/rqt_shell.git
-    version: humble
+    version: 1.0.2
   ros-visualization/rqt_srv:
     hash: 46e8e71560008857456525ad7977aa6bd87391d5
     shallow_since: 1630452880 -0700
     type: git
     url: https://github.com/ros-visualization/rqt_srv.git
-    version: humble
+    version: 1.0.3
   ros-visualization/rqt_topic:
     hash: 19141d759cfa35515182677f9d4e60a898e86c74
     shallow_since: 1663095690 -0700
     type: git
     url: https://github.com/ros-visualization/rqt_topic.git
-    version: humble
+    version: 1.5.0
   ros-visualization/tango_icons_vendor:
     hash: 6829ad2201c6b42973edcfc9f5755b8b9f5b67ff
     shallow_since: 1649249706 +0000
     type: git
     url: https://github.com/ros-visualization/tango_icons_vendor.git
-    version: humble
+    version: 0.1.1
   ros/class_loader:
     hash: b59bce93380b73ac9061fba28e96bba540e2befe
     shallow_since: 1642184223 -0800
     type: git
     url: https://github.com/ros/class_loader.git
-    version: humble
+    version: 2.2.0
   ros/kdl_parser:
-    hash: df0309937e61435d7d3f09adec04c94665d45a4e
-    shallow_since: 1659733945 -0700
+    hash: a4ad6b3c1dbf3730a579b250be81e4a74e838b94
+    shallow_since: 1673360125 -0600
     type: git
     url: https://github.com/ros/kdl_parser.git
-    version: humble
+    version: 2.6.4
   ros/pluginlib:
     hash: fc2d015a594bb582c1143a9e2b8b8d9f6f8c75fc
     shallow_since: 1642186000 -0800
     type: git
     url: https://github.com/ros/pluginlib.git
-    version: humble
+    version: 5.1.0
   ros/resource_retriever:
-    hash: 3f35939ae4221df600f8fe44fb2887f7e82da274
-    shallow_since: 1646167227 +0000
+    hash: 6c82181f7c0c893f50dbacdafe51bc83b9a56803
+    shallow_since: 1673360221 -0600
     type: git
     url: https://github.com/ros/resource_retriever.git
-    version: humble
+    version: 3.1.1
   ros/robot_state_publisher:
     hash: 6e11ed88d24a63a00472c000075f568f270334ed
     shallow_since: 1649194244 -0700
     type: git
     url: https://github.com/ros/robot_state_publisher.git
-    version: humble
+    version: 3.0.2
   ros/ros_environment:
-    hash: 26f8deed11e57361dd9ad98508972aa9713f2053
-    shallow_since: 1654881379 -0700
+    hash: cf4d7c2b770fec588e8d35de09e12d5bfd056067
+    shallow_since: 1667832063 -0600
     type: git
     url: https://github.com/ros/ros_environment.git
-    version: humble
+    version: 3.2.2
   ros/ros_tutorials:
     hash: ba29c3f376197e3736f497639299f855cbf73390
     shallow_since: 1652796435 -0400
     type: git
     url: https://github.com/ros/ros_tutorials.git
-    version: humble
+    version: 1.4.2
   ros/urdfdom:
     hash: dbecca095cf81b755991b4d785f87a8e6b7358d6
     shallow_since: 1648511537 -0700
     type: git
     url: https://github.com/ros/urdfdom.git
-    version: humble
+    version: 3.0.2
   ros/urdfdom_headers:
     hash: d3643d2acd8567c6522ceaf7ded6e3c3755a5244
     shallow_since: 1648511357 -0700
     type: git
     url: https://github.com/ros/urdfdom_headers.git
-    version: humble
+    version: 1.0.6
   ros2/ament_cmake_ros:
     hash: 60572fa1bec50b9e6fbe64e1b23640d21c15e9d0
     shallow_since: 1642109880 -0800
     type: git
     url: https://github.com/ros2/ament_cmake_ros.git
-    version: humble
+    version: 0.10.0
   ros2/common_interfaces:
-    hash: 60df44894caafa67767da4c71d91f8c5eb7abf38
-    shallow_since: 1652996362 -0700
+    hash: f4eac72f0bbd70f7955a5f709d4a6705eb6ca7e8
+    shallow_since: 1673281597 -0600
     type: git
     url: https://github.com/ros2/common_interfaces.git
-    version: humble
+    version: 4.2.3
   ros2/console_bridge_vendor:
-    hash: 9c93da4dafea40bcf8e5aa09a2f1fdfd8652ad02
-    shallow_since: 1648558980 +0000
+    hash: d445245912786a7a03216e9d47f102e1997320f2
+    shallow_since: 1673357965 -0600
     type: git
     url: https://github.com/ros2/console_bridge_vendor.git
-    version: humble
+    version: 1.4.1
   ros2/demos:
-    hash: 735905e23b97cd20283d374c99e09ad1c5d5aa3e
-    shallow_since: 1652232030 -0700
+    hash: f258b8182c7ad680c8cceba38eac72e01fdb0a3c
+    shallow_since: 1673358561 -0600
     type: git
     url: https://github.com/ros2/demos.git
-    version: humble
+    version: 0.20.3
   ros2/eigen3_cmake_module:
     hash: 526c6c745da360fe78fb727aa8a1f6daa8199abd
     shallow_since: 1565307940 -0700
     type: git
     url: https://github.com/ros2/eigen3_cmake_module.git
-    version: humble
+    version: 0.1.1
   ros2/example_interfaces:
     hash: f8deb566a1facf91bd38b9f00c4cf684c5007d85
     shallow_since: 1649249608 +0000
     type: git
     url: https://github.com/ros2/example_interfaces.git
-    version: humble
+    version: 0.9.3
   ros2/examples:
-    hash: 357183cfb0e82195e54235ffb51e1071711a8661
-    shallow_since: 1658769078 -0400
+    hash: fac7da74281cbe6912e74aa78db633945b9ed930
+    shallow_since: 1667832202 -0600
     type: git
     url: https://github.com/ros2/examples.git
-    version: humble
+    version: 0.15.1
   ros2/geometry2:
-    hash: ae2120833d1777eaa91a3fa4943d56b675db3e52
-    shallow_since: 1659733742 -0700
+    hash: a73160df358c52d1f506fce21f15f8243e9b87f4
+    shallow_since: 1695130569 +0000
     type: git
     url: https://github.com/ros2/geometry2.git
-    version: humble
+    version: 0.25.4
   ros2/launch:
-    hash: b6a7f31c1972395cb8c23d753c1da7d0f566dfe6
-    shallow_since: 1665596819 -0400
+    hash: aed025e04e0b143362c69bf29a67b2ffff4c59ee
+    shallow_since: 1673358862 -0600
     type: git
     url: https://github.com/ros2/launch.git
-    version: humble
+    version: 1.0.4
   ros2/launch_ros:
-    hash: 5434428a30a981aeee1dbadfd5b43622cef12d67
-    shallow_since: 1652796256 -0400
+    hash: 2bf4e6057dea57669c19395f6f39d390bd420ee7
+    shallow_since: 1695130640 +0000
     type: git
     url: https://github.com/ros2/launch_ros.git
-    version: humble
+    version: 0.19.6
   ros2/libyaml_vendor:
     hash: 239f695ceaa0820255f3d0fe02ec8c2bd41b8e78
     shallow_since: 1648732255 +0000
     type: git
     url: https://github.com/ros2/libyaml_vendor.git
-    version: humble
+    version: 1.2.2
   ros2/message_filters:
-    hash: 1062b259704e7bb171b09e1c29cdace22a7ae6fb
-    shallow_since: 1655701479 +0000
+    hash: bb405b0d55646fbcb6acf7c2d42911d0efb11415
+    shallow_since: 1682458765 +0000
     type: git
     url: https://github.com/ros2/message_filters.git
-    version: humble
+    version: 4.3.3
   ros2/mimick_vendor:
     hash: 39ec45b347721c8c90c0e31450e91c00fb0ec856
     shallow_since: 1648188875 +0000
     type: git
     url: https://github.com/ros2/mimick_vendor.git
-    version: humble
+    version: 0.2.8
   ros2/orocos_kdl_vendor:
-    hash: 1e8abdf193fd0ca4d143216336ee03a34d7ed10b
-    shallow_since: 1659712218 -0700
+    hash: d390ba45a77d8d49746a784d10a88cb77e86f703
+    shallow_since: 1674245380 -0600
     type: git
     url: https://github.com/ros2/orocos_kdl_vendor.git
-    version: humble
+    version: 0.2.5
   ros2/performance_test_fixture:
     hash: afb01872d0c03e31cd4fda04e91af8e5548de0a3
     shallow_since: 1658776414 -0700
     type: git
     url: https://github.com/ros2/performance_test_fixture.git
-    version: main
+    version: 0.0.9
   ros2/pybind11_vendor:
-    hash: 087b40ba8c7730fddf2b5b600ac595a8341255e9
-    shallow_since: 1652232157 -0700
+    hash: 06dff083cdef3381c1d1d16159ac19227f646ad9
+    shallow_since: 1670369976 -0800
     type: git
     url: https://github.com/ros2/pybind11_vendor.git
-    version: humble
+    version: 2.4.2
   ros2/python_cmake_module:
     hash: 859115408416e77d37711912d5c36cd3147fe136
     shallow_since: 1646164088 +0000
     type: git
     url: https://github.com/ros2/python_cmake_module.git
-    version: humble
+    version: 0.10.0
   ros2/rcl:
-    hash: 7bb8d4d039a3a3c7bee452464358270d6f4ab616
-    shallow_since: 1662659355 -0500
+    hash: 3804c35f6dd31d5ac54a1acb426bff253cce8272
+    shallow_since: 1695130701 +0000
     type: git
     url: https://github.com/ros2/rcl.git
-    version: humble
+    version: 5.3.5
   ros2/rcl_interfaces:
-    hash: 4be87b33fb6aef6ea5ec5a0662c53f923f9fe9be
-    shallow_since: 1646163405 +0000
+    hash: 5e01a28f9866a564491480e12d8659a134678741
+    shallow_since: 1667833699 -0600
     type: git
     url: https://github.com/ros2/rcl_interfaces.git
-    version: humble
+    version: 1.2.1
   ros2/rcl_logging:
-    hash: 764508af43391d4583bb1aa310e809409ab166d5
-    shallow_since: 1656611429 -0400
+    hash: 1b7a4e34884005f28eeb04065b5d94565c67b11d
+    shallow_since: 1667833800 -0600
     type: git
     url: https://github.com/ros2/rcl_logging.git
-    version: humble
+    version: 2.3.1
   ros2/rclcpp:
-    hash: 7f575103d8fe06285bd46474a0324c7dfbb2a2f0
-    shallow_since: 1662749700 -0700
+    hash: 0f6b5449f66f131735a423be4a84d6f14751d3b2
+    shallow_since: 1695130763 +0000
     type: git
     url: https://github.com/ros2/rclcpp.git
-    version: humble
+    version: 16.0.6
   ros2/rclpy:
-    hash: 878c549ac9fdd4e2f4cea02df1cb174e70c4de2b
-    shallow_since: 1665598362 -0400
+    hash: 242f78a3d856ed1552a56d1e06713553e9d65fdf
+    shallow_since: 1695130817 +0000
     type: git
     url: https://github.com/ros2/rclpy.git
-    version: humble
+    version: 3.3.10
   ros2/rcpputils:
-    hash: a7898d98ab684bb5d0cb2c20c823a1b4014fa0dc
-    shallow_since: 1646162575 +0000
+    hash: 3eb281afdc891855b5feb367c79ede1e2fbb0acb
+    shallow_since: 1682457603 +0000
     type: git
     url: https://github.com/ros2/rcpputils.git
-    version: humble
+    version: 2.4.1
   ros2/rcutils:
-    hash: 6724d8a0f842e13cac07f2e90a06f79ae6fcfc48
-    shallow_since: 1663764013 -0400
+    hash: 2d9d74e72ecd1eea240412be3dacd413dcb5f680
+    shallow_since: 1682457695 +0000
     type: git
     url: https://github.com/ros2/rcutils.git
-    version: humble
+    version: 5.1.3
   ros2/realtime_support:
     hash: 0e3faef4b7aa7985726dba97c761a6783f62a958
     shallow_since: 1646162410 +0000
     type: git
     url: https://github.com/ros2/realtime_support.git
-    version: humble
+    version: 0.13.0
   ros2/rmw:
-    hash: 01d0db60c5bac242fe6f8a6d49494512f1e20c61
-    shallow_since: 1648232762 +0000
+    hash: 2a4ee718d0da004d5629f50afd2896fbd1f4aedd
+    shallow_since: 1667834517 -0600
     type: git
     url: https://github.com/ros2/rmw.git
-    version: humble
+    version: 6.1.1
   ros2/rmw_connextdds:
-    hash: 1252ed842c92385787fb59b15a385e34408b1602
-    shallow_since: 1651005883 +0000
+    hash: 94bde7556d069bee8f9540171a9b87593c3be51e
+    shallow_since: 1689700540 +0000
     type: git
     url: https://github.com/ros2/rmw_connextdds.git
-    version: humble
+    version: 0.11.2
   ros2/rmw_cyclonedds:
-    hash: d978115ddcf049288c48dc6b52caa3be1439eba7
-    shallow_since: 1664815405 -0700
+    hash: 7cb3b38a21e14fbcc84aadcc460e4d812d0c7a7f
+    shallow_since: 1667834582 -0600
     type: git
     url: https://github.com/ros2/rmw_cyclonedds.git
-    version: humble
+    version: 1.3.4
   ros2/rmw_dds_common:
     hash: e26ba1079886c5598614172db0b27526aa6af07d
     shallow_since: 1648761511 +0000
     type: git
     url: https://github.com/ros2/rmw_dds_common.git
-    version: humble
+    version: 1.6.0
   ros2/rmw_fastrtps:
-    hash: fe73970c674af7ff286e5a77337dc11865fc2691
-    shallow_since: 1662566084 -0700
+    hash: 4b0f30f15fad0e1a9824db0bf54dbbaa5085fa5d
+    shallow_since: 1695130886 +0000
     type: git
     url: https://github.com/ros2/rmw_fastrtps.git
-    version: humble
+    version: 6.2.4
   ros2/rmw_implementation:
-    hash: 31843adc17f28a4af0dc5f160e9e3b4dfb9710ea
-    shallow_since: 1648508522 -0700
+    hash: 413eb313f7e128c6977cd453818e1a39bf70da40
+    shallow_since: 1673359327 -0600
     type: git
     url: https://github.com/ros2/rmw_implementation.git
-    version: humble
+    version: 2.8.2
   ros2/ros2_tracing:
-    hash: 638fa0ab095ae1e941b05187418f0089c431e8d9
-    shallow_since: 1653488135 +0000
+    hash: 548634dd2837d65c043436c8186614e924be5c6c
+    shallow_since: 1667834775 -0600
     type: git
     url: https://github.com/ros2/ros2_tracing.git
-    version: humble
+    version: 4.1.1
   ros2/ros2cli:
-    hash: 9e7f72150ab0c47188984787da138d6c16dde386
-    shallow_since: 1663860341 -0400
+    hash: 38d4fa97fa8091e211e190d70e9fa0b0e817689d
+    shallow_since: 1689700836 +0000
     type: git
     url: https://github.com/ros2/ros2cli.git
-    version: humble
+    version: 0.18.7
   ros2/ros2cli_common_extensions:
     hash: 4f2d47f4417475c5036c9930b5d348a5e0774007
     shallow_since: 1616076624 +0000
     type: git
     url: https://github.com/ros2/ros2cli_common_extensions.git
-    version: humble
+    version: 0.1.1
   ros2/ros_testing:
     hash: d258cbca54a5e6fbbf7be38ddd78592273ccee78
     shallow_since: 1642109145 -0800
     type: git
     url: https://github.com/ros2/ros_testing.git
-    version: humble
+    version: 0.4.0
   ros2/rosbag2:
-    hash: b71944abb16a9acc24e002536e82a5265920dbab
-    shallow_since: 1663894361 -0700
+    hash: 0b4deb3311ed8397410d84b462a86b2d1c9db153
+    shallow_since: 1695151794 -0500
     type: git
     url: https://github.com/ros2/rosbag2.git
-    version: humble
+    version: 0.15.8
   ros2/rosidl:
-    hash: bdc43f017e537649ca4306a977e838d3f1d0e825
-    shallow_since: 1658165071 -0700
+    hash: cf3b637605c8c1dc0b1266ca0090963e9186c7dd
+    shallow_since: 1689702714 +0000
     type: git
     url: https://github.com/ros2/rosidl.git
-    version: humble
+    version: 3.1.5
   ros2/rosidl_dds:
     hash: ab8497770c652edb40d6b1591118198cbcf14237
     shallow_since: 1648665003 -0700
     type: git
     url: https://github.com/ros2/rosidl_dds.git
-    version: humble
+    version: 0.8.1
   ros2/rosidl_defaults:
     hash: 1f1ee2a6169837b10302ffb2a52fb2f2a57239b2
     shallow_since: 1648762308 +0000
     type: git
     url: https://github.com/ros2/rosidl_defaults.git
-    version: humble
+    version: 1.2.0
   ros2/rosidl_python:
-    hash: eb847a07bf851f125eb0bd47d4b161f13cdc8e1d
-    shallow_since: 1662150425 -0400
+    hash: 2507d5dbc1aebe2254d9eac088f007dcaea2ff03
+    shallow_since: 1667923359 +0000
     type: git
     url: https://github.com/ros2/rosidl_python.git
-    version: humble
+    version: 0.14.4
   ros2/rosidl_runtime_py:
-    hash: 527cd1006269df81753ddcdcbc9e41be6ab9c585
-    shallow_since: 1663268137 -0300
+    hash: 02b91d6f9acbfe3dbfa4feb34bd7c30e219aa178
+    shallow_since: 1667835469 -0600
     type: git
     url: https://github.com/ros2/rosidl_runtime_py.git
-    version: humble
+    version: 0.9.3
   ros2/rosidl_typesupport:
-    hash: 1e5560a46a9dee79cec7815c35020b97008ea379
-    shallow_since: 1648664530 -0700
+    hash: aa522c4bf1a1b6c10766b84ca6625a8c494c0928
+    shallow_since: 1689702809 +0000
     type: git
     url: https://github.com/ros2/rosidl_typesupport.git
-    version: humble
+    version: 2.0.1
   ros2/rosidl_typesupport_fastrtps:
-    hash: 89b19c15d615fc07479707e6584e29b1f67f5e23
-    shallow_since: 1648665285 +0000
+    hash: c1c132960f466db26020c01913a7827695fc15af
+    shallow_since: 1689702902 +0000
     type: git
     url: https://github.com/ros2/rosidl_typesupport_fastrtps.git
-    version: humble
+    version: 2.2.1
   ros2/rpyutils:
     hash: 4cb9e1b5c1c4c585694196377ab918e7e70639f0
     shallow_since: 1646159541 +0000
     type: git
     url: https://github.com/ros2/rpyutils.git
-    version: humble
+    version: 0.2.1
   ros2/rviz:
-    hash: d1b066455474a3c7424b9d2de5b8ec2998301bef
-    shallow_since: 1664225677 -0700
+    hash: 6ecfcecf5bd14ce77e1c3078a65b736c9cac00b6
+    shallow_since: 1695131351 +0000
     type: git
     url: https://github.com/ros2/rviz.git
-    version: humble
+    version: 11.2.8
   ros2/spdlog_vendor:
-    hash: f38518c40bbe8798d07017c8e35ed701f2400782
-    shallow_since: 1617715455 +0000
+    hash: 2de3e7f6ee157a7e3a2dd24f33046f6d25c099be
+    shallow_since: 1673359578 -0600
     type: git
     url: https://github.com/ros2/spdlog_vendor.git
-    version: humble
+    version: 1.3.1
   ros2/sros2:
     hash: bb3859098f123c65f8cfc90f45e21502be521d48
     shallow_since: 1649450801 +0000
     type: git
     url: https://github.com/ros2/sros2.git
-    version: humble
+    version: 0.10.4
   ros2/system_tests:
     hash: 83a4e481624a6d171104fe4c89d2fb56da91ab6d
     shallow_since: 1649180453 +0000
     type: git
     url: https://github.com/ros2/system_tests.git
-    version: humble
+    version: 0.12.3
   ros2/test_interface_files:
     hash: a0c8f5e338490ddf8b98238dce35c06810115e8b
     shallow_since: 1649179981 +0000
     type: git
     url: https://github.com/ros2/test_interface_files.git
-    version: humble
+    version: 0.9.1
   ros2/tinyxml2_vendor:
     hash: 4ec721bf7f6adaa604db28e6ef1ae4beb205a773
     shallow_since: 1649179758 +0000
     type: git
     url: https://github.com/ros2/tinyxml2_vendor.git
-    version: humble
+    version: 0.7.5
   ros2/tinyxml_vendor:
     hash: b226bdf9a7dbdcf9ac47961e09f3d730525c1667
     shallow_since: 1649179658 +0000
     type: git
     url: https://github.com/ros2/tinyxml_vendor.git
-    version: humble
+    version: 0.8.3
   ros2/tlsf:
     hash: d39351de61894a8b4ce65a682ea3593628a9a179
     shallow_since: 1646157096 +0000
     type: git
     url: https://github.com/ros2/tlsf.git
-    version: humble
+    version: 0.7.0
   ros2/unique_identifier_msgs:
     hash: 27767cefcf8a80da44641dc208c57722c28aa11c
     shallow_since: 1617715220 +0000
     type: git
     url: https://github.com/ros2/unique_identifier_msgs.git
-    version: humble
+    version: 2.2.1
   ros2/urdf:
     hash: 3fa99149d8300dcd90bfc05b58ce0fc0bceaae5d
     shallow_since: 1646156722 +0000
     type: git
     url: https://github.com/ros2/urdf.git
-    version: humble
+    version: 2.6.0
   ros2/yaml_cpp_vendor:
-    hash: 25e36cc6cea3a55db45157408b00fbee1c9b922e
-    shallow_since: 1649899450 -0700
+    hash: 77bebe7a90c0bc26df3137f15bad4a9712f9b74e
+    shallow_since: 1673359652 -0600
     type: git
     url: https://github.com/ros2/yaml_cpp_vendor.git
-    version: humble
+    version: 8.0.2

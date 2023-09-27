@@ -12,34 +12,33 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@rules_ros//repos/config/detail:ros2_config.bzl", _ros2_config = "ros2_config")
-load("@bazel_tools//tools/build_defs/repo:utils.bzl", _maybe = "maybe")
-load("@bazel_tools//tools/build_defs/repo:git.bzl", _new_git_repository = "new_git_repository")
+load("@rules_ros//repos/config/detail:ros2_config.bzl", "ros2_config")
+load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
+load("@rules_ros//repos/config:distros.bzl", "DISTROS")
 
-def _configure_ros2_humble(*, name):
+def _configure_ros2(*, name, distro_src):
+    distro_src_wo_index = {k: v for k, v in distro_src.items() if k != "repo_index"}
+    distro_src_wo_index["build_file_content"] = 'exports_files(["ros2.repos"])'
 
-    _maybe(
-        name = "ros2",
-        repo_rule = _new_git_repository,
-        remote = "https://github.com/ros2/ros2.git",
-        build_file_content = 'exports_files(["ros2.repos"])',
-        commit = "00f3ba9f73916a5eab322710edaaf197f0f10e31",
-        shallow_since = "1660330451 -0400",
-    )
-    _ros2_config(
+    maybe(name = "ros2", **distro_src_wo_index)
+
+    ros2_config(
         name = name,
-        repo_index = "@rules_ros//repos/config:ros2_humble.lock",
+        repo_index = distro_src["repo_index"],
         repo_index_overlays = [
             "@rules_ros//repos/config:bazel.repos",
-        ]
+        ],
     )
 
 def configure_ros2(*, name = "ros2_config", distro):
     """
     """
-    DISTROS = {
-        "humble": _configure_ros2_humble,
-    }
-    if not distro in DISTROS:
-        fail("Distro {} is not supported. Choose one of {}".format(distro, DISTROS.keys()))
-    DISTROS[distro](name = name)
+    if type(distro) == type(""):
+        if not distro in DISTROS:
+            fail("Distro {} is not supported. Choose one of {}".format(distro, DISTROS.keys()))
+        distro_src = DISTROS[distro]
+    else:
+        if not type(distro) == type({}) or not "repo_rule" in distro:
+            fail("Distro either needs to be a string (e.g. 'iron') or a dict with arguments for the maybe repo rule")
+        distro_src = distro
+    _configure_ros2(name = name, distro_src = distro_src)

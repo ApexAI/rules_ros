@@ -14,10 +14,6 @@
 
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "update_attrs")
 
-BUILD_FILE_CONTENT = """
-alias(name = 'ros2.lock', actual = '@rules_ros//repos/config:ros2_humble.lock')",
-"""
-
 _archive_attrs = {
     "repo_index": attr.label(
         doc = "YAML file containing the details of every ros2 repository.",
@@ -39,10 +35,9 @@ _archive_attrs = {
 }
 
 def _ros2_config_impl(ctx):
-
     result = ctx.execute(
         [ctx.attr._generate_ros2_config, ctx.attr.repo_index] +
-        ctx.attr.repo_index_overlays
+        ctx.attr.repo_index_overlays,
     )
     if result.return_code != 0:
         fail(result.stderr)
@@ -58,5 +53,3 @@ ros2_config = repository_rule(
     implementation = _ros2_config_impl,
     attrs = _archive_attrs,
 )
-
-

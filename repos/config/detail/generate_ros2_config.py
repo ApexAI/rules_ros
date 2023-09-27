@@ -35,12 +35,14 @@ def print_setup(repos):
 
 
 def build_load_command(repo, spec):
-    if spec['type'] == "git":
+    if spec.get('type') == "git":
         return build_remote_load_command(repo, spec)
-    if spec['type'] == "local":
+    if spec.get('type') == "local":
         return build_local_load_command(repo, spec)
     else:
-        raise ValueError(f"Unknown repo type {spec['type']}")
+        return f"""
+    print("WARNING: Unknown repo type {spec.get('type')} for repo @{repo.replace('/', '.')}")
+"""
 
 
 def build_local_load_command(repo, spec):
