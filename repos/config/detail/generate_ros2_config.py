@@ -19,6 +19,7 @@ import yaml
 
 HEADER = """
 load("@rules_ros//repos/config/detail:git_repository.bzl", _git_repository = "git_repository")
+load("@rules_ros//repos/config/detail:http_archive.bzl", "http_archive")
 load("@rules_ros//repos/config/detail:new_local_repository.bzl", _new_local_repository = "new_local_repository")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", _maybe = "maybe")
 
@@ -36,7 +37,9 @@ def print_setup(repos):
 
 def build_load_command(repo, spec):
     if spec.get('type') == "git":
-        return build_remote_load_command(repo, spec)
+        return build_git_load_command(repo, spec)
+    if spec.get('type') == "http_archive":
+        return build_http_archive_load_command(repo, spec)
     if spec.get('type') == "local":
         return build_local_load_command(repo, spec)
     else:
@@ -44,6 +47,22 @@ def build_load_command(repo, spec):
     print("WARNING: Unknown repo type {spec.get('type')} for repo @{repo.replace('/', '.')}")
 """
 
+
+def build_http_archive_load_command(repo, spec):
+    build_files = "\n".join([f'            "{k}": "{v}",' for k,v in spec['bazel'].items()])
+    return f"""
+    print("Loading: @{repo.replace('/','.')}")
+    _maybe(
+        name = "{repo.replace('/','.')}",
+        build_files = {{
+{build_files}
+        }},
+        url = "{spec['url']}",
+        sha256 = "{spec['hash']}",
+        strip_prefix = "{spec['strip_prefix']}",
+        repo_rule = http_archive,
+    )
+"""
 
 def build_local_load_command(repo, spec):
     build_files = "\n".join([f'            "{k}": "{v}",' for k,v in spec['bazel'].items()])
@@ -55,11 +74,12 @@ def build_local_load_command(repo, spec):
 {build_files}
         }},
         path = "{spec['path']}",
+        sha256 = "{spec['hash']}",
         repo_rule = _new_local_repository,
     )
 """
 
-def build_remote_load_command(repo, spec):
+def build_git_load_command(repo, spec):
     build_files = "\n".join([f'            "{k}": "{v}",' for k,v in spec['bazel'].items()])
     return f"""
     print("Loading: @{repo.replace('/','.')}")
