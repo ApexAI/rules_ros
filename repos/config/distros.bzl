@@ -24,13 +24,4 @@ DISTROS = {
         repo_index = "@rules_ros//repos/config:ros2_{}.lock".format(distro),
     )
     for distro, date, sha in _VERSIONS
-} | {
-    "rolling": dict(
-        repo_rule = new_git_repository,
-        remote = ROS_PROJECT,
-        build_file_content = 'exports_files(["ros2.repos"])',
-        commit = "1f5bd8ed43beea199dabe48bc8023af3aba9806c",
-        #shallow_since = "1660330451 -0400",
-        repo_index = "@rules_ros//repos/config:ros2_iron.lock",
-    ),
 }

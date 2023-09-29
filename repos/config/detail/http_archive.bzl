@@ -27,8 +27,10 @@ _archive_attrs = {
             "Hash of the commit to be checked out.",
     ),
     "build_files": attr.label_keyed_string_dict(
-        doc =
-            "Same as in native rule.",
+        doc = """
+            Dict with a file as key and the path where to place the file in the repository as value.
+            This allows to place multiple (BUILD) files in a repo.
+        """,
     ),
 }
 
@@ -74,7 +76,7 @@ http_archive = repository_rule(
     implementation = _http_archve_impl,
     attrs = _archive_attrs,
     doc =
-        """Custom rule to clone a git repo as external dependency.
+        """Custom rule to use a compressed tarball for creating an external workspace.
         It allows to inject multiple BUILD files.
         """,
 )

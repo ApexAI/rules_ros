@@ -76,13 +76,13 @@ repositories:
     version: v2.0.3
   ignition/ignition_cmake2_vendor:
     hash: 5b13472e33db9c9bb631b037d1c6b0ccedfcf5e38e16157024cc641215a43b32
-    strip_prefix: ignition_cmake2_vendor-0.0.2
+    strip_prefix: gz_cmake2_vendor-0.0.2
     type: http_archive
     url: https://github.com/ignition-release/ignition_cmake2_vendor/archive/refs/tags/0.0.2.tar.gz
     version: 0.0.2
   ignition/ignition_math6_vendor:
     hash: d357a43e8265db9a9e886b01ca53cc9692c81b7e9f7d99abc99df982efd5a1be
-    strip_prefix: ignition_math6_vendor-0.0.2
+    strip_prefix: gz_math6_vendor-0.0.2
     type: http_archive
     url: https://github.com/ignition-release/ignition_math6_vendor/archive/refs/tags/0.0.2.tar.gz
     version: 0.0.2

@@ -19,8 +19,10 @@ _archive_attrs = {
         doc = "Path to the repository.",
     ),
     "build_files": attr.label_keyed_string_dict(
-        doc =
-            "Same as in native rule.",
+        doc = """
+            Dict with a file as key and the path where to place the file in the repository as value.
+            This allows to place multiple (BUILD) files in a repo.
+        """,
     ),
 }
 
@@ -74,4 +76,3 @@ new_local_repository = repository_rule(
         It allows to inject multiple BUILD files.
         """,
 )
-

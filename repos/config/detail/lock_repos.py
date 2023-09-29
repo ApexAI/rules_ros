@@ -42,9 +42,11 @@ def main():
     for repo, spec in repos["repositories"].items():
         if not spec["type"] in REPO_TYPES:
             raise ValueError(f"Repo type {spec['type']} not supported. Need one of {REPO_TYPES} instead.")
-        if args.tar == True:
+        if args.tar:
+            # use tarballs
             additional_attributes = fetch_archive_details(spec['url'], spec['version'])
         else:
+            # default: use git repositories
             additional_attributes = fetch_repo_details(spec['url'], spec['version'])
         add_attributes(repos["repositories"][repo], additional_attributes)
         print("{}: {}".format(repo, [*additional_attributes.values()]))
