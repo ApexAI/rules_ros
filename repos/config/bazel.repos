@@ -3,8 +3,8 @@ repositories:
 #    bazel: {}
   ament/ament_index:
     bazel:
-      "@rules_ros//repos:ament.ament_index.BUILD/ament_index_cpp.BUILD.bazel": "ament_index_cpp/BUILD.bazel"
-      "@rules_ros//repos:ament.ament_index.BUILD/ament_index_python.BUILD.bazel": "ament_index_python/BUILD.bazel"
+      "@rules_ros//repos:ament.ament_index/ament_index_cpp.BUILD": "ament_index_cpp/BUILD.bazel"
+      "@rules_ros//repos:ament.ament_index/ament_index_python.BUILD": "ament_index_python/BUILD.bazel"
 #  ament/ament_lint:
 #    bazel: {}
 #  ament/ament_package:
@@ -43,7 +43,7 @@ repositories:
 #    bazel: {}
   ros-tooling/libstatistics_collector:
     bazel:
-      "@rules_ros//repos:ros-tooling.libstatistics_collector.BUILD/root.BUILD.bazel": "BUILD.bazel"
+      "@rules_ros//repos:ros-tooling.libstatistics_collector/root.BUILD": "BUILD.bazel"
 #  ros-visualization/interactive_markers:
 #    bazel: {}
 #  ros-visualization/python_qt_binding:
@@ -102,7 +102,7 @@ repositories:
 #    bazel: {}
   ros2/common_interfaces:
     bazel:
-      "@rules_ros//repos:ros2.common_interfaces.BUILD/std_msgs.BUILD.bazel": "std_msgs/BUILD.bazel"
+      "@rules_ros//repos:ros2.common_interfaces/std_msgs.BUILD": "std_msgs/BUILD.bazel"
 #  ros2/console_bridge_vendor:
 #    bazel: {}
 #  ros2/demos:
@@ -135,35 +135,35 @@ repositories:
 #    bazel: {}
   ros2/rcl:
     bazel:
-      "@rules_ros//repos:ros2.rcl.BUILD/rcl.BUILD.bazel": "rcl/BUILD.bazel"
-      "@rules_ros//repos:ros2.rcl.BUILD/rcl_yaml_param_parser.BUILD.bazel": "rcl_yaml_param_parser/BUILD.bazel"
+      "@rules_ros//repos:ros2.rcl/rcl.BUILD": "rcl/BUILD.bazel"
+      "@rules_ros//repos:ros2.rcl/rcl_yaml_param_parser.BUILD": "rcl_yaml_param_parser/BUILD.bazel"
   ros2/rcl_interfaces:
     bazel:
-      "@rules_ros//repos:ros2.rcl_interfaces.BUILD/rcl_interfaces.BUILD.bazel": "rcl_interfaces/BUILD.bazel"
-      "@rules_ros//repos:ros2.rcl_interfaces.BUILD/rosgraph_msgs.BUILD.bazel": "rosgraph_msgs/BUILD.bazel"
-      "@rules_ros//repos:ros2.rcl_interfaces.BUILD/builtin_interfaces.BUILD.bazel": "builtin_interfaces/BUILD.bazel"
-      "@rules_ros//repos:ros2.rcl_interfaces.BUILD/statistics_msgs.BUILD.bazel": "statistics_msgs/BUILD.bazel"
+      "@rules_ros//repos:ros2.rcl_interfaces/rcl_interfaces.BUILD": "rcl_interfaces/BUILD.bazel"
+      "@rules_ros//repos:ros2.rcl_interfaces/rosgraph_msgs.BUILD": "rosgraph_msgs/BUILD.bazel"
+      "@rules_ros//repos:ros2.rcl_interfaces/builtin_interfaces.BUILD": "builtin_interfaces/BUILD.bazel"
+      "@rules_ros//repos:ros2.rcl_interfaces/statistics_msgs.BUILD": "statistics_msgs/BUILD.bazel"
   ros2/rcl_logging:
     bazel:
-      "@rules_ros//repos:ros2.rcl_logging.BUILD/rcl_logging_interface.BUILD.bazel": "rcl_logging_interface/BUILD.bazel"
+      "@rules_ros//repos:ros2.rcl_logging/rcl_logging_interface.BUILD": "rcl_logging_interface/BUILD.bazel"
   ros2/rclcpp:
     bazel:
-      "@rules_ros//repos:ros2.rclcpp.BUILD/build_interfaces.py": "rclcpp/build_interfaces.py"
-      "@rules_ros//repos:ros2.rclcpp.BUILD/rclcpp.BUILD.bazel": "rclcpp/BUILD.bazel"
+      "@rules_ros//repos:ros2.rclcpp/build_interfaces.py": "rclcpp/build_interfaces.py"
+      "@rules_ros//repos:ros2.rclcpp/rclcpp.BUILD": "rclcpp/BUILD.bazel"
 #  ros2/rclpy:
 #    bazel: {}
   ros2/rcpputils:
     bazel:
-      "@rules_ros//repos:ros2.rcpputils.BUILD/rcpputils.BUILD.bazel": "BUILD.bazel"
+      "@rules_ros//repos:ros2.rcpputils/rcpputils.BUILD": "BUILD.bazel"
   ros2/rcutils:
     bazel:
-      "@rules_ros//repos:ros2.rcutils.BUILD/root.BUILD.bazel": "BUILD.bazel"
-      "@rules_ros//repos:ros2.rcutils.BUILD/build_logging_macros.py": "build_logging_macros.py"
+      "@rules_ros//repos:ros2.rcutils/root.BUILD": "BUILD.bazel"
+      "@rules_ros//repos:ros2.rcutils/build_logging_macros.py": "build_logging_macros.py"
 #  ros2/realtime_support:
 #    bazel: {}
   ros2/rmw:
     bazel:
-      "@rules_ros//repos:ros2.rmw.BUILD/rmw.BUILD.bazel": "rmw/BUILD.bazel"
+      "@rules_ros//repos:ros2.rmw/rmw.BUILD": "rmw/BUILD.bazel"
 #  ros2/rmw_connextdds:
 #    bazel: {}
 #  ros2/rmw_cyclonedds:
@@ -176,12 +176,12 @@ repositories:
 #    bazel: {}
   ros2/ros2_tracing:
     bazel:
-        "@rules_ros//repos:ros2.ros2_tracing.BUILD/tracetools.BUILD.bazel": "tracetools/BUILD.bazel"
+        "@rules_ros//repos:ros2.ros2_tracing/tracetools.BUILD": "tracetools/BUILD.bazel"
   ros2/ros2cli:
     bazel:
-        "@rules_ros//repos:ros2.ros2cli.BUILD/ros2cli.BUILD.bazel": "ros2cli/BUILD.bazel"
-        "@rules_ros//repos:ros2.ros2cli.BUILD/ros2pkg.BUILD.bazel": "ros2pkg/BUILD.bazel"
-        "@rules_ros//repos:ros2.ros2cli.BUILD/ros2run.BUILD.bazel": "ros2run/BUILD.bazel"
+        "@rules_ros//repos:ros2.ros2cli/ros2cli.BUILD": "ros2cli/BUILD.bazel"
+        "@rules_ros//repos:ros2.ros2cli/ros2pkg.BUILD": "ros2pkg/BUILD.bazel"
+        "@rules_ros//repos:ros2.ros2cli/ros2run.BUILD": "ros2run/BUILD.bazel"
 #  ros2/ros2cli_common_extensions:
 #    bazel: {}
 #  ros2/ros_testing:
@@ -190,18 +190,18 @@ repositories:
 #    bazel: {}
   ros2/rosidl:
     bazel:
-      "@rules_ros//repos:ros2.rosidl.BUILD/rosidl_runtime_c.BUILD.bazel": "rosidl_runtime_c/BUILD.bazel"
-      "@rules_ros//repos:ros2.rosidl.BUILD/rosidl_runtime_cpp.BUILD.bazel": "rosidl_runtime_cpp/BUILD.bazel"
-      "@rules_ros//repos:ros2.rosidl.BUILD/rosidl_adapter.BUILD.bazel": "rosidl_adapter/BUILD.bazel"
-      "@rules_ros//repos:ros2.rosidl.BUILD/rosidl_cli.BUILD.bazel": "rosidl_cli/BUILD.bazel"
-      "@rules_ros//repos:ros2.rosidl.BUILD/rosidl_parser.BUILD.bazel": "rosidl_parser/BUILD.bazel"
-      "@rules_ros//repos:ros2.rosidl.BUILD/rosidl_cmake.BUILD.bazel": "rosidl_cmake/BUILD.bazel"
-      "@rules_ros//repos:ros2.rosidl.BUILD/rosidl_typesupport_interface.BUILD.bazel": "rosidl_typesupport_interface/BUILD.bazel"
-      "@rules_ros//repos:ros2.rosidl.BUILD/rosidl_generator_c.BUILD.bazel": "rosidl_generator_c/BUILD.bazel"
-      "@rules_ros//repos:ros2.rosidl.BUILD/rosidl_generator_cpp.BUILD.bazel": "rosidl_generator_cpp/BUILD.bazel"
+      "@rules_ros//repos:ros2.rosidl/rosidl_runtime_c.BUILD": "rosidl_runtime_c/BUILD.bazel"
+      "@rules_ros//repos:ros2.rosidl/rosidl_runtime_cpp.BUILD": "rosidl_runtime_cpp/BUILD.bazel"
+      "@rules_ros//repos:ros2.rosidl/rosidl_adapter.BUILD": "rosidl_adapter/BUILD.bazel"
+      "@rules_ros//repos:ros2.rosidl/rosidl_cli.BUILD": "rosidl_cli/BUILD.bazel"
+      "@rules_ros//repos:ros2.rosidl/rosidl_parser.BUILD": "rosidl_parser/BUILD.bazel"
+      "@rules_ros//repos:ros2.rosidl/rosidl_cmake.BUILD": "rosidl_cmake/BUILD.bazel"
+      "@rules_ros//repos:ros2.rosidl/rosidl_typesupport_interface.BUILD": "rosidl_typesupport_interface/BUILD.bazel"
+      "@rules_ros//repos:ros2.rosidl/rosidl_generator_c.BUILD": "rosidl_generator_c/BUILD.bazel"
+      "@rules_ros//repos:ros2.rosidl/rosidl_generator_cpp.BUILD": "rosidl_generator_cpp/BUILD.bazel"
   ros2/rosidl_dds:
     bazel:
-      "@rules_ros//repos:ros2.rosidl_dds.BUILD/rosidl_generator_dds_idl.BUILD.bazel": "rosidl_generator_dds_idl/BUILD.bazel"
+      "@rules_ros//repos:ros2.rosidl_dds/rosidl_generator_dds_idl.BUILD": "rosidl_generator_dds_idl/BUILD.bazel"
 #  ros2/rosidl_defaults:
 #    bazel: {}
 #  ros2/rosidl_python:
@@ -210,7 +210,7 @@ repositories:
 #    bazel: {}
   ros2/rosidl_typesupport:
     bazel:
-      "@rules_ros//repos:ros2.rosidl_typesupport.BUILD/rosidl_typesupport_c.BUILD.bazel": "rosidl_typesupport_c/BUILD.bazel"
+      "@rules_ros//repos:ros2.rosidl_typesupport/rosidl_typesupport_c.BUILD": "rosidl_typesupport_c/BUILD.bazel"
 #  ros2/rosidl_typesupport_fastrtps:
 #    bazel: {}
 #  ros2/rpyutils:

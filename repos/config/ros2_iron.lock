@@ -1,0 +1,640 @@
+#
+#   To update, call `bazel run //repos/config:repos_lock.update` with the right distro set in the WORKSPACE
+#
+repositories:
+  ament/ament_cmake:
+    hash: c2b6c6556fef3a11ada6ed1582aad1e96d0c99f80ce8d44e9fc4b8cceab80295
+    strip_prefix: ament_cmake-2.0.3
+    type: http_archive
+    url: https://github.com/ament/ament_cmake/archive/refs/tags/2.0.3.tar.gz
+    version: 2.0.3
+  ament/ament_index:
+    hash: 148bc65f5d12700ada5d76b93ba66a05b99c4fe4221f294bceb292c15f08a38c
+    strip_prefix: ament_index-1.5.2
+    type: http_archive
+    url: https://github.com/ament/ament_index/archive/refs/tags/1.5.2.tar.gz
+    version: 1.5.2
+  ament/ament_lint:
+    hash: 4abea3d56fe234a12db71d2e68a79f046cfe64e27a7bd8603832f239f5a9a176
+    strip_prefix: ament_lint-0.14.2
+    type: http_archive
+    url: https://github.com/ament/ament_lint/archive/refs/tags/0.14.2.tar.gz
+    version: 0.14.2
+  ament/ament_package:
+    hash: 0d237006f51dafa32486583696558b178cc2bc114b556fcd13af366f749513f3
+    strip_prefix: ament_package-0.15.3
+    type: http_archive
+    url: https://github.com/ament/ament_package/archive/refs/tags/0.15.3.tar.gz
+    version: 0.15.3
+  ament/google_benchmark_vendor:
+    hash: 4864c4b43709e17ebda8f08cba66e1bbaa23e22613d22b0febbfb1e3d9f576e9
+    strip_prefix: google_benchmark_vendor-0.3.0
+    type: http_archive
+    url: https://github.com/ament/google_benchmark_vendor/archive/refs/tags/0.3.0.tar.gz
+    version: 0.3.0
+  ament/googletest:
+    hash: 3ade05c790816b12d88ffed584dc2bf39346fb1bde328d20c5566a1e17b79f30
+    strip_prefix: googletest-1.10.9005
+    type: http_archive
+    url: https://github.com/ament/googletest/archive/refs/tags/1.10.9005.tar.gz
+    version: 1.10.9005
+  ament/uncrustify_vendor:
+    hash: 157addbd01a71468771a53274ba34382ab2717394b5c6bbcbb308e0779cc9f6a
+    strip_prefix: uncrustify_vendor-2.1.2
+    type: http_archive
+    url: https://github.com/ament/uncrustify_vendor/archive/refs/tags/2.1.2.tar.gz
+    version: 2.1.2
+  eProsima/Fast-CDR:
+    hash: a9bc8fd31a2c2b95e6d2fb46e6ce1ad733e86dc4442f733479e33ed9cdc54bf6
+    strip_prefix: Fast-CDR-1.0.27
+    type: http_archive
+    url: https://github.com/eProsima/Fast-CDR/archive/refs/tags/v1.0.27.tar.gz
+    version: v1.0.27
+  eProsima/Fast-DDS:
+    hash: 68fe3db6bb03823eb0d707eb6c8087049be7a7494571092c16e2489497def022
+    strip_prefix: Fast-DDS-2.10.2
+    type: http_archive
+    url: https://github.com/eProsima/Fast-DDS/archive/refs/tags/v2.10.2.tar.gz
+    version: v2.10.2
+  eProsima/foonathan_memory_vendor:
+    hash: bd72f3dd66a2a66c46bc28eff32de618462ddfee8e3e98b8ec3efee4ffbae880
+    strip_prefix: foonathan_memory_vendor-1.3.0
+    type: http_archive
+    url: https://github.com/eProsima/foonathan_memory_vendor/archive/refs/tags/v1.3.0.tar.gz
+    version: v1.3.0
+  eclipse-cyclonedds/cyclonedds:
+    hash: bc79696209febfe66d97e7af6b11e92f9db663caf608a922b6c201b1d6a5eb62
+    strip_prefix: cyclonedds-0.10.3
+    type: http_archive
+    url: https://github.com/eclipse-cyclonedds/cyclonedds/archive/refs/tags/0.10.3.tar.gz
+    version: 0.10.3
+  eclipse-iceoryx/iceoryx:
+    hash: 8f391696daf2e63da9437aab8d7154371df630fc93876479f2e84c693fc1ba5a
+    strip_prefix: iceoryx-2.0.3
+    type: http_archive
+    url: https://github.com/eclipse-iceoryx/iceoryx/archive/refs/tags/v2.0.3.tar.gz
+    version: v2.0.3
+  gazebo-release/gz_cmake2_vendor:
+    hash: 56c578263240deea251e0e288a967db60ea2b56b58ee6d7f86f9fd059189a309
+    strip_prefix: gz_cmake2_vendor-0.1.0
+    type: http_archive
+    url: https://github.com/gazebo-release/gz_cmake2_vendor/archive/refs/tags/0.1.0.tar.gz
+    version: 0.1.0
+  gazebo-release/gz_math6_vendor:
+    hash: f99105bd9ee4290cbed70efea578917fdcc1cf1a5ebf8010e1b7af6daaec2840
+    strip_prefix: gz_math6_vendor-0.1.0
+    type: http_archive
+    url: https://github.com/gazebo-release/gz_math6_vendor/archive/refs/tags/0.1.0.tar.gz
+    version: 0.1.0
+  osrf/osrf_pycommon:
+    hash: a1b00e27f0190b46a5ab92974e8a34ac47537ffd6639428ccb3c0919d4a11537
+    strip_prefix: osrf_pycommon-2.1.2
+    type: http_archive
+    url: https://github.com/osrf/osrf_pycommon/archive/refs/tags/2.1.2.tar.gz
+    version: 2.1.2
+  osrf/osrf_testing_tools_cpp:
+    hash: 30e5cfe7f74e718377430376de13c672f189b3e0fff1ba89ea97122e3064e99e
+    strip_prefix: osrf_testing_tools_cpp-1.6.0
+    type: http_archive
+    url: https://github.com/osrf/osrf_testing_tools_cpp/archive/refs/tags/1.6.0.tar.gz
+    version: 1.6.0
+  ros-perception/image_common:
+    hash: be3eee5e6ba899098e395f338fc524aab93744ac1b3a9a58a32f72fc1b469127
+    strip_prefix: image_common-4.2.2
+    type: http_archive
+    url: https://github.com/ros-perception/image_common/archive/refs/tags/4.2.2.tar.gz
+    version: 4.2.2
+  ros-perception/laser_geometry:
+    hash: 71fb1b2f1fb08e071efb0e482f140a0d881e95b0433a01c5e5185ca0499b2376
+    strip_prefix: laser_geometry-2.5.0
+    type: http_archive
+    url: https://github.com/ros-perception/laser_geometry/archive/refs/tags/2.5.0.tar.gz
+    version: 2.5.0
+  ros-planning/navigation_msgs:
+    hash: af395b89e190da5ed4818f680e67d5a0cf320e5c21fb5f50d23603d5b945f115
+    strip_prefix: navigation_msgs-2.2.0
+    type: http_archive
+    url: https://github.com/ros-planning/navigation_msgs/archive/refs/tags/2.2.0.tar.gz
+    version: 2.2.0
+  ros-tooling/keyboard_handler:
+    hash: 2bb52d551a09a8c001009e9cce98459e36ac1faf3e8b4d7d47238d2f6451f81f
+    strip_prefix: keyboard_handler-0.1.0
+    type: http_archive
+    url: https://github.com/ros-tooling/keyboard_handler/archive/refs/tags/0.1.0.tar.gz
+    version: 0.1.0
+  ros-tooling/libstatistics_collector:
+    hash: e3cae09351a29eeb3ba10aa2ecfe5fc8a1307de48bc68c4d34b2cacff3fce1b5
+    strip_prefix: libstatistics_collector-1.5.1
+    type: http_archive
+    url: https://github.com/ros-tooling/libstatistics_collector/archive/refs/tags/1.5.1.tar.gz
+    version: 1.5.1
+  ros-visualization/interactive_markers:
+    hash: b739b64496992644939df7f9d36587e944445e0e94dca2c227dd2ef8ebfceaef
+    strip_prefix: interactive_markers-2.4.0
+    type: http_archive
+    url: https://github.com/ros-visualization/interactive_markers/archive/refs/tags/2.4.0.tar.gz
+    version: 2.4.0
+  ros-visualization/python_qt_binding:
+    hash: cad340c5978f97a1d1d209bd0a91b2840bdfe6cc752674e0d845dbb736007f8f
+    strip_prefix: python_qt_binding-1.2.3
+    type: http_archive
+    url: https://github.com/ros-visualization/python_qt_binding/archive/refs/tags/1.2.3.tar.gz
+    version: 1.2.3
+  ros-visualization/qt_gui_core:
+    hash: f1e3796581cc342416c9cfbae5b4be19a2ca9415368a3704d37320253238a06a
+    strip_prefix: qt_gui_core-2.4.2
+    type: http_archive
+    url: https://github.com/ros-visualization/qt_gui_core/archive/refs/tags/2.4.2.tar.gz
+    version: 2.4.2
+  ros-visualization/rqt:
+    hash: 5ec59f9e01ded168d7aa65b1ac0193193b35d02f6a960ae588730505a71ebaf1
+    strip_prefix: rqt-1.3.3
+    type: http_archive
+    url: https://github.com/ros-visualization/rqt/archive/refs/tags/1.3.3.tar.gz
+    version: 1.3.3
+  ros-visualization/rqt_action:
+    hash: 1ae559b72680b0578dbe13ccea3b5221f7e8a2425092c7b822b75bad5a420e2e
+    strip_prefix: rqt_action-2.1.2
+    type: http_archive
+    url: https://github.com/ros-visualization/rqt_action/archive/refs/tags/2.1.2.tar.gz
+    version: 2.1.2
+  ros-visualization/rqt_bag:
+    hash: 6ac08b2606d0ffa78f3c58eea611f3c11cbac64ce317f5005a94bbac79cf121c
+    strip_prefix: rqt_bag-1.3.4
+    type: http_archive
+    url: https://github.com/ros-visualization/rqt_bag/archive/refs/tags/1.3.4.tar.gz
+    version: 1.3.4
+  ros-visualization/rqt_console:
+    hash: 7d691a4d6c9d1c9d6fb3da28778cb62618675ac6227be96c0ca505906a59c790
+    strip_prefix: rqt_console-2.1.1
+    type: http_archive
+    url: https://github.com/ros-visualization/rqt_console/archive/refs/tags/2.1.1.tar.gz
+    version: 2.1.1
+  ros-visualization/rqt_graph:
+    hash: e2464d9b4bc261e974d96fcd5255279b653c95108c70a8f951c1aae168dea616
+    strip_prefix: rqt_graph-1.4.2
+    type: http_archive
+    url: https://github.com/ros-visualization/rqt_graph/archive/refs/tags/1.4.2.tar.gz
+    version: 1.4.2
+  ros-visualization/rqt_msg:
+    hash: 3a318bff7c7d85fc86fa052f83de5d8359d7f8477574bd15dd3e2aab7911e4cd
+    strip_prefix: rqt_msg-1.3.1
+    type: http_archive
+    url: https://github.com/ros-visualization/rqt_msg/archive/refs/tags/1.3.1.tar.gz
+    version: 1.3.1
+  ros-visualization/rqt_plot:
+    hash: d2436d19179806919d124619c7345a515e41c0b350754b1344eb8cdd99691513
+    strip_prefix: rqt_plot-1.2.3
+    type: http_archive
+    url: https://github.com/ros-visualization/rqt_plot/archive/refs/tags/1.2.3.tar.gz
+    version: 1.2.3
+  ros-visualization/rqt_publisher:
+    hash: bbccdf7be70d0fa6f3d1e9cc71c97c4983bb201af60adc8f9b973dd7e2d168aa
+    strip_prefix: rqt_publisher-1.6.3
+    type: http_archive
+    url: https://github.com/ros-visualization/rqt_publisher/archive/refs/tags/1.6.3.tar.gz
+    version: 1.6.3
+  ros-visualization/rqt_py_console:
+    hash: 76b5359a366c60b472cd23e02f6a58c0eb54d3ed31f4c427ca8c53c7d5cef320
+    strip_prefix: rqt_py_console-1.1.1
+    type: http_archive
+    url: https://github.com/ros-visualization/rqt_py_console/archive/refs/tags/1.1.1.tar.gz
+    version: 1.1.1
+  ros-visualization/rqt_reconfigure:
+    hash: 4678b4617f17b7919e613af4ce6b7c51398c9727820414c8de5ea6f0792b1264
+    strip_prefix: rqt_reconfigure-1.3.3
+    type: http_archive
+    url: https://github.com/ros-visualization/rqt_reconfigure/archive/refs/tags/1.3.3.tar.gz
+    version: 1.3.3
+  ros-visualization/rqt_service_caller:
+    hash: db3bce8077421b1ee55b592c4f5f89f3f7e2aadcba833b1d6fb698319de76d18
+    strip_prefix: rqt_service_caller-1.1.1
+    type: http_archive
+    url: https://github.com/ros-visualization/rqt_service_caller/archive/refs/tags/1.1.1.tar.gz
+    version: 1.1.1
+  ros-visualization/rqt_shell:
+    hash: 461fd796de437b834a28ec6d33b4ce9fa5fa93cd87aaeefd9a2c5b0fb330e900
+    strip_prefix: rqt_shell-1.1.1
+    type: http_archive
+    url: https://github.com/ros-visualization/rqt_shell/archive/refs/tags/1.1.1.tar.gz
+    version: 1.1.1
+  ros-visualization/rqt_srv:
+    hash: c609f12eca2879bb35eef915e78a017e02160c7bf53a989568d2c6b38513b609
+    strip_prefix: rqt_srv-1.1.1
+    type: http_archive
+    url: https://github.com/ros-visualization/rqt_srv/archive/refs/tags/1.1.1.tar.gz
+    version: 1.1.1
+  ros-visualization/rqt_topic:
+    hash: 2b564554edf778a928dbc3bd16d9c1ba7e1933118755a9f8b77e74a874e88d53
+    strip_prefix: rqt_topic-1.6.1
+    type: http_archive
+    url: https://github.com/ros-visualization/rqt_topic/archive/refs/tags/1.6.1.tar.gz
+    version: 1.6.1
+  ros-visualization/tango_icons_vendor:
+    hash: 08b40ec1061c355389e57ecbed1bb76c5ced1f348b62b54b469cb3ad863e3788
+    strip_prefix: tango_icons_vendor-0.2.2
+    type: http_archive
+    url: https://github.com/ros-visualization/tango_icons_vendor/archive/refs/tags/0.2.2.tar.gz
+    version: 0.2.2
+  ros/class_loader:
+    hash: 474267bf0a4d18cf2ff0d696841a7399047797471e752be818933e4d1eab042c
+    strip_prefix: class_loader-2.5.0
+    type: http_archive
+    url: https://github.com/ros/class_loader/archive/refs/tags/2.5.0.tar.gz
+    version: 2.5.0
+  ros/kdl_parser:
+    hash: 0a7849d3cc1d30926b1d92fb1182424b0cba450b2bbaa16120c0cf7ec534d02f
+    strip_prefix: kdl_parser-2.9.0
+    type: http_archive
+    url: https://github.com/ros/kdl_parser/archive/refs/tags/2.9.0.tar.gz
+    version: 2.9.0
+  ros/pluginlib:
+    hash: fa51490338fcc85ae116c1c992d3d6428270de36983f284523c2bdf732c39556
+    strip_prefix: pluginlib-5.2.2
+    type: http_archive
+    url: https://github.com/ros/pluginlib/archive/refs/tags/5.2.2.tar.gz
+    version: 5.2.2
+  ros/resource_retriever:
+    hash: d2bf40bcadb820a19c2deccdc6a58a60e22bd9a87b118df9f1ee6be07ceb9eed
+    strip_prefix: resource_retriever-3.2.2
+    type: http_archive
+    url: https://github.com/ros/resource_retriever/archive/refs/tags/3.2.2.tar.gz
+    version: 3.2.2
+  ros/robot_state_publisher:
+    hash: 4e903b567895e92770e6501866eb87f63290523f8ba07995deeebb3ceda918ab
+    strip_prefix: robot_state_publisher-3.2.0
+    type: http_archive
+    url: https://github.com/ros/robot_state_publisher/archive/refs/tags/3.2.0.tar.gz
+    version: 3.2.0
+  ros/ros_environment:
+    hash: 89a81c5431b6dcb7d6103cebdfff39a8cc75ecbe06cdc9803170a3235c3f4928
+    strip_prefix: ros_environment-4.1.1
+    type: http_archive
+    url: https://github.com/ros/ros_environment/archive/refs/tags/4.1.1.tar.gz
+    version: 4.1.1
+  ros/ros_tutorials:
+    hash: 22f66f84c1d6affb51ae1c1a6f47505661a962b8c221a59a4860fcb69b3c6352
+    strip_prefix: ros_tutorials-1.6.1
+    type: http_archive
+    url: https://github.com/ros/ros_tutorials/archive/refs/tags/1.6.1.tar.gz
+    version: 1.6.1
+  ros/urdfdom:
+    hash: dd69b2077b8fc1bd2b67022c1dc861cd896ac882df065aa08cabdf2f945a9ac0
+    strip_prefix: urdfdom-3.1.1
+    type: http_archive
+    url: https://github.com/ros/urdfdom/archive/refs/tags/3.1.1.tar.gz
+    version: 3.1.1
+  ros/urdfdom_headers:
+    hash: 01b91c2f7cb42b0033cbdf559684a60001f9927e5d0a5a3682a344cc354f1d39
+    strip_prefix: urdfdom_headers-1.1.0
+    type: http_archive
+    url: https://github.com/ros/urdfdom_headers/archive/refs/tags/1.1.0.tar.gz
+    version: 1.1.0
+  ros2/ament_cmake_ros:
+    hash: 8cff1fbc298920709c7efa92f56fc00902a906ff6bab5c52be9df26971a8a9ca
+    strip_prefix: ament_cmake_ros-0.11.2
+    type: http_archive
+    url: https://github.com/ros2/ament_cmake_ros/archive/refs/tags/0.11.2.tar.gz
+    version: 0.11.2
+  ros2/common_interfaces:
+    hash: fb3c8c4eb9afe15e94ec8e9fb5bd05c6de71782370cfd6d453da416621c55212
+    strip_prefix: common_interfaces-5.0.0
+    type: http_archive
+    url: https://github.com/ros2/common_interfaces/archive/refs/tags/5.0.0.tar.gz
+    version: 5.0.0
+  ros2/console_bridge_vendor:
+    hash: 62aef22f5d30a95415852f5a4c786b18c9df7785ced820d8d5c837218c2c8e8f
+    strip_prefix: console_bridge_vendor-1.6.0
+    type: http_archive
+    url: https://github.com/ros2/console_bridge_vendor/archive/refs/tags/1.6.0.tar.gz
+    version: 1.6.0
+  ros2/demos:
+    hash: 50fe887912e11e497d78d4bfdf5b44fe4a24bad927e3e36b7976376a1dc5e714
+    strip_prefix: demos-0.27.1
+    type: http_archive
+    url: https://github.com/ros2/demos/archive/refs/tags/0.27.1.tar.gz
+    version: 0.27.1
+  ros2/eigen3_cmake_module:
+    hash: 5d14617e3df89214e19a209110c22e222fdf94332e3814e10aaf19424bc7a999
+    strip_prefix: eigen3_cmake_module-0.2.2
+    type: http_archive
+    url: https://github.com/ros2/eigen3_cmake_module/archive/refs/tags/0.2.2.tar.gz
+    version: 0.2.2
+  ros2/example_interfaces:
+    hash: 53b82d16975d73d037b5d958d2d9594446c0fb03061639cc0f9f51500146bbad
+    strip_prefix: example_interfaces-0.10.2
+    type: http_archive
+    url: https://github.com/ros2/example_interfaces/archive/refs/tags/0.10.2.tar.gz
+    version: 0.10.2
+  ros2/examples:
+    hash: 324a70655cc7b35ad9665732733e4d59a967d2e4c1a3ad88b83088fc26f4e92f
+    strip_prefix: examples-0.18.0
+    type: http_archive
+    url: https://github.com/ros2/examples/archive/refs/tags/0.18.0.tar.gz
+    version: 0.18.0
+  ros2/geometry2:
+    hash: c08308e55dc41e702b08938e651d4bfa7a9b099b20902af737eab8af2b2c2168
+    strip_prefix: geometry2-0.31.5
+    type: http_archive
+    url: https://github.com/ros2/geometry2/archive/refs/tags/0.31.5.tar.gz
+    version: 0.31.5
+  ros2/launch:
+    hash: a9460a982564eb3a60e30888e8e11c58a1275f256301583cc6cfef6ea01d5897
+    strip_prefix: launch-2.0.2
+    type: http_archive
+    url: https://github.com/ros2/launch/archive/refs/tags/2.0.2.tar.gz
+    version: 2.0.2
+  ros2/launch_ros:
+    hash: 9f60c4afc250e384cee751fad73846a33d240deda21cbe7116bfe0da9d06bcd8
+    strip_prefix: launch_ros-0.24.0
+    type: http_archive
+    url: https://github.com/ros2/launch_ros/archive/refs/tags/0.24.0.tar.gz
+    version: 0.24.0
+  ros2/libyaml_vendor:
+    hash: 857d78b0fd870167b1361f8cab4fb73e5b0453341dc55b6b0aad531807fc608d
+    strip_prefix: libyaml_vendor-1.5.0
+    type: http_archive
+    url: https://github.com/ros2/libyaml_vendor/archive/refs/tags/1.5.0.tar.gz
+    version: 1.5.0
+  ros2/message_filters:
+    hash: 4831217bdd605610d2d3e99e9b0bc08b616b6ba457384ed35754d0dcc99f5a5d
+    strip_prefix: message_filters-4.7.0
+    type: http_archive
+    url: https://github.com/ros2/message_filters/archive/refs/tags/4.7.0.tar.gz
+    version: 4.7.0
+  ros2/mimick_vendor:
+    hash: cb7bf9dd7ebb016b930caa0211f272386121af8c6dc821d81d08edcc14c802bf
+    strip_prefix: mimick_vendor-0.3.2
+    type: http_archive
+    url: https://github.com/ros2/mimick_vendor/archive/refs/tags/0.3.2.tar.gz
+    version: 0.3.2
+  ros2/orocos_kdl_vendor:
+    hash: 978fd57cc12b9312d24b7b3af6539146f9cf886dfa540ce437c87759e6ac2aa5
+    strip_prefix: orocos_kdl_vendor-0.3.4
+    type: http_archive
+    url: https://github.com/ros2/orocos_kdl_vendor/archive/refs/tags/0.3.4.tar.gz
+    version: 0.3.4
+  ros2/performance_test_fixture:
+    hash: 3fe3c7bd50ffacf4c4a0aaefb9b06be60586bbc2f6c0f61a81994effefb11570
+    strip_prefix: performance_test_fixture-0.1.1
+    type: http_archive
+    url: https://github.com/ros2/performance_test_fixture/archive/refs/tags/0.1.1.tar.gz
+    version: 0.1.1
+  ros2/pybind11_vendor:
+    hash: fc5b2ab7f4e4e0faac2b882d3b8c354eeba0757991e51021cf1fab58ae9df33d
+    strip_prefix: pybind11_vendor-3.0.3
+    type: http_archive
+    url: https://github.com/ros2/pybind11_vendor/archive/refs/tags/3.0.3.tar.gz
+    version: 3.0.3
+  ros2/python_cmake_module:
+    hash: 3660a48dc3d70f2a9a37ce56650d6c339102a06b9a5c822a405a93b61f26205f
+    strip_prefix: python_cmake_module-0.10.2
+    type: http_archive
+    url: https://github.com/ros2/python_cmake_module/archive/refs/tags/0.10.2.tar.gz
+    version: 0.10.2
+  ros2/rcl:
+    hash: eab9fa9df1b130e390f38d1b2c20111154db710d111f1b5078dd6b6243b48719
+    strip_prefix: rcl-6.0.3
+    type: http_archive
+    url: https://github.com/ros2/rcl/archive/refs/tags/6.0.3.tar.gz
+    version: 6.0.3
+  ros2/rcl_interfaces:
+    hash: f11a84e58231eb8afeb5398ea5705d6896fc7e68b80d111b1a0fa992cc981f9d
+    strip_prefix: rcl_interfaces-1.6.0
+    type: http_archive
+    url: https://github.com/ros2/rcl_interfaces/archive/refs/tags/1.6.0.tar.gz
+    version: 1.6.0
+  ros2/rcl_logging:
+    hash: 1f9286326683270d97420efbf2e552cb0e0afa80e26225dcc058f788a4491af6
+    strip_prefix: rcl_logging-2.5.1
+    type: http_archive
+    url: https://github.com/ros2/rcl_logging/archive/refs/tags/2.5.1.tar.gz
+    version: 2.5.1
+  ros2/rclcpp:
+    hash: 2dee67d9d168060341016ff4710879dcda5b16e52e48c7de6afa4463c2b7ea19
+    strip_prefix: rclcpp-21.0.3
+    type: http_archive
+    url: https://github.com/ros2/rclcpp/archive/refs/tags/21.0.3.tar.gz
+    version: 21.0.3
+  ros2/rclpy:
+    hash: d972bbe7e271cc7a0e85830252552cd25c136ace3f132a5acefba2b684e78083
+    strip_prefix: rclpy-4.1.3
+    type: http_archive
+    url: https://github.com/ros2/rclpy/archive/refs/tags/4.1.3.tar.gz
+    version: 4.1.3
+  ros2/rcpputils:
+    hash: a3379a610840bec655a8a2650df0438812f8ab6d44e6ca5bdc1156c933631017
+    strip_prefix: rcpputils-2.6.1
+    type: http_archive
+    url: https://github.com/ros2/rcpputils/archive/refs/tags/2.6.1.tar.gz
+    version: 2.6.1
+  ros2/rcutils:
+    hash: 6ee6c151c1763b19fb3481db3e55b72e0a65abc35e4c1bf62c4784663e309ca6
+    strip_prefix: rcutils-6.2.1
+    type: http_archive
+    url: https://github.com/ros2/rcutils/archive/refs/tags/6.2.1.tar.gz
+    version: 6.2.1
+  ros2/realtime_support:
+    hash: 4406f870e9ddbe6acb485d1c1c8fb3e18beb593591107f68b0a28848265f4b37
+    strip_prefix: realtime_support-0.15.0
+    type: http_archive
+    url: https://github.com/ros2/realtime_support/archive/refs/tags/0.15.0.tar.gz
+    version: 0.15.0
+  ros2/rmw:
+    hash: 8233d20a6d3789cf80cc932bf1718498e324313e6143af5ffa3f408c63ce47b0
+    strip_prefix: rmw-7.1.0
+    type: http_archive
+    url: https://github.com/ros2/rmw/archive/refs/tags/7.1.0.tar.gz
+    version: 7.1.0
+  ros2/rmw_connextdds:
+    hash: 35da85c543ff296c3e2014f62c560491a1b698fc01fa3727d539837f8999c174
+    strip_prefix: rmw_connextdds-0.14.1
+    type: http_archive
+    url: https://github.com/ros2/rmw_connextdds/archive/refs/tags/0.14.1.tar.gz
+    version: 0.14.1
+  ros2/rmw_cyclonedds:
+    hash: f638e82ed026926133d5f43887b2efb252da4b4783fe2d9db9b56e1fdecaa23f
+    strip_prefix: rmw_cyclonedds-1.6.0
+    type: http_archive
+    url: https://github.com/ros2/rmw_cyclonedds/archive/refs/tags/1.6.0.tar.gz
+    version: 1.6.0
+  ros2/rmw_dds_common:
+    hash: 4ca5670170f5f0c5564839ee2d9089c86d1a876d9454969153566c6419d75c5c
+    strip_prefix: rmw_dds_common-2.0.1
+    type: http_archive
+    url: https://github.com/ros2/rmw_dds_common/archive/refs/tags/2.0.1.tar.gz
+    version: 2.0.1
+  ros2/rmw_fastrtps:
+    hash: 4a2f240bf09f91cd7acf2b706df3e6536ab0e56edb5a502a43c4948cc2cf8910
+    strip_prefix: rmw_fastrtps-7.1.1
+    type: http_archive
+    url: https://github.com/ros2/rmw_fastrtps/archive/refs/tags/7.1.1.tar.gz
+    version: 7.1.1
+  ros2/rmw_implementation:
+    hash: 7c4013a226654c97648ab59af86520b0f755a12a6d806b46b32335ae2e468bd4
+    strip_prefix: rmw_implementation-2.12.0
+    type: http_archive
+    url: https://github.com/ros2/rmw_implementation/archive/refs/tags/2.12.0.tar.gz
+    version: 2.12.0
+  ros2/ros2_tracing:
+    hash: 7b3c16120a58927f43dc083b5b187604d7686c7a61a08baa394e08b5e7b30ead
+    strip_prefix: ros2_tracing-6.3.1
+    type: http_archive
+    url: https://github.com/ros2/ros2_tracing/archive/refs/tags/6.3.1.tar.gz
+    version: 6.3.1
+  ros2/ros2cli:
+    hash: 19b8ef30edd9dc73f1b0d7abcce0f20ce2ae836f29a0c83009e7fb958db2cea4
+    strip_prefix: ros2cli-0.25.3
+    type: http_archive
+    url: https://github.com/ros2/ros2cli/archive/refs/tags/0.25.3.tar.gz
+    version: 0.25.3
+  ros2/ros2cli_common_extensions:
+    hash: 3bd8e4c049d904db8b2f2fcaa5858598b07d9a55b785f565f03ad65d0ea328a6
+    strip_prefix: ros2cli_common_extensions-0.2.2
+    type: http_archive
+    url: https://github.com/ros2/ros2cli_common_extensions/archive/refs/tags/0.2.2.tar.gz
+    version: 0.2.2
+  ros2/ros_testing:
+    hash: 776c812ae782c805466bdf383e36e9355111f6076a45e1a5982e74edbf00f6f1
+    strip_prefix: ros_testing-0.5.2
+    type: http_archive
+    url: https://github.com/ros2/ros_testing/archive/refs/tags/0.5.2.tar.gz
+    version: 0.5.2
+  ros2/rosbag2:
+    hash: 4f56edc8947ecffbdbff26c78ead62c3aaa3237c7e39bca6c6601ad3f215a824
+    strip_prefix: rosbag2-0.22.3
+    type: http_archive
+    url: https://github.com/ros2/rosbag2/archive/refs/tags/0.22.3.tar.gz
+    version: 0.22.3
+  ros2/rosidl:
+    hash: 8b83d6bb56f290548961f37d9174807b148fbd38921c1eaddb48eb08616b8767
+    strip_prefix: rosidl-4.0.1
+    type: http_archive
+    url: https://github.com/ros2/rosidl/archive/refs/tags/4.0.1.tar.gz
+    version: 4.0.1
+  ros2/rosidl_core:
+    hash: 4b217d14438c52e48495044b732b676376311ee75b061dda4524abc9e9f89481
+    strip_prefix: rosidl_core-0.1.1
+    type: http_archive
+    url: https://github.com/ros2/rosidl_core/archive/refs/tags/0.1.1.tar.gz
+    version: 0.1.1
+  ros2/rosidl_dds:
+    hash: 9d206455ec46778f5528828ee4033b1e0c4d85104a7b0de57c993dc79ddf3f74
+    strip_prefix: rosidl_dds-0.10.1
+    type: http_archive
+    url: https://github.com/ros2/rosidl_dds/archive/refs/tags/0.10.1.tar.gz
+    version: 0.10.1
+  ros2/rosidl_defaults:
+    hash: 6393d8106623ccb06baa7492da5d29415faedb74f4d936833928f3d3e277990d
+    strip_prefix: rosidl_defaults-1.5.0
+    type: http_archive
+    url: https://github.com/ros2/rosidl_defaults/archive/refs/tags/1.5.0.tar.gz
+    version: 1.5.0
+  ros2/rosidl_dynamic_typesupport:
+    hash: 18cab4d1c59e84e5d374997a592856f733eaa90b6bc7257f95aa01d337a26e68
+    strip_prefix: rosidl_dynamic_typesupport-0.0.4
+    type: http_archive
+    url: https://github.com/ros2/rosidl_dynamic_typesupport/archive/refs/tags/0.0.4.tar.gz
+    version: 0.0.4
+  ros2/rosidl_dynamic_typesupport_fastrtps:
+    hash: c16a4cfcf10f6ea22047dfc68fa8264357cf402a7f43c291378b633bf7d617a2
+    strip_prefix: rosidl_dynamic_typesupport_fastrtps-0.0.2
+    type: http_archive
+    url: https://github.com/ros2/rosidl_dynamic_typesupport_fastrtps/archive/refs/tags/0.0.2.tar.gz
+    version: 0.0.2
+  ros2/rosidl_python:
+    hash: 424539f63d426f79ac5942766fcb04e56d805ce44c7611ba604df04b5088046e
+    strip_prefix: rosidl_python-0.18.0
+    type: http_archive
+    url: https://github.com/ros2/rosidl_python/archive/refs/tags/0.18.0.tar.gz
+    version: 0.18.0
+  ros2/rosidl_runtime_py:
+    hash: 0d6a82d5f68a204971c81be94a7c0620a237456f1c41c132929894cebe89a340
+    strip_prefix: rosidl_runtime_py-0.12.0
+    type: http_archive
+    url: https://github.com/ros2/rosidl_runtime_py/archive/refs/tags/0.12.0.tar.gz
+    version: 0.12.0
+  ros2/rosidl_typesupport:
+    hash: e711d7eb0f10d5f3522c960407304268abfbcc4282ad700fca43eff30465d8b0
+    strip_prefix: rosidl_typesupport-3.0.1
+    type: http_archive
+    url: https://github.com/ros2/rosidl_typesupport/archive/refs/tags/3.0.1.tar.gz
+    version: 3.0.1
+  ros2/rosidl_typesupport_fastrtps:
+    hash: 9976b2125b14e811ab91b403971b6bf96c0ef511fb53326fb6cfed75a21c5a05
+    strip_prefix: rosidl_typesupport_fastrtps-3.0.1
+    type: http_archive
+    url: https://github.com/ros2/rosidl_typesupport_fastrtps/archive/refs/tags/3.0.1.tar.gz
+    version: 3.0.1
+  ros2/rpyutils:
+    hash: 0199f411887d8819d5787b30e0a3a0f806d7d6444be385f02bcd296d00aaa30a
+    strip_prefix: rpyutils-0.3.2
+    type: http_archive
+    url: https://github.com/ros2/rpyutils/archive/refs/tags/0.3.2.tar.gz
+    version: 0.3.2
+  ros2/rviz:
+    hash: cb0bc1bfe1447469d6a57b85a32da11116d0d8f2b642ddf78e3cd5a9409dcec4
+    strip_prefix: rviz-12.4.4
+    type: http_archive
+    url: https://github.com/ros2/rviz/archive/refs/tags/12.4.4.tar.gz
+    version: 12.4.4
+  ros2/spdlog_vendor:
+    hash: e531a692f181a709c748e228a7ece3ee7efefacfb04e35740abd5657ee62303a
+    strip_prefix: spdlog_vendor-1.4.4
+    type: http_archive
+    url: https://github.com/ros2/spdlog_vendor/archive/refs/tags/1.4.4.tar.gz
+    version: 1.4.4
+  ros2/sros2:
+    hash: b5810459526f46d377a07a992becf895f3a18bbd5c22bb7c31c74cad13dd0b6e
+    strip_prefix: sros2-0.11.3
+    type: http_archive
+    url: https://github.com/ros2/sros2/archive/refs/tags/0.11.3.tar.gz
+    version: 0.11.3
+  ros2/system_tests:
+    hash: 92b749ba5dd629253df0de91714eafc16b3d72322c3f196d0204b222a2a7d462
+    strip_prefix: system_tests-0.15.2
+    type: http_archive
+    url: https://github.com/ros2/system_tests/archive/refs/tags/0.15.2.tar.gz
+    version: 0.15.2
+  ros2/test_interface_files:
+    hash: 20bfbc6f5ca5d5ceb4a3bbfea0eebb5d0cde7f95d4893f0acbf1f699ce8b0cca
+    strip_prefix: test_interface_files-0.10.2
+    type: http_archive
+    url: https://github.com/ros2/test_interface_files/archive/refs/tags/0.10.2.tar.gz
+    version: 0.10.2
+  ros2/tinyxml2_vendor:
+    hash: 6b0ee498aee3c91def08a39e15d8ba57910ac0e702aedf5e4e1f3b75a86b06a7
+    strip_prefix: tinyxml2_vendor-0.8.3
+    type: http_archive
+    url: https://github.com/ros2/tinyxml2_vendor/archive/refs/tags/0.8.3.tar.gz
+    version: 0.8.3
+  ros2/tinyxml_vendor:
+    hash: 771eecfd2fd0c37f82f735ea520ddc76817c909ee48192ee63dece2e7c74861a
+    strip_prefix: tinyxml_vendor-0.9.2
+    type: http_archive
+    url: https://github.com/ros2/tinyxml_vendor/archive/refs/tags/0.9.2.tar.gz
+    version: 0.9.2
+  ros2/tlsf:
+    hash: 272004c0f82334f246904be7d9ea92f2328c0d71d79fe5b27e625a4a265363a7
+    strip_prefix: tlsf-0.8.2
+    type: http_archive
+    url: https://github.com/ros2/tlsf/archive/refs/tags/0.8.2.tar.gz
+    version: 0.8.2
+  ros2/unique_identifier_msgs:
+    hash: d2c6f69de9ee41782aee78dcea6aac16e2cebbed66c4740a756043f749c15b52
+    strip_prefix: unique_identifier_msgs-2.3.2
+    type: http_archive
+    url: https://github.com/ros2/unique_identifier_msgs/archive/refs/tags/2.3.2.tar.gz
+    version: 2.3.2
+  ros2/urdf:
+    hash: 87b981685016310eb2de8548c5e4717114634a408207a09c3c6043c7d6876d3a
+    strip_prefix: urdf-2.8.2
+    type: http_archive
+    url: https://github.com/ros2/urdf/archive/refs/tags/2.8.2.tar.gz
+    version: 2.8.2
+  ros2/yaml_cpp_vendor:
+    hash: d63d1a8443b89bbd1c7919ab3ed46527d08e6b242ad7d6b850b490c208c64f12
+    strip_prefix: yaml_cpp_vendor-8.1.2
+    type: http_archive
+    url: https://github.com/ros2/yaml_cpp_vendor/archive/refs/tags/8.1.2.tar.gz
+    version: 8.1.2

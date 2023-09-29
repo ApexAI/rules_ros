@@ -19,11 +19,16 @@ import tempfile
 import yaml
 import subprocess
 import os
+import hashlib
+from pathlib import Path
+
+REPO_TYPES = ["git", "tar"]
 
 def main():
     parser = argparse.ArgumentParser(description="Generate a lock file for a given repos file.")
     parser.add_argument('repos', type=str, help='Input YAML file')
     parser.add_argument('lock', type=str, help='Output YAML file with pinned repos')
+    parser.add_argument('--tar', action='store_true', help='Use the Github archive download.')
 
     args = parser.parse_args()
     print(f"Calling {args.repos} {args.lock}")
@@ -35,12 +40,16 @@ def main():
         raise ValueError("No repositories attribute found")
 
     for repo, spec in repos["repositories"].items():
-        if spec["type"] != "git":
-            raise ValueError(f"Repo type {spec['type']} not supported.")
-        commit_hash, time = fetch_repo_details(spec['url'], spec['version'])
-        repos["repositories"][repo]["hash"] = commit_hash
-        repos["repositories"][repo]["shallow_since"] = time
-        print("{}: {}, {}".format(repo, commit_hash, time))
+        if not spec["type"] in REPO_TYPES:
+            raise ValueError(f"Repo type {spec['type']} not supported. Need one of {REPO_TYPES} instead.")
+        if args.tar:
+            # use tarballs
+            additional_attributes = fetch_archive_details(spec['url'], spec['version'])
+        else:
+            # default: use git repositories
+            additional_attributes = fetch_repo_details(spec['url'], spec['version'])
+        add_attributes(repos["repositories"][repo], additional_attributes)
+        print("{}: {}".format(repo, [*additional_attributes.values()]))
 
     with open(args.lock, "w", encoding='utf8') as lock_file:
         print(
@@ -49,6 +58,45 @@ def main():
         )
         yaml.dump(repos, lock_file, default_flow_style=False, allow_unicode=True)
 
+def add_attributes(dictionary, additional_attributes):
+    for k,v in additional_attributes.items():
+        dictionary[k] = v
+
+def fetch_archive_details(url, tag):
+    cwd = os.getcwd()
+    with tempfile.TemporaryDirectory() as tempdir:
+        url = url.rsplit(".git", 1)[0]
+        project = url.split('/')[-1]
+        url += f"/archive/refs/tags/{tag}.tar.gz"
+        result = subprocess.run(
+            ["curl", "-L", "-f", "-o", "archive.tar.gz", url],
+            stdout=subprocess.PIPE,
+            encoding='utf8'
+        )
+        if result.returncode != 0:
+            raise ValueError(f"Error loading {url}, {tag}: " + (result.stderr or ""))
+
+        archive_bytes = Path('archive.tar.gz').read_bytes()
+        hash = hashlib.sha256(archive_bytes).hexdigest()
+        strip_prefix = extract_archive_root_folder("archive.tar.gz", url)
+
+    return {
+        "hash":hash,
+        "url": url,
+        "strip_prefix": strip_prefix,
+        "type": "http_archive",
+    }
+
+def extract_archive_root_folder(path, origin):
+    result = subprocess.run(
+        ["tar", "-tf", path],
+        capture_output = True,
+        encoding='utf8'
+    )
+    if result.returncode != 0:
+        raise ValueError(f"Not able to read archive from {origin}: " + result.stderr)
+    return result.stdout.split('\n')[0].split('/')[0]
+
 
 def fetch_repo_details(url, branch):
     cwd = os.getcwd()
@@ -56,7 +104,7 @@ def fetch_repo_details(url, branch):
         result = subprocess.run(
             ["git", "clone", url, "--no-checkout", tempdir, "--depth", "1",
              "--branch", branch, "--bare", "-q"],
-            stdout=subprocess.PIPE,
+            capture_output = True,
             encoding='utf8'
         )
         if result.returncode != 0:
@@ -71,7 +119,10 @@ def fetch_repo_details(url, branch):
             raise ValueError(result.stderr)
         commit_hash, time = result.stdout.split("/")
         os.chdir(cwd)
-    return commit_hash, time
+    return {
+        "hash":commit_hash,
+        "shallow_since": time,
+    }
 
 
 if __name__ == "__main__":

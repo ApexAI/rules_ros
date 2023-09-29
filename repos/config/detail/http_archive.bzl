@@ -15,8 +15,16 @@
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "update_attrs")
 
 _archive_attrs = {
-    "path": attr.string(
-        doc = "Path to the repository.",
+    "url": attr.string(
+        doc = "URI of the archive.",
+    ),
+    "strip_prefix": attr.string(
+        doc =
+            "Path prefix to be stripped.",
+    ),
+    "sha256": attr.string(
+        doc =
+            "Hash of the commit to be checked out.",
     ),
     "build_files": attr.label_keyed_string_dict(
         doc = """
@@ -51,28 +59,24 @@ def _workspace_and_buildfiles(ctx):
             for destination in destinations:
                 ctx.symlink(label, destination)
 
-def _files_in_directory(ctx, directory_path):
-    exec_result = ctx.execute(["find", directory_path, "-maxdepth", "1", "-mindepth", "1"])
-    if exec_result.return_code != 0:
-        fail(exec_result.stderr)
-
-    return exec_result.stdout.splitlines()
-
-def _new_local_repository_impl(ctx):
+def _http_archve_impl(ctx):
     """Implementation of the git_repository rule."""
 
-    for f in _files_in_directory(ctx, ctx.attr.path):
-        _execute_or_fail(ctx, ["cp", "-r", f, f.rpartition("/")[2]])
+    download_info = ctx.download_and_extract(
+        ctx.attr.url,
+        sha256 = ctx.attr.sha256,
+        stripPrefix = ctx.attr.strip_prefix,
+    )
 
     _workspace_and_buildfiles(ctx)
 
-    return update_attrs(ctx.attr, _archive_attrs.keys(), {})
+    return update_attrs(ctx.attr, _archive_attrs.keys(), {"sha256": download_info.sha256})
 
-new_local_repository = repository_rule(
-    implementation = _new_local_repository_impl,
+http_archive = repository_rule(
+    implementation = _http_archve_impl,
     attrs = _archive_attrs,
     doc =
-        """Custom rule to clone a git repo as external dependency.
+        """Custom rule to use a compressed tarball for creating an external workspace.
         It allows to inject multiple BUILD files.
         """,
 )

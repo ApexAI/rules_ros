@@ -28,11 +28,13 @@ _archive_attrs = {
     ),
     "shallow_since": attr.string(
         doc =
-            "Time of required commit."
+            "Time of required commit.",
     ),
     "build_files": attr.label_keyed_string_dict(
-        doc =
-            "Same as in native rule.",
+        doc = """
+            Dict with a file as key and the path where to place the file in the repository as value.
+            This allows to place multiple (BUILD) files in a repo.
+        """,
     ),
 }
 
@@ -50,9 +52,9 @@ def _git_clone(ctx):
         ".",
         "--branch",
         ctx.attr.branch,
-        "--shallow-since="+ctx.attr.shallow_since,
+        "--shallow-since=" + ctx.attr.shallow_since,
     ])
-    _execute_or_fail( ctx, [
+    _execute_or_fail(ctx, [
         "git",
         "checkout",
         ctx.attr.commit,
@@ -94,4 +96,3 @@ git_repository = repository_rule(
         It allows to inject multiple BUILD files.
         """,
 )
-
