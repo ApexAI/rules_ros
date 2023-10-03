@@ -1,0 +1,40 @@
+name: Build/Test
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "**"
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+# only run one build doc workflow at a time, cancel any running ones
+concurrency: 
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build_test:
+    strategy:
+      matrix:
+        os:
+          - ubuntu
+        version:
+          - 18.04
+          - 20.04
+          - 22.04
+    runs-on: ${{ matrix.os }}-${{ matrix.version }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Specify the Bazel cache
+        uses: actions/cache@v3
+        with:
+          path: "/home/runner/.cache/bazel"
+          key: ${{ hashFiles('.bazelrc', '.bazelversion', 'WORKSPACE', 'WORKSPACE.bazel', 'MODULE.bazel') }}
+      - name: Build
+        run: bazel build //...
+      - name: Test
+        run: bazel test //...
