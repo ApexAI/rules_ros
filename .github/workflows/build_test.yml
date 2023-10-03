@@ -43,6 +43,6 @@ jobs:
         uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: bazel-testlogs
+          name: ${{ matrix.os }}-${{ matrix.version }}-bazel-testlogs
           path: bazel-testlogs
           retention-days: 5
