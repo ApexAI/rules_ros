@@ -31,6 +31,7 @@ py_test(
         ":ament_index_python_py",
         requirement("attrs"),
         requirement("pluggy"),
+        requirement("pytest"),
     ],
 )
 
