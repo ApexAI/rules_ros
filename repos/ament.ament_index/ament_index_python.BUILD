@@ -15,6 +15,7 @@
 load("@rules_python//python:packaging.bzl", "py_wheel")
 load("@rules_python//python:python.bzl", "py_test")
 load("@rules_ros//pkg:defs.bzl", "ros_pkg")
+load("@python_deps//:requirements.bzl", "requirement")
 
 py_library(
     name = "ament_index_python_py",
@@ -28,6 +29,9 @@ py_test(
     main = "test/test_ament_index_python.py",
     deps = [
         ":ament_index_python_py",
+        requirement("attrs"),
+        requirement("pluggy"),
+        requirement("pytest"),
     ],
 )
 
@@ -49,21 +53,21 @@ py_wheel(
     # download_url='https://github.com/ros2/ros2cli/releases',
     # keywords=[],
     classifiers = [
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: Apache Software License',
-        'Programming Language :: Python',
-        'Topic :: Software Development',
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: Apache Software License",
+        "Programming Language :: Python",
+        "Topic :: Software Development",
     ],
     #description_file = "README.md",
     distribution = "ament_index_python",
     #tests_require=['pytest'],
     license = "Apache License, Version 2.0",
     strip_path_prefixes = ["ament_index_python"],
-    version = '0.8.6',
+    version = "0.8.6",
     deps = [":ament_index_python_py"],
     entry_points = {
-        'console_scripts': [
-            'ament_index = ament_index_python.cli:main',
+        "console_scripts": [
+            "ament_index = ament_index_python.cli:main",
         ],
     },
 )

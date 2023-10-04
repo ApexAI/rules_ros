@@ -16,15 +16,20 @@ repositories:
 #  ament/uncrustify_vendor:
 #    bazel: {}
   eProsima/Fast-CDR:
-    bazel: {}
+    bazel:
+      "@rules_ros//repos:default.BUILD": "BUILD.bazel"
   eProsima/Fast-DDS:
-    bazel: {}
+    bazel:
+      "@rules_ros//repos:default.BUILD": "BUILD.bazel"
   eProsima/foonathan_memory_vendor:
-    bazel: {}
+    bazel:
+      "@rules_ros//repos:default.BUILD": "BUILD.bazel"
   eclipse-cyclonedds/cyclonedds:
-    bazel: {}
+    bazel:
+      "@rules_ros//repos:default.BUILD": "BUILD.bazel"
   eclipse-iceoryx/iceoryx:
-    bazel: {}
+    bazel:
+      "@rules_ros//repos:default.BUILD": "BUILD.bazel"
 #  ignition/ignition_cmake2_vendor:
 #    bazel: {}
 #  ignition/ignition_math6_vendor:
