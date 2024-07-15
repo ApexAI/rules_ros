@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@rules_pkg//:providers.bzl", _PackageFilegroupInfo = "PackageFilegroupInfo")
+load("@rules_pkg//pkg:providers.bzl", _PackageFilegroupInfo = "PackageFilegroupInfo")
 load("@rules_ros//pkg:providers.bzl", _RosPkgInfo = "RosPkgInfo")
 
 def add_files_to_filegroup_info(filegroup_info, pkg_files_info, label):
