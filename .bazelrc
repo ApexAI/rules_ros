@@ -4,7 +4,7 @@ build --incompatible_default_to_explicit_init_py
 # enable implementation_deps on cc_library targets
 build --experimental_cc_implementation_deps
 
-# set c++14 for all builds
+# set c++17 for all builds
 build --cxxopt="-std=c++17"
 build --host_cxxopt="-std=c++17"
 

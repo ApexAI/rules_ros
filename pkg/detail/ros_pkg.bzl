@@ -1,4 +1,4 @@
-# Copyright 2022 Apex.AI, Inc.
+# Copyright 2024 Apex.AI, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@rules_pkg//:providers.bzl", "PackageFilegroupInfo", "PackageFilesInfo")
+load("@rules_pkg//pkg:providers.bzl", "PackageFilegroupInfo", "PackageFilesInfo")
 load("@rules_python//python:packaging.bzl", "PyWheelInfo")
 load(
     ":utils.bzl",

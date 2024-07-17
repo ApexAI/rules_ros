@@ -42,6 +42,7 @@ as a launch tool for Bazel.
 
 Create an empty folder and add the following files to it:
 * `WORKSPACE` file:
+
   ```python
   workspace(name = "my_first_bazel_ros_workspace") # choose your workspace name here
   # load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
@@ -83,7 +84,9 @@ Create an empty folder and add the following files to it:
   load("@rules_ros//thirdparty:setup_04.bzl", "setup_04")
   setup_04()
   ```
+
 * `.bazelrc` file:
+
   ```bash
   # enable incompatible Python init mode
   build --incompatible_default_to_explicit_init_py
@@ -91,39 +94,45 @@ Create an empty folder and add the following files to it:
   # enable implementation_deps on cc_library targets
   build --experimental_cc_implementation_deps
 
-  # set C++14 for all builds
+  # set C++17 for all builds
   build --cxxopt="-std=c++17"
   build --host_cxxopt="-std=c++17"
   ```
   
 * `.bazelversion` file (in case you are using bazelisk):
-  ```text
-  5.3.1
-  ```
+
+```text
+6.5.0
+```
 
 ### Run Bazel example
 
 To **build** an example delivered in the `rules_ros` repository run, e.g.
+
 ```bash
 bazel build @rules_ros//examples/hello_world
 ```
 from anywhere within your workspace.
 
 **Executing** the example can be done by calling
+
 ```bash
 bazel run @rules_ros//examples/hello_world
 ```
 Note that no sourcing is necessary. Bazel will take care of all the dependencies. 
 
 **Deploying** a package archive to an install folder can be done by
+
 ```bash
 bazel run @rules_ros//examples:rules_ros_examples.install <install_folder>
 ```
 Now we are back to working with ROS as usual. Source the package as usual:
+
 ```bash
 source <install_folder>/setup.bash
 ```
 and run an executable with
+
 ```bash
 ros2 run hello_world hello_world
 ```

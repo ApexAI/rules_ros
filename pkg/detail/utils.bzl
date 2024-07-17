@@ -1,4 +1,4 @@
-# Copyright 2022 Apex.AI, Inc.
+# Copyright 2024 Apex.AI, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@rules_pkg//:providers.bzl", _PackageFilegroupInfo = "PackageFilegroupInfo")
+load("@rules_pkg//pkg:providers.bzl", _PackageFilegroupInfo = "PackageFilegroupInfo")
 load("@rules_ros//pkg:providers.bzl", _RosPkgInfo = "RosPkgInfo")
 
 def add_files_to_filegroup_info(filegroup_info, pkg_files_info, label):
