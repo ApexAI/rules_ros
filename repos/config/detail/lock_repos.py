@@ -53,7 +53,7 @@ def main():
 
     with open(args.lock, "w", encoding='utf8') as lock_file:
         print(
-            "#\n#   To update, call `bazel run //repos/config:repos_lock.update` with the right distro set in the WORKSPACE\n#",
+            "#\n#   To update, call `bazel run @rules_ros//repos/config:repos_lock.update` with the right distro set in the WORKSPACE\n#",
             file = lock_file
         )
         yaml.dump(repos, lock_file, default_flow_style=False, allow_unicode=True)
