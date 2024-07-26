@@ -11,7 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+load("@python_deps//:requirements.bzl", "requirement")
 load("@ros2_config//:repos_lock_file.bzl", "REPOS_LOCK_FILE")
 
 py_binary(
@@ -20,5 +20,6 @@ py_binary(
     main = "lock_repos.py",
     data = ["@ros2//:ros2.repos", REPOS_LOCK_FILE],
     args = ["$(execpath @ros2//:ros2.repos)", "$(execpath {})".format(REPOS_LOCK_FILE)],
+    deps = [requirement("pyyaml")],
     visibility = ["//visibility:public"],
 )
