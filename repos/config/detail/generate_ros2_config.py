@@ -99,6 +99,11 @@ def build_git_load_command(repo, spec):
 
 def merge_dict(origin, to_add):
     for key, value in to_add.items():
+        print(key)
+        print(key in origin)
+        if key in origin:
+            print(origin[key])
+            print(type(origin[key]))
         if key in origin and isinstance(origin[key], dict):
             merge_dict(origin[key],value)
         else:
@@ -111,6 +116,7 @@ def main():
 
     repos = {}
     for input_path in sys.argv[1:]:
+        print(input_path)
         with (open(input_path,"r")) as repo_file:
             merge_dict(repos, yaml.safe_load(repo_file)["repositories"])
 
