@@ -51,7 +51,6 @@ def build_load_command(repo, spec):
 def build_http_archive_load_command(repo, spec):
     build_files = "\n".join([f'            "{k}": "{v}",' for k,v in spec['bazel'].items()])
     return f"""
-    print("Loading: @{repo.replace('/','.')}")
     _maybe(
         name = "{repo.replace('/','.')}",
         build_files = {{
@@ -67,7 +66,6 @@ def build_http_archive_load_command(repo, spec):
 def build_local_load_command(repo, spec):
     build_files = "\n".join([f'            "{k}": "{v}",' for k,v in spec['bazel'].items()])
     return f"""
-    print("Loading: @{repo.replace('/','.')}")
     _maybe(
         name = "{repo.replace('/','.')}",
         build_files = {{
@@ -82,7 +80,6 @@ def build_local_load_command(repo, spec):
 def build_git_load_command(repo, spec):
     build_files = "\n".join([f'            "{k}": "{v}",' for k,v in spec['bazel'].items()])
     return f"""
-    print("Loading: @{repo.replace('/','.')}")
     _maybe(
         name = "{repo.replace('/','.')}",
         branch = "{spec['version']}",
