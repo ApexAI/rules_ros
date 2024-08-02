@@ -16,7 +16,7 @@ load("@rules_ros//repos/config/detail:ros2_config.bzl", "ros2_config")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 load("@rules_ros//repos/config:distros.bzl", "DISTROS")
 
-def _configure_ros2(*, name, distro_src, repo_index_overlays):
+def _configure_ros2(*, name, distro_src, repo_index_overlays, setup_file):
     distro_src_wo_index = {k: v for k, v in distro_src.items() if k != "repo_index"}
     distro_src_wo_index["build_file_content"] = 'exports_files(["ros2.repos"])'
 
@@ -28,9 +28,10 @@ def _configure_ros2(*, name, distro_src, repo_index_overlays):
         repo_index_overlays = [
             "@rules_ros//repos/config:bazel.repos",
         ] + repo_index_overlays,
+        setup_file = setup_file,
     )
 
-def configure_ros2(*, name = "ros2_config", repo_index_overlays = [], distro):
+def configure_ros2(*, name = "ros2_config", repo_index_overlays = [], setup_file, distro):
     """
     """
     if type(distro) == type(""):
@@ -43,4 +44,4 @@ def configure_ros2(*, name = "ros2_config", repo_index_overlays = [], distro):
         distro_src = distro
     if not type(repo_index_overlays) == type([]):
         fail("repo_index_overlays needs to be a list of *.repos files")
-    _configure_ros2(name = name, distro_src = distro_src, repo_index_overlays = repo_index_overlays)
+    _configure_ros2(name = name, distro_src = distro_src, repo_index_overlays = repo_index_overlays, setup_file = setup_file)

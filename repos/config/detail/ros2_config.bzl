@@ -25,25 +25,15 @@ _archive_attrs = {
             for a repo.
         """,
     ),
-    "_generate_ros2_config": attr.label(
-        default = "generate_ros2_config.py",
-    ),
-    "verbose": attr.bool(
-        default = False,
-        doc = "Prints the calling sequence to stdout.",
+    "setup_file": attr.label(
+        doc = ".bzl file containing repo rules to load every ros2 repository.",
     ),
 }
 
 def _ros2_config_impl(ctx):
-    result = ctx.execute(
-        [ctx.attr._generate_ros2_config, ctx.attr.repo_index] +
-        ctx.attr.repo_index_overlays,
-    )
-    if result.return_code != 0:
-        fail(result.stderr)
-
-    ctx.file("setup.bzl", content = result.stdout)
     ctx.file("repos_lock_file.bzl", content = "REPOS_LOCK_FILE = '{}'".format(ctx.attr.repo_index))
+    ctx.file("repos_overlay_files.bzl", content = "REPOS_OVERLAY_FILES = {}".format(["{}".format(l) for l in ctx.attr.repo_index_overlays]))
+    ctx.file("repos_setup_file.bzl", content = "REPOS_SETUP_FILE = '{}'".format(ctx.attr.setup_file))
     ctx.file("WORKSPACE", content = "workspace(name = {}".format(ctx.name), executable = False)
     ctx.file("BUILD", executable = False)
 
