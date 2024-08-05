@@ -14,6 +14,17 @@
 
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "update_attrs")
 
+def _check_python(ctx):
+    if ctx.which("python3") == None:
+        fail("%s requires Python3 to run setup script. Please install Python3." % ctx.name)
+
+def _install_pyyaml(ctx):
+    result = ctx.execute(["python3", "-m", "pip", "show", "pyyaml"])
+    if result.return_code != 0:
+        result = ctx.execute(["python3", "-m", "pip", "install", "pyyaml"])
+        if result.return_code != 0:
+            fail(result.stderr)
+
 _archive_attrs = {
     "repo_index": attr.label(
         doc = "YAML file containing the details of every ros2 repository.",
@@ -35,6 +46,9 @@ _archive_attrs = {
 }
 
 def _ros2_config_impl(ctx):
+    _check_python(ctx)
+    _install_pyyaml(ctx)
+
     result = ctx.execute(
         [ctx.attr._generate_ros2_config, ctx.attr.repo_index] +
         ctx.attr.repo_index_overlays,
