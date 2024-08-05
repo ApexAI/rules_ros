@@ -28,6 +28,8 @@ def main():
     parser = argparse.ArgumentParser(description="Generate a lock file for a given repos file.")
     parser.add_argument('repos', type=str, help='Input YAML file')
     parser.add_argument('lock', type=str, help='Output YAML file with pinned repos')
+    parser.add_argument('setup_bzl', type=str, help='TODO')
+    parser.add_argument('overlays', type=str, nargs='*', help='TODO')
     parser.add_argument('--tar', action='store_true', help='Use the Github archive download.')
 
     args = parser.parse_args()
@@ -57,6 +59,13 @@ def main():
             file = lock_file
         )
         yaml.dump(repos, lock_file, default_flow_style=False, allow_unicode=True)
+
+    with open(args.setup_bzl, "w", encoding='utf8') as setup_bzl:
+        result = subprocess.run(
+            ["external/rules_ros/repos/config/detail/generate_ros2_config.py", args.lock, *args.overlays],
+            stdout=setup_bzl,
+            encoding='utf8'
+        )
 
 def add_attributes(dictionary, additional_attributes):
     for k,v in additional_attributes.items():
