@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-exports_files(glob(["*.lock"]))
+exports_files(["bazel.repos"] + glob(["*.lock.bzl"]))
 
 alias(
     name = "repos_lock.update",

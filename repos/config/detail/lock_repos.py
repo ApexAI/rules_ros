@@ -21,17 +21,21 @@ import subprocess
 import os
 import hashlib
 from pathlib import Path
+from generate_ros2_config import print_setup_file
 
 REPO_TYPES = ["git", "tar"]
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate a lock file for a given repos file.")
-    parser.add_argument('repos', type=str, help='Input YAML file')
-    parser.add_argument('lock', type=str, help='Output YAML file with pinned repos')
-    parser.add_argument('--tar', action='store_true', help='Use the Github archive download.')
+    parser = argparse.ArgumentParser(description='Generate a Bazel setup file containing repo '
+        'rules to load every repository for a given repos file.')
+    parser.add_argument('repos', type=str, help='Input YAML *.repos file')
+    parser.add_argument('setup_bzl', type=str, help='Output Bazel setup file with repo rules.')
+    parser.add_argument('overlays', type=str, nargs='*', help='Additional YAML files are used as '
+        'overlays for *.repos file, e.g., to declare BUILD files for a repo.')
+    parser.add_argument('--tar', action='store_true', help='Use the GitHub archive download.')
 
     args = parser.parse_args()
-    print(f"Calling {args.repos} {args.lock}")
+    print(f"Using {args.repos} to generate {args.setup_bzl}")
 
     with open(args.repos, "r") as repos_file:
         repos = yaml.safe_load(repos_file)
@@ -51,12 +55,11 @@ def main():
         add_attributes(repos["repositories"][repo], additional_attributes)
         print("{}: {}".format(repo, [*additional_attributes.values()]))
 
-    with open(args.lock, "w", encoding='utf8') as lock_file:
-        print(
-            "#\n#   To update, call `bazel run @rules_ros//repos/config:repos_lock.update` with the right distro set in the WORKSPACE\n#",
-            file = lock_file
-        )
+    with tempfile.NamedTemporaryFile(mode='w+t', encoding='utf8') as lock_file:
         yaml.dump(repos, lock_file, default_flow_style=False, allow_unicode=True)
+
+        with open(args.setup_bzl, mode='w', encoding='utf8') as setup_bzl:
+            print_setup_file(yaml_files=[lock_file.name] + args.overlays, output_file=setup_bzl)
 
 def add_attributes(dictionary, additional_attributes):
     for k,v in additional_attributes.items():

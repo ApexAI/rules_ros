@@ -1,2 +1,5 @@
 .clwb/*
 bazel-*
+
+# Python caches
+/**/__pycache__/

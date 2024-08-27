@@ -16,23 +16,24 @@ load("@rules_ros//repos/config/detail:ros2_config.bzl", "ros2_config")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 load("@rules_ros//repos/config:distros.bzl", "DISTROS")
 
-def _configure_ros2(*, name, distro_src, repo_index_overlays):
-    distro_src_wo_index = {k: v for k, v in distro_src.items() if k != "repo_index"}
-    distro_src_wo_index["build_file_content"] = 'exports_files(["ros2.repos"])'
+def _configure_ros2(*, name, distro_src, repos_index_overlays):
+    distro_src_wo_setup_file = {k: v for k, v in distro_src.items() if k != "setup_file"}
+    distro_src_wo_setup_file["build_file_content"] = 'exports_files(["ros2.repos"])'
 
-    maybe(name = "ros2", **distro_src_wo_index)
+    maybe(name = "ros2", **distro_src_wo_setup_file)
 
     ros2_config(
         name = name,
-        repo_index = distro_src["repo_index"],
-        repo_index_overlays = [
+        repos_index = "@ros2//:ros2.repos",
+        repos_index_overlays = [
             "@rules_ros//repos/config:bazel.repos",
-        ] + repo_index_overlays,
+        ] + repos_index_overlays,
+        setup_file = distro_src["setup_file"],
     )
 
-def configure_ros2(*, name = "ros2_config", repo_index_overlays = [], distro):
-    """
-    """
+def configure_ros2(*, name = "ros2_config", repos_index_overlays = [], distro):
+    """Configure ROS 2 repositories based on the given distro name."""
+
     if type(distro) == type(""):
         if not distro in DISTROS:
             fail("Distro {} is not supported. Choose one of {}".format(distro, DISTROS.keys()))
@@ -41,6 +42,18 @@ def configure_ros2(*, name = "ros2_config", repo_index_overlays = [], distro):
         if not type(distro) == type({}) or not "repo_rule" in distro:
             fail("Distro either needs to be a string (e.g. 'iron') or a dict with arguments for the maybe repo rule")
         distro_src = distro
-    if not type(repo_index_overlays) == type([]):
-        fail("repo_index_overlays needs to be a list of *.repos files")
-    _configure_ros2(name = name, distro_src = distro_src, repo_index_overlays = repo_index_overlays)
+    if not type(repos_index_overlays) == type([]):
+        fail("repos_index_overlays needs to be a list of *.repos files")
+    _configure_ros2(name = name, distro_src = distro_src, repos_index_overlays = repos_index_overlays)
+
+def configure_repos(*, name = "ros2_config", repos_index, repos_index_overlays = [], setup_file):
+    """Configure ROS 2 repositories based on the custom *.repos file."""
+
+    if not type(repos_index_overlays) == type([]):
+        fail("repos_index_overlays needs to be a list of *.repos files")
+    ros2_config(
+        name = name,
+        repos_index = repos_index,
+        repos_index_overlays = repos_index_overlays,
+        setup_file = setup_file,
+    )
