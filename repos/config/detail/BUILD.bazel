@@ -11,15 +11,21 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 load("@python_deps//:requirements.bzl", "requirement")
-load("@ros2_config//:repos_lock_file.bzl", "REPOS_LOCK_FILE")
+load("@ros2_config//:repos_index_file.bzl", "REPOS_INDEX_FILE")
+load("@ros2_config//:repos_overlay_files.bzl", "REPOS_OVERLAY_FILES")
+load("@ros2_config//:repos_setup_file.bzl", "REPOS_SETUP_FILE")
 
 py_binary(
     name = "repos_lock.update",
-    srcs = ["lock_repos.py"],
+    srcs = ["lock_repos.py", "generate_ros2_config.py"],
     main = "lock_repos.py",
-    data = ["@ros2//:ros2.repos", REPOS_LOCK_FILE],
-    args = ["$(execpath @ros2//:ros2.repos)", "$(execpath {})".format(REPOS_LOCK_FILE)],
+    data = [REPOS_INDEX_FILE, REPOS_SETUP_FILE] + REPOS_OVERLAY_FILES,
+    args = [
+        "$(execpath {})".format(REPOS_INDEX_FILE),
+        "$(execpath {})".format(REPOS_SETUP_FILE),
+    ] + ["$(execpath {})".format(f) for f in REPOS_OVERLAY_FILES],
     deps = [requirement("pyyaml")],
     visibility = ["//visibility:public"],
 )

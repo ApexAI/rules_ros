@@ -21,7 +21,7 @@ DISTROS = {
         url = _URL_TEMPLATE.format(distro, date),
         strip_prefix = _STRIP_PREFIX_TEMPLATE.format(distro, date),
         sha256 = sha,
-        repo_index = "@rules_ros//repos/config:ros2_{}.lock".format(distro),
+        setup_file = "@rules_ros//repos/config:setup_{}.lock.bzl".format(distro),
     )
     for distro, date, sha in _VERSIONS
 }
