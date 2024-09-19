@@ -16,6 +16,7 @@ load("@python_deps//:requirements.bzl", "requirement")
 load("@ros2_config//:repos_index_file.bzl", "REPOS_INDEX_FILE")
 load("@ros2_config//:repos_overlay_files.bzl", "REPOS_OVERLAY_FILES")
 load("@ros2_config//:repos_setup_file.bzl", "REPOS_SETUP_FILE")
+load("@rules_python//python:defs.bzl", "py_binary")
 
 py_binary(
     name = "repos_lock.update",

@@ -46,12 +46,7 @@ def main():
     for repo, spec in repos["repositories"].items():
         if not spec["type"] in REPO_TYPES:
             raise ValueError(f"Repo type {spec['type']} not supported. Need one of {REPO_TYPES} instead.")
-        if args.tar:
-            # use tarballs
-            additional_attributes = fetch_archive_details(spec['url'], spec['version'])
-        else:
-            # default: use git repositories
-            additional_attributes = fetch_repo_details(spec['url'], spec['version'])
+        additional_attributes = fetch_dependency_details(use_tar = args.tar, **spec)
         add_attributes(repos["repositories"][repo], additional_attributes)
         print("{}: {}".format(repo, [*additional_attributes.values()]))
 
@@ -61,23 +56,29 @@ def main():
         with open(args.setup_bzl, mode='w', encoding='utf8') as setup_bzl:
             print_setup_file(yaml_files=[lock_file.name] + args.overlays, output_file=setup_bzl)
 
+
+def fetch_dependency_details(*, use_tar, type, **kwargs):
+    if type == "tar" or use_tar:
+        return fetch_archive_details(**kwargs)
+    return fetch_repo_details(**kwargs)
+
 def add_attributes(dictionary, additional_attributes):
     for k,v in additional_attributes.items():
         dictionary[k] = v
 
-def fetch_archive_details(url, tag):
+def fetch_archive_details(url, version, **kwargs):
     cwd = os.getcwd()
     with tempfile.TemporaryDirectory() as tempdir:
         url = url.rsplit(".git", 1)[0]
         project = url.split('/')[-1]
-        url += f"/archive/refs/tags/{tag}.tar.gz"
+        url += f"/archive/refs/tags/{version}.tar.gz"
         result = subprocess.run(
             ["curl", "-L", "-f", "-o", "archive.tar.gz", url],
             stdout=subprocess.PIPE,
             encoding='utf8'
         )
         if result.returncode != 0:
-            raise ValueError(f"Error loading {url}, {tag}: " + (result.stderr or ""))
+            raise ValueError(f"Error loading {url}, {version}: " + (result.stderr or ""))
 
         archive_bytes = Path('archive.tar.gz').read_bytes()
         hash = hashlib.sha256(archive_bytes).hexdigest()
@@ -101,12 +102,12 @@ def extract_archive_root_folder(path, origin):
     return result.stdout.split('\n')[0].split('/')[0]
 
 
-def fetch_repo_details(url, branch):
+def fetch_repo_details(url, version, **kwargs):
     cwd = os.getcwd()
     with tempfile.TemporaryDirectory() as tempdir:
         result = subprocess.run(
             ["git", "clone", url, "--no-checkout", tempdir, "--depth", "1",
-             "--branch", branch, "--bare", "-q"],
+             "--branch", version, "--bare", "-q"],
             capture_output = True,
             encoding='utf8'
         )
