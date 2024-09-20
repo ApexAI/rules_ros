@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import sys
 import yaml
 
 
@@ -23,9 +22,9 @@ HEADER = """#
 #
 
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", _maybe = "maybe")
-load("@rules_ros//repos/config/detail:git_repository.bzl", _git_repository = "git_repository")
+load("@rules_ros//repos/config/detail:git_repository.bzl", "git_repository")
 load("@rules_ros//repos/config/detail:http_archive.bzl", "http_archive")
-load("@rules_ros//repos/config/detail:new_local_repository.bzl", _new_local_repository = "new_local_repository")
+load("@rules_ros//repos/config/detail:new_local_repository.bzl", "new_local_repository")
 
 def setup():
     pass
@@ -40,26 +39,32 @@ def print_setup(repos, output_file):
 
 
 def build_load_command(repo, spec):
-    if spec.get('type') == "git":
-        return build_git_load_command(repo, spec)
-    if spec.get('type') == "http_archive":
-        return build_http_archive_load_command(repo, spec)
-    if spec.get('type') == "local":
-        return build_local_load_command(repo, spec)
-    else:
+    builder = {
+        "git": build_git_load_command,
+        "http_archive": build_http_archive_load_command,
+        "local": build_local_load_command,
+    }
+    if spec.get('type') not in builder.keys():
         return f"""
     print("WARNING: Unknown repo type {spec.get('type')} for repo @{repo.replace('/', '.')}")
 """
+    return builder[spec.get('type')](repo, spec)
+
+
+def build_build_files_attr(build_files):
+    if not build_files:
+        return ""
+    content = '\n'.join(f"            '{k}': '{v}'," for k,v in build_files.items())
+    return f"""build_files = {{
+{content}
+        }},"""
 
 
 def build_http_archive_load_command(repo, spec):
-    build_files = "\n".join([f'            "{k}": "{v}",' for k,v in spec['bazel'].items()])
-    return f"""
+    return f"""\
     _maybe(
         name = "{repo.replace('/','.')}",
-        build_files = {{
-{build_files}
-        }},
+        {build_build_files_attr(spec['bazel'])}
         url = "{spec['url']}",
         sha256 = "{spec['hash']}",
         strip_prefix = "{spec['strip_prefix']}",
@@ -68,31 +73,25 @@ def build_http_archive_load_command(repo, spec):
 """
 
 def build_local_load_command(repo, spec):
-    build_files = "\n".join([f'            "{k}": "{v}",' for k,v in spec['bazel'].items()])
-    return f"""
+    return f"""\
     _maybe(
         name = "{repo.replace('/','.')}",
-        build_files = {{
-{build_files}
-        }},
+        {build_build_files_attr(spec['bazel'])}
         path = "{spec['path']}",
         sha256 = "{spec['hash']}",
-        repo_rule = _new_local_repository,
+        repo_rule = new_local_repository,
     )
 """
 
 def build_git_load_command(repo, spec):
-    build_files = "\n".join([f'            "{k}": "{v}",' for k,v in spec['bazel'].items()])
-    return f"""
+    return f"""\
     _maybe(
         name = "{repo.replace('/','.')}",
         branch = "{spec['version']}",
-        build_files = {{
-{build_files}
-        }},
+        {build_build_files_attr(spec['bazel'])}
         commit = "{spec['hash']}",
         remote = "{spec['url']}",
-        repo_rule = _git_repository,
+        repo_rule = git_repository,
         shallow_since = "{spec['shallow_since']}",
     )
 """
@@ -106,11 +105,7 @@ def merge_dict(origin, to_add):
             origin[key]=value
 
 
-def print_setup_file(yaml_files, output_file):
-    if len(yaml_files) < 1:
-        raise ValueError("At least one YAML file is required as input.")
-
-    repos = {}
+def print_setup_file(repos, yaml_files, output_file):
     for input_path in yaml_files:
         with (open(input_path,"r")) as repo_file:
             merge_dict(repos, yaml.safe_load(repo_file)["repositories"])
