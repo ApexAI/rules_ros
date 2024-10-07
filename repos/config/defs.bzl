@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@rules_ros//repos/config/detail:ros2_config.bzl", "ros2_config")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 load("@rules_ros//repos/config:distros.bzl", "DISTROS")
+load("@rules_ros//repos/config/detail:ros2_config.bzl", "ros2_config")
 
 def _configure_ros2(*, name, distro_src, repos_index_overlays):
     distro_src_wo_setup_file = {k: v for k, v in distro_src.items() if k != "setup_file"}

@@ -20,13 +20,19 @@ load("@rules_python//python:defs.bzl", "py_binary")
 
 py_binary(
     name = "repos_lock.update",
-    srcs = ["lock_repos.py", "generate_ros2_config.py"],
-    main = "lock_repos.py",
-    data = [REPOS_INDEX_FILE, REPOS_SETUP_FILE] + REPOS_OVERLAY_FILES,
+    srcs = [
+        "generate_ros2_config.py",
+        "lock_repos.py",
+    ],
     args = [
         "$(execpath {})".format(REPOS_INDEX_FILE),
         "$(execpath {})".format(REPOS_SETUP_FILE),
     ] + ["$(execpath {})".format(f) for f in REPOS_OVERLAY_FILES],
-    deps = [requirement("pyyaml")],
+    data = [
+        REPOS_INDEX_FILE,
+        REPOS_SETUP_FILE,
+    ] + REPOS_OVERLAY_FILES,
+    main = "lock_repos.py",
     visibility = ["//visibility:public"],
+    deps = [requirement("pyyaml")],
 )

@@ -69,8 +69,7 @@ def build_http_archive_load_command(repo, spec):
         sha256 = "{spec['hash']}",
         strip_prefix = "{spec['strip_prefix']}",
         repo_rule = http_archive,
-    )
-"""
+    )"""
 
 def build_local_load_command(repo, spec):
     return f"""\
@@ -80,8 +79,7 @@ def build_local_load_command(repo, spec):
         path = "{spec['path']}",
         sha256 = "{spec['hash']}",
         repo_rule = new_local_repository,
-    )
-"""
+    )"""
 
 def build_git_load_command(repo, spec):
     return f"""\
@@ -93,8 +91,7 @@ def build_git_load_command(repo, spec):
         remote = "{spec['url']}",
         repo_rule = git_repository,
         shallow_since = "{spec['shallow_since']}",
-    )
-"""
+    )"""
 
 
 def merge_dict(origin, to_add):

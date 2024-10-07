@@ -12,7 +12,6 @@ load("@rules_ros//repos/config/detail:new_local_repository.bzl", _new_local_repo
 def setup():
     pass
 
-
     _maybe(
         name = "ament.ament_index",
         branch = "0.7.2",
@@ -26,7 +25,6 @@ def setup():
         shallow_since = "1571244457 -0700",
     )
 
-
     _maybe(
         name = "eProsima.Fast-CDR",
         branch = "v1.0.11",
@@ -38,7 +36,6 @@ def setup():
         repo_rule = _git_repository,
         shallow_since = "1566903518 +0200",
     )
-
 
     _maybe(
         name = "eProsima.Fast-DDS",
@@ -52,7 +49,6 @@ def setup():
         shallow_since = "1573725955 +0100",
     )
 
-
     _maybe(
         name = "eProsima.foonathan_memory_vendor",
         branch = "v0.3.0",
@@ -64,7 +60,6 @@ def setup():
         repo_rule = _git_repository,
         shallow_since = "1569302929 +0200",
     )
-
 
     _maybe(
         name = "eclipse-cyclonedds.cyclonedds",
@@ -78,7 +73,6 @@ def setup():
         shallow_since = "1596471565 +0200",
     )
 
-
     _maybe(
         name = "ros2.common_interfaces",
         branch = "0.8.1",
@@ -90,7 +84,6 @@ def setup():
         repo_rule = _git_repository,
         shallow_since = "1571867898 -0700",
     )
-
 
     _maybe(
         name = "ros2.rcl",
@@ -104,7 +97,6 @@ def setup():
         repo_rule = _git_repository,
         shallow_since = "1607116198 -0600",
     )
-
 
     _maybe(
         name = "ros2.rcl_interfaces",
@@ -121,7 +113,6 @@ def setup():
         shallow_since = "1569518728 -0500",
     )
 
-
     _maybe(
         name = "ros2.rcl_logging",
         branch = "0.3.3",
@@ -133,7 +124,6 @@ def setup():
         repo_rule = _git_repository,
         shallow_since = "1571871211 +0000",
     )
-
 
     _maybe(
         name = "ros2.rclcpp",
@@ -148,7 +138,6 @@ def setup():
         shallow_since = "1607116009 -0600",
     )
 
-
     _maybe(
         name = "ros2.rcpputils",
         branch = "0.2.1",
@@ -160,7 +149,6 @@ def setup():
         repo_rule = _git_repository,
         shallow_since = "1573612278 -0800",
     )
-
 
     _maybe(
         name = "ros2.rcutils",
@@ -175,7 +163,6 @@ def setup():
         shallow_since = "1607117730 -0600",
     )
 
-
     _maybe(
         name = "ros2.rmw",
         branch = "0.8.1",
@@ -187,7 +174,6 @@ def setup():
         repo_rule = _git_repository,
         shallow_since = "1571879357 -0700",
     )
-
 
     _maybe(
         name = "ros2.ros2cli",
@@ -202,7 +188,6 @@ def setup():
         repo_rule = _git_repository,
         shallow_since = "1607117614 -0600",
     )
-
 
     _maybe(
         name = "ros2.rosidl",
@@ -224,7 +209,6 @@ def setup():
         shallow_since = "1607117948 -0600",
     )
 
-
     _maybe(
         name = "ros2.rosidl_dds",
         branch = "0.7.1",
@@ -236,7 +220,6 @@ def setup():
         repo_rule = _git_repository,
         shallow_since = "1557357026 -0500",
     )
-
 
     _maybe(
         name = "ros2.rosidl_typesupport",
@@ -250,12 +233,8 @@ def setup():
         shallow_since = "1607118075 -0600",
     )
 
-
     print("WARNING: Unknown repo type None for repo @eclipse-iceoryx.iceoryx")
-
 
     print("WARNING: Unknown repo type None for repo @ros-tooling.libstatistics_collector")
 
-
     print("WARNING: Unknown repo type None for repo @ros2.ros2_tracing")
-
