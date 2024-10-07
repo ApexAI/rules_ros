@@ -32,7 +32,7 @@ _archive_attrs = {
 
 def _ros2_config_impl(ctx):
     ctx.file("repos_index_file.bzl", content = "REPOS_INDEX_FILE = '{}'".format(ctx.attr.repos_index))
-    ctx.file("repos_overlay_files.bzl", content = "REPOS_OVERLAY_FILES = {}".format(["{}".format(l) for l in ctx.attr.repos_index_overlays]))
+    ctx.file("repos_overlay_files.bzl", content = "REPOS_OVERLAY_FILES = {}".format(["{}".format(i) for i in ctx.attr.repos_index_overlays]))
     ctx.file("repos_setup_file.bzl", content = "REPOS_SETUP_FILE = '{}'".format(ctx.attr.setup_file))
     ctx.symlink(ctx.attr.setup_file, "setup.bzl")
     ctx.file("WORKSPACE", content = "workspace(name = {})".format(ctx.name), executable = False)
