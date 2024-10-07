@@ -5,9 +5,9 @@
 #
 
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", _maybe = "maybe")
-load("@rules_ros//repos/config/detail:git_repository.bzl", _git_repository = "git_repository")
+load("@rules_ros//repos/config/detail:git_repository.bzl", "git_repository")
 load("@rules_ros//repos/config/detail:http_archive.bzl", "http_archive")
-load("@rules_ros//repos/config/detail:new_local_repository.bzl", _new_local_repository = "new_local_repository")
+load("@rules_ros//repos/config/detail:new_local_repository.bzl", "new_local_repository")
 
 def setup():
     pass
@@ -21,20 +21,8 @@ def setup():
         },
         commit = "9d42ba13d7694ad8da5b1622e433e691996c4502",
         remote = "https://github.com/ament/ament_index.git",
-        repo_rule = _git_repository,
+        repo_rule = git_repository,
         shallow_since = "1571244457 -0700",
-    )
-
-    _maybe(
-        name = "eProsima.Fast-CDR",
-        branch = "v1.0.13",
-        build_files = {
-            "@rules_ros//repos:default.BUILD": "BUILD.bazel",
-        },
-        commit = "174f6ff1d3a227c5c900a4587ee32fa888267f5e",
-        remote = "https://github.com/eProsima/Fast-CDR.git",
-        repo_rule = _git_repository,
-        shallow_since = "1585310200 +0100",
     )
 
     _maybe(
@@ -45,8 +33,20 @@ def setup():
         },
         commit = "c261053186c455abc63ca5ac7d56c0808a59c364",
         remote = "https://github.com/eclipse-cyclonedds/cyclonedds.git",
-        repo_rule = _git_repository,
+        repo_rule = git_repository,
         shallow_since = "1596471565 +0200",
+    )
+
+    _maybe(
+        name = "eProsima.Fast-CDR",
+        branch = "v1.0.13",
+        build_files = {
+            "@rules_ros//repos:default.BUILD": "BUILD.bazel",
+        },
+        commit = "174f6ff1d3a227c5c900a4587ee32fa888267f5e",
+        remote = "https://github.com/eProsima/Fast-CDR.git",
+        repo_rule = git_repository,
+        shallow_since = "1585310200 +0100",
     )
 
     _maybe(
@@ -57,7 +57,7 @@ def setup():
         },
         commit = "30dbc60b45e22f2c88a4c46493388fdad3916845",
         remote = "https://github.com/ros2/common_interfaces.git",
-        repo_rule = _git_repository,
+        repo_rule = git_repository,
         shallow_since = "1621610616 -0700",
     )
 
@@ -70,7 +70,7 @@ def setup():
         },
         commit = "f28fd0d5ee8e13a4955dbe84bd336eeee7e2be5d",
         remote = "https://github.com/ros2/rcl.git",
-        repo_rule = _git_repository,
+        repo_rule = git_repository,
         shallow_since = "1621608437 -0700",
     )
 
@@ -85,7 +85,7 @@ def setup():
         },
         commit = "bfa9c43dd7d8cfc5c6fcba8a164d8ef317a386d7",
         remote = "https://github.com/ros2/rcl_interfaces.git",
-        repo_rule = _git_repository,
+        repo_rule = git_repository,
         shallow_since = "1559174983 -0700",
     )
 
@@ -97,7 +97,7 @@ def setup():
         },
         commit = "6b1880038fed2893557c931a202c16b974637e42",
         remote = "https://github.com/ros2/rcl_logging.git",
-        repo_rule = _git_repository,
+        repo_rule = git_repository,
         shallow_since = "1557360130 -0500",
     )
 
@@ -110,7 +110,7 @@ def setup():
         },
         commit = "403aac966271132feadffca93dcfb24f6ab90efb",
         remote = "https://github.com/ros2/rclcpp.git",
-        repo_rule = _git_repository,
+        repo_rule = git_repository,
         shallow_since = "1621608557 -0700",
     )
 
@@ -122,7 +122,7 @@ def setup():
         },
         commit = "f8e638eb72bfbacea18ca1cf67c4f7d48561d9b2",
         remote = "https://github.com/ros2/rcpputils.git",
-        repo_rule = _git_repository,
+        repo_rule = git_repository,
         shallow_since = "1564532092 -0700",
     )
 
@@ -135,7 +135,7 @@ def setup():
         },
         commit = "f868e5cb0eaeb9ae9fc984f6783922f375411007",
         remote = "https://github.com/ros2/rcutils.git",
-        repo_rule = _git_repository,
+        repo_rule = git_repository,
         shallow_since = "1606260966 -0800",
     )
 
@@ -147,7 +147,7 @@ def setup():
         },
         commit = "8652949435267cdf0fd65368f621146dea9a85eb",
         remote = "https://github.com/ros2/rmw.git",
-        repo_rule = _git_repository,
+        repo_rule = git_repository,
         shallow_since = "1560370615 +0000",
     )
 
@@ -161,7 +161,7 @@ def setup():
         },
         commit = "8ff79e6cfc88a8d973c854a6709404eed6db47e0",
         remote = "https://github.com/ros2/ros2cli.git",
-        repo_rule = _git_repository,
+        repo_rule = git_repository,
         shallow_since = "1594441053 -0400",
     )
 
@@ -181,7 +181,7 @@ def setup():
         },
         commit = "407b652ac8ca23beea2f1f24575dd57f0c9b4401",
         remote = "https://github.com/ros2/rosidl.git",
-        repo_rule = _git_repository,
+        repo_rule = git_repository,
         shallow_since = "1606259638 -0800",
     )
 
@@ -193,7 +193,7 @@ def setup():
         },
         commit = "e88b1d0e62a2dca0788142cf1fb266a3a3c3d7dc",
         remote = "https://github.com/ros2/rosidl_dds.git",
-        repo_rule = _git_repository,
+        repo_rule = git_repository,
         shallow_since = "1557357026 -0500",
     )
 
@@ -205,7 +205,7 @@ def setup():
         },
         commit = "38eb801f1f856a503676bb79875786b3a3b6d92d",
         remote = "https://github.com/ros2/rosidl_typesupport.git",
-        repo_rule = _git_repository,
+        repo_rule = git_repository,
         shallow_since = "1557357026 -0700",
     )
 
