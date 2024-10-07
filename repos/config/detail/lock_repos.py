@@ -104,25 +104,46 @@ def extract_archive_root_folder(path, origin):
 
 def fetch_git_details(url, version, **kwargs):
     cwd = os.getcwd()
-    with tempfile.TemporaryDirectory() as tempdir:
-        result = subprocess.run(
-            ["git", "clone", url, "--no-checkout", tempdir, "--depth", "1",
-             "--branch", version, "--bare", "-q"],
-            capture_output = True,
-            encoding='utf8'
-        )
-        if result.returncode != 0:
-            raise ValueError(result.stderr)
-        os.chdir(tempdir)
-        result = subprocess.run(
-            ["git", "log", "--date=raw", "--format=format:%H/%cd"],
-            stdout=subprocess.PIPE,
-            encoding='utf8'
-        )
-        if result.returncode != 0:
-            raise ValueError(result.stderr)
-        commit_hash, time = result.stdout.split("/")
-        os.chdir(cwd)
+    max_retries = 2
+    for i in range(max_retries + 1):
+        with tempfile.TemporaryDirectory() as tempdir:
+            try:
+                result = subprocess.run(
+                    ["git", "clone", url, "--no-checkout", tempdir, "--depth", "1",
+                    "--branch", version, "--bare", "-q"],
+                    capture_output = True,
+                    encoding='utf8',
+                    timeout=20
+                )
+                if result.returncode != 0:
+                    if max_retries == i:
+                        raise ValueError(result.stderr)
+                    else:
+                        print(f"git clone returncode failure. Retrying attempt {i+1}/{max_retries}")
+                        continue
+                os.chdir(tempdir)
+                result = subprocess.run(
+                    ["git", "log", "--date=raw", "--format=format:%H/%cd"],
+                    stdout=subprocess.PIPE,
+                    encoding='utf8',
+                    timeout=5
+                )
+                if result.returncode != 0:
+                    if max_retries == i:
+                        raise ValueError(result.stderr)
+                    else:
+                        print(f"git log returncode failure. Retrying attempt {i+1}/{max_retries}")
+                        continue
+            except subprocess.TimeoutExpired as e:
+                if max_retries == i:
+                    raise e
+                else:
+                    print(f"subprocess.TimeoutExpired failure. Retrying attempt {i+1}/{max_retries}")
+                    continue
+
+            commit_hash, time = result.stdout.split("/")
+            os.chdir(cwd)
+            break
     return {
         "hash":commit_hash,
         "shallow_since": time,
