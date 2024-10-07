@@ -33,6 +33,12 @@ jobs:
         with:
           path: "/home/runner/.cache/bazel"
           key: ${{ hashFiles('.bazelrc', '.bazelversion', 'WORKSPACE', 'WORKSPACE.bazel', 'MODULE.bazel') }}
+      - name: Install buildifier
+        run: |
+          curl -f -s -L -o /usr/local/bin/buildifier https://github.com/bazelbuild/buildtools/releases/download/v7.3.1/buildifier-linux-$(arch | sed 's/aarch64/arm64/;s/x86_64/amd64/')
+          chmod a+x /usr/local/bin/buildifier
+      - name: Run buildifier
+        run: buildifier -mode check -r .
       - name: Build
         # TODO(evan.flynn): uncomment once the rules are properly fixed
         # run: bazel build //...
