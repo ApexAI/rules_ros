@@ -33,9 +33,13 @@ def setup():
 
 def print_setup(repos, output_file):
     print(HEADER, file=output_file)
+    printed_first_load = False
     for repo, spec in repos.items():
         if spec.get("bazel") is not None:
-            print(build_load_command(repo, spec), file=output_file)
+            if printed_first_load:
+                output_file.write("\n")
+            output_file.write(build_load_command(repo, spec))
+            printed_first_load = True
 
 
 def build_load_command(repo, spec):
@@ -45,7 +49,7 @@ def build_load_command(repo, spec):
         "local": build_local_load_command,
     }
     if spec.get('type') not in builder.keys():
-        return f"""
+        return f"""\
     print("WARNING: Unknown repo type {spec.get('type')} for repo @{repo.replace('/', '.')}")
 """
     return builder[spec.get('type')](repo, spec)
@@ -54,7 +58,7 @@ def build_load_command(repo, spec):
 def build_build_files_attr(build_files):
     if not build_files:
         return ""
-    content = '\n'.join(f"            '{k}': '{v}'," for k,v in build_files.items())
+    content = '\n'.join(f'            "{k}": "{v}",' for k,v in build_files.items())
     return f"""build_files = {{
 {content}
         }},"""
@@ -69,7 +73,8 @@ def build_http_archive_load_command(repo, spec):
         sha256 = "{spec['hash']}",
         strip_prefix = "{spec['strip_prefix']}",
         repo_rule = http_archive,
-    )"""
+    )
+"""
 
 def build_local_load_command(repo, spec):
     return f"""\
@@ -79,7 +84,8 @@ def build_local_load_command(repo, spec):
         path = "{spec['path']}",
         sha256 = "{spec['hash']}",
         repo_rule = new_local_repository,
-    )"""
+    )
+"""
 
 def build_git_load_command(repo, spec):
     return f"""\
@@ -91,7 +97,8 @@ def build_git_load_command(repo, spec):
         remote = "{spec['url']}",
         repo_rule = git_repository,
         shallow_since = "{spec['shallow_since']}",
-    )"""
+    )
+"""
 
 
 def merge_dict(origin, to_add):
