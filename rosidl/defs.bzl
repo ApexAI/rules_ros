@@ -12,11 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+load(":detail/cc_library_with_msgs_provider.bzl", _msgs_library_with_cc = "msgs_library_with_cc")
 load(":detail/rosidl_adapter.bzl", _rosidl_adapter = "rosidl_adapter")
 load(":detail/rosidl_generator_c.bzl", _cc_rosidl_generator_c_library = "cc_rosidl_generator_c_library")
 load(":detail/rosidl_generator_cpp.bzl", _cc_rosidl_generator_cpp_library = "cc_rosidl_generator_cpp_library")
 load(":detail/rosidl_typesupport_c.bzl", _cc_rosidl_typesupport_c_library = "cc_rosidl_typesupport_c_library")
-load(":detail/cc_library_with_msgs_provider.bzl", _msgs_library_with_cc ="msgs_library_with_cc")
 
 raw_msgs_library = _rosidl_adapter
 
@@ -90,13 +90,9 @@ def msgs_library(
         ] + deps,
     )
 
-
     _msgs_library_with_cc(
         name = name,
         deps = cc_libs + deps,
         msgs = ":" + name_raw,
         visibility = visibility,
     )
-
-
-

@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load(":detail/misc_support.bzl", "extract_single_dirname")
 load(":detail/common_config.bzl", "create_common_config_for_dds_idl_generator")
+load(":detail/misc_support.bzl", "extract_single_dirname")
 load(":providers.bzl", "MsgsInfo")
 
 _default_attrs = {
@@ -73,6 +73,7 @@ def _build_dds_idl_files(ctx, srcs):
     args = ctx.actions.args()
 
     args.add("--generator-arguments-file", arguments_json_file.path)
+
     # args.add("--subfolders", "apex_middleware_typefiles")
     # args.add("--extension", "apex_middleware_typefiles_generator.rosidl_generator_dds_idl_extension")
     if ctx.attr._additional_service_templates:

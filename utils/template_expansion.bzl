@@ -18,16 +18,14 @@ def _expand_template_impl(ctx):
     template_file = ctx.file.template
     if not template_file.basename.endswith(".em"):
         fail("The template file must end with '.em'")
-    if len(ctx.attr.variables)>1:
+    if len(ctx.attr.variables) > 1:
         fail("More than one variable definition not implemented.")
     variable = ctx.attr.variables.keys()[0] if len(ctx.attr.variables) != 0 else None
     values = ctx.attr.variables[variable] if variable != None else [None]
     outputs = []
 
     for value in values:
-        out_file_basename = ctx.attr.output_pattern.format(**{variable:value}) \
-            if ctx.attr.output_pattern != "" \
-            else template_file.basename.rsplit(".", 1)[0]
+        out_file_basename = ctx.attr.output_pattern.format(**{variable: value}) if ctx.attr.output_pattern != "" else template_file.basename.rsplit(".", 1)[0]
         output_file = ctx.actions.declare_file(
             "include/{package_name}/{file_name}".format(
                 package_name = package_name,

@@ -104,7 +104,7 @@ def extract_archive_root_folder(path, origin):
 
 def fetch_git_details(url, version, **kwargs):
     cwd = os.getcwd()
-    max_retries = 2
+    max_retries = 4
     for i in range(max_retries + 1):
         with tempfile.TemporaryDirectory() as tempdir:
             try:
@@ -113,7 +113,7 @@ def fetch_git_details(url, version, **kwargs):
                     "--branch", version, "--bare", "-q"],
                     capture_output = True,
                     encoding='utf8',
-                    timeout=20
+                    timeout=5
                 )
                 if result.returncode != 0:
                     if max_retries == i:

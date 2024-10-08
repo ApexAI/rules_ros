@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load(":detail/misc_support.bzl", "extract_single_dirname", "to_snake_case_with_exceptions")
-load(":detail/common_config.bzl", "create_common_config")
-load(":detail/visiability_control.bzl", "create_visibility_control_h")
 load(":detail/cc_library_with_hdrs_extracted_from_srcs.bzl", "cc_library_with_hdrs_extracted_from_srcs")
+load(":detail/common_config.bzl", "create_common_config")
+load(":detail/misc_support.bzl", "extract_single_dirname", "to_snake_case_with_exceptions")
+load(":detail/visiability_control.bzl", "create_visibility_control_h")
 
 def output_files_create(name):
     snake_case_name = to_snake_case_with_exceptions(name)

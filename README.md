@@ -35,8 +35,8 @@ Here is a short list of major restrictions:
 
 ### Prerequisites
 
-Bazel needs to be available. We recommend using [bazelisk](https://github.com/bazelbuild/bazelisk)
-as a launch tool for Bazel.
+Bazel needs to be available. It is recommended to use [bazelisk](https://github.com/bazelbuild/bazelisk)
+as the launch tool for Bazel.
 
 ### Workspace setup
 
@@ -44,14 +44,14 @@ Create an empty folder and add the following files to it:
 * `WORKSPACE` file:
 
   ```python
-  workspace(name = "my_first_bazel_ros_workspace") # choose your workspace name here
+  workspace(name = "my_first_bazel_ros_workspace")  # choose a workspace name here
   # load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
   load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
-  RULES_ROS_VERSION = "xxx" # TODO: where to find the right version
+  RULES_ROS_VERSION = "xxx"  # TODO: where to find the right version
   RUIES_ROS_SHA = "xxx"
 
-  # until we have a first release, please use this:
+  # until there is an initial release, use the following:
   git_repository(
       name = "rules_ros",
       remote = "https://github.com/ApexAI/rules_ros.git",
@@ -67,7 +67,7 @@ Create an empty folder and add the following files to it:
   #)
 
   load("@rules_ros//repos/config:defs.bzl", "configure_ros2")
-  configure_ros2(distro = "humble") # currently only Humble is supported
+  configure_ros2(distro = "humble")  # currently only Humble is supported
 
   load("@ros2_config//:setup.bzl", "setup")
   setup()
@@ -87,7 +87,7 @@ Create an empty folder and add the following files to it:
 
 * `.bazelrc` file:
 
-  ```bash
+  ```shell
   # enable incompatible Python init mode
   build --incompatible_default_to_explicit_init_py
 
@@ -99,41 +99,44 @@ Create an empty folder and add the following files to it:
   build --host_cxxopt="-std=c++17"
   ```
   
-* `.bazelversion` file (in case you are using bazelisk):
+* `.bazelversion` file (if `bazelisk` is being used):
 
-```text
-6.5.0
-```
+  ```text
+  6.5.0
+  ```
 
 ### Run Bazel example
 
 To **build** an example delivered in the `rules_ros` repository run, e.g.
 
-```bash
+```shell
 bazel build @rules_ros//examples/hello_world
 ```
-from anywhere within your workspace.
+
+from anywhere within the workspace.
 
 **Executing** the example can be done by calling
 
-```bash
+```shell
 bazel run @rules_ros//examples/hello_world
 ```
 Note that no sourcing is necessary. Bazel will take care of all the dependencies. 
 
 **Deploying** a package archive to an install folder can be done by
 
-```bash
+```shell
 bazel run @rules_ros//examples:rules_ros_examples.install <install_folder>
 ```
-Now we are back to working with ROS as usual. Source the package as usual:
 
-```bash
+Now the environment is ready to work with ROS as usual. Source the package as usual with:
+
+```shell
 source <install_folder>/setup.bash
 ```
+
 and run an executable with
 
-```bash
+```shell
 ros2 run hello_world hello_world
 ```
 
@@ -143,11 +146,12 @@ ros2 run hello_world hello_world
 
 In this setup, a hermetic Python interpreter is included. The version is specified in
 `thirdparty/python/repositories.bzl`. Python packages specified in
-`thirdparty/python/requirements_lock.in` are available for use. If you need to add a package,
-you must run
-```console
+`thirdparty/python/requirements_lock.in` are available for use. If a package needs to be added, run
+
+```shell
 bazel run @rules_ros//thirdparty/python:requirements_lock.update
 ```
+
 to pin specific versions of the dependencies. In the future there will be a possibility to
 inject a customization in the WORKSPACE file.
 
@@ -159,12 +163,14 @@ will be available as `@ros2.rclcpp` with all targets specified in the BUILD file
 `repos/config/ros2.rclcpp.BUILD`. The precise location where the build files will be injected
 into the `rclcpp` repo is specified in the index file `repos/config/bazel.repos`.
 
-Therefore, if you need to depend on `rclcpp` in you code, you need to add `"@ros2.rclcpp//rclcpp"`
-as a dependency in your `cc_binary` or `cc_library` target.
+Therefore, if there is a dependency on `rclcpp`, `"@ros2.rclcpp//rclcpp"` needs to be added
+as a dependency in the `cc_binary` or `cc_library` target.
 
 The exact version of a ROS 2 repository is pinned in the file `repos/config/ros2_<distro>.lock`.
 This file can be updated for the configured distro by running:
-```console
+
+```shell
 bazel run @rules_ros//repos/config:repos_lock.update
 ```
+
 In the future there will be a possibility to inject any customization in the WORKSPACE file.

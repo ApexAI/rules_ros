@@ -14,14 +14,14 @@
 
 load("@rules_pkg//pkg:tar.bzl", _pkg_tar = "pkg_tar")
 load(
-    "@rules_ros//pkg/detail:ros_pkg.bzl",
-    _ros_pkg = "ros_pkg",
-    _ros_pkg_set = "ros_pkg_set",
-)
-load(
     "@rules_ros//pkg/detail:ros_archive.bzl",
     _ros_archive_install_command = "ros_archive_install_command",
     _ros_archive_pkg_files = "ros_archive_pkg_files",
+)
+load(
+    "@rules_ros//pkg/detail:ros_pkg.bzl",
+    _ros_pkg = "ros_pkg",
+    _ros_pkg_set = "ros_pkg_set",
 )
 
 ros_pkg = _ros_pkg

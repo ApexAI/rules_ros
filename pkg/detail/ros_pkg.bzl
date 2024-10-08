@@ -14,6 +14,7 @@
 
 load("@rules_pkg//pkg:providers.bzl", "PackageFilegroupInfo", "PackageFilesInfo")
 load("@rules_python//python:packaging.bzl", "PyWheelInfo")
+load("@rules_ros//pkg:providers.bzl", _RosPkgInfo = "RosPkgInfo")
 load(
     ":utils.bzl",
     _add_filegroup = "add_filegroup",
@@ -23,7 +24,6 @@ load(
     _create_ros_pkg_set_info = "create_ros_pkg_set_info",
     _unique_pkg_names_or_fail = "unique_pkg_names_or_fail",
 )
-load("@rules_ros//pkg:providers.bzl", _RosPkgInfo = "RosPkgInfo")
 
 RESOURCE_PATH_PREFIX = "share/bazel-bin/"
 LIBRARY_PATH = "lib/{pkg_name}/"

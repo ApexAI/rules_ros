@@ -33,9 +33,13 @@ def setup():
 
 def print_setup(repos, output_file):
     print(HEADER, file=output_file)
+    printed_first_load = False
     for repo, spec in repos.items():
         if spec.get("bazel") is not None:
-            print(build_load_command(repo, spec), file=output_file)
+            if printed_first_load:
+                output_file.write("\n")
+            output_file.write(build_load_command(repo, spec))
+            printed_first_load = True
 
 
 def build_load_command(repo, spec):
@@ -45,7 +49,7 @@ def build_load_command(repo, spec):
         "local": build_local_load_command,
     }
     if spec.get('type') not in builder.keys():
-        return f"""
+        return f"""\
     print("WARNING: Unknown repo type {spec.get('type')} for repo @{repo.replace('/', '.')}")
 """
     return builder[spec.get('type')](repo, spec)
@@ -54,7 +58,7 @@ def build_load_command(repo, spec):
 def build_build_files_attr(build_files):
     if not build_files:
         return ""
-    content = '\n'.join(f"            '{k}': '{v}'," for k,v in build_files.items())
+    content = '\n'.join(f'            "{k}": "{v}",' for k,v in build_files.items())
     return f"""build_files = {{
 {content}
         }},"""
