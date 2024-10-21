@@ -13,9 +13,16 @@
 # limitations under the License.
 
 import yaml
+import hashlib
 
+def get_sha256sum(file):
+    sha256_hash = hashlib.sha256()
+    with open(file, "rb") as f:
+        for byte_block in iter(lambda: f.read(4096), b""):
+            sha256_hash.update(byte_block)
+    return sha256_hash.hexdigest()
 
-def print_setup(repos, output_file, use_tar = False):
+def print_setup(repos, output_file, repos_file, use_tar = False):
     BZL_CMD = "bazel run @rules_ros//repos/config:repos_lock.update"
     if use_tar:
         BZL_CMD += " -- --tar"
@@ -24,6 +31,7 @@ def print_setup(repos, output_file, use_tar = False):
 #
 # To update, call `{BZL_CMD}` with the right distro set in the WORKSPACE
 #
+# SHA of {repos_file}: {get_sha256sum(repos_file)}
 
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", _maybe = "maybe")
 load("@rules_ros//repos/config/detail:git_repository.bzl", "git_repository")
@@ -111,9 +119,9 @@ def merge_dict(origin, to_add):
             origin[key]=value
 
 
-def print_setup_file(repos, yaml_files, output_file, use_tar = False):
+def print_setup_file(repos, yaml_files, output_file, repos_file, use_tar = False):
     for input_path in yaml_files:
         with (open(input_path,"r")) as repo_file:
             merge_dict(repos, yaml.safe_load(repo_file)["repositories"])
 
-    print_setup(repos, output_file, use_tar)
+    print_setup(repos, output_file, repos_file, use_tar)

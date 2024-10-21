@@ -51,7 +51,11 @@ def main():
         print("{}: {}".format(repo, [*additional_attributes.values()]))
 
     with open(args.setup_bzl, mode='w', encoding='utf8') as setup_bzl:
-        print_setup_file(repos = repos["repositories"], yaml_files=args.overlays, output_file=setup_bzl, use_tar=args.tar)
+        print_setup_file(repos = repos["repositories"],
+                         yaml_files=args.overlays,
+                         output_file=setup_bzl,
+                         repos_file = args.repos,
+                         use_tar=args.tar)
 
 
 def fetch_dependency_details(*, use_tar, type, **kwargs):
