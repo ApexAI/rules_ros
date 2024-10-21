@@ -42,9 +42,9 @@ jobs:
       - name: Build
         # TODO(evan.flynn): uncomment once the rules are properly fixed
         # run: bazel build //...
-        run: bazel build -- $(cat repos/config/bazel.repos | sed -e '/^[#r]/d' -e '/^    /d' -e 's%/%.%' -e 's%  \(.*\):%@\1//...%' -e '/@ros2.rosidl/d' -e '/@ros2.rcl_interfaces/d' -e '/@ros2.common_interfaces/d')
+        run: bazel build --keep_going -- $(cat repos/config/bazel.repos | sed -e '/^[#r]/d' -e '/^    /d' -e 's%/%.%' -e 's%  \(.*\):%@\1//...%' -e '/@ros2.rosidl/d' -e '/@ros2.rcl_interfaces/d' -e '/@ros2.common_interfaces/d')
       - name: Test
-        run: bazel test -- $(cat repos/config/bazel.repos | sed -e '/^[#r]/d' -e '/^    /d' -e 's%/%.%' -e 's%  \(.*\):%@\1//...%' -e '/@ros2.rosidl/d' -e '/@ros2.rcl_interfaces/d' -e '/@ros2.common_interfaces/d')
+        run: bazel test --keep_going -- //repos/config/detail/... //thirdparty/... $(cat repos/config/bazel.repos | sed -e '/^[#r]/d' -e '/^    /d' -e 's%/%.%' -e 's%  \(.*\):%@\1//...%' -e '/@ros2.rosidl/d' -e '/@ros2.rcl_interfaces/d' -e '/@ros2.common_interfaces/d')
       - name: Store the bazel-testlogs
         uses: actions/upload-artifact@v3
         if: always()

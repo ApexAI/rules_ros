@@ -36,3 +36,16 @@ py_binary(
     visibility = ["//visibility:public"],
     deps = [requirement("pyyaml")],
 )
+
+sh_test(
+    name = "test_repos_index_sha256",
+    srcs = ["test/test_repos_index_sha256.sh"],
+    args = [
+        "$(execpath {})".format(REPOS_INDEX_FILE),
+        "$(execpath {})".format(REPOS_SETUP_FILE),
+    ],
+    data = [
+        REPOS_INDEX_FILE,
+        REPOS_SETUP_FILE,
+    ],
+)
