@@ -3,6 +3,7 @@
 #
 # To update, call `bazel run @rules_ros//repos/config:repos_lock.update` with the right distro set in the WORKSPACE
 #
+# SHA256 of external/ros2/ros2.repos: 71922db335c9a2092fb095e66b1e860f9713854bf704e0e00dc5910f7ec111a8
 
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", _maybe = "maybe")
 load("@rules_ros//repos/config/detail:git_repository.bzl", "git_repository")
