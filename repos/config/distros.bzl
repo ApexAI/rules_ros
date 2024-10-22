@@ -4,6 +4,7 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 ROS_PROJECT = "https://github.com/ros2/ros2.git"
 
 _VERSIONS = [
+    ("jazzy", "20240919", "70dcf5361352acc880220390decacc049f4278ed9c0edeeb430dda0944acc17c"),
     ("iron", "20230912", "fd40b4d80eb9c27f57b2b59ad8a947cd5f7f34fc67c8df1d7cc0a659127fc9f7"),
     ("humble", "20230925", "57495eab51338591a0117b6763827607808e26344d134d6666ded66e479bdf8b"),
     ("galactic", "20221209", "fd251be0e1d16c1f943a8f083dce7b75c60fc2095404c5834209a68846be48c7"),
