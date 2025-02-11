@@ -35,10 +35,10 @@ load("@rules_ros//repos/config/detail:generate_repos_lock.bzl", "generate_repos_
 
 generate_repos_lock(
     name = "repos_lock.update",
-    repos_file = ":repos_index_file.repos",  # Custom repos file
+    repos_file = ":repos_index_file.bzl",  # Custom repos file
     setup_file = ":repos_setup_file.bzl",  # Custom setup file
     overlay_files = [
-        ":repos_overlay_files.repos",
+        ":repos_overlay_files.bzl",
     ],
 )
 
