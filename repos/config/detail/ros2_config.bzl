@@ -35,24 +35,28 @@ load("@rules_ros//repos/config/detail:generate_repos_lock.bzl", "generate_repos_
 
 generate_repos_lock(
     name = "repos_lock.update",
-    repos_file = ":repos_index_file.bzl",  # Custom repos file
-    setup_file = ":repos_setup_file.bzl",  # Custom setup file
+    repos_file = "ros.repos",  # Custom repos file
+    setup_file = "setup.bzl",  # Custom setup file
     overlay_files = [
-        ":repos_overlay_files.bzl",
+{overlays}
     ],
 )
 
 exports_files(glob(["**/*"]))
 """
 
-
 def _ros2_config_impl(ctx):
-    ctx.file("repos_index_file.bzl", content = "REPOS_INDEX_FILE = '{}'".format(ctx.attr.repos_index))
-    ctx.file("repos_overlay_files.bzl", content = "REPOS_OVERLAY_FILES = {}".format(["{}".format(i) for i in ctx.attr.repos_index_overlays]))
-    ctx.file("repos_setup_file.bzl", content = "REPOS_SETUP_FILE = '{}'".format(ctx.attr.setup_file))
+    ctx.symlink(ctx.attr.repos_index, "ros.repos")
     ctx.symlink(ctx.attr.setup_file, "setup.bzl")
+    i = 0
+    overlay_files = []
+    for file in ctx.attr.repos_index_overlays:
+        filname = "overlay_{}.bzl".format(i)
+        ctx.symlink(file, filname)
+        i += 1
+        overlay_files.append(filname)
     ctx.file("WORKSPACE", content = "workspace(name = {})".format(ctx.name), executable = False)
-    ctx.file("BUILD.bazel", content = BUILD_FILE_CONTENT, executable = False)
+    ctx.file("BUILD.bazel", content = BUILD_FILE_CONTENT.format(overlays="\n".join(['        "{}",'.format(filename) for filename in overlay_files])), executable = False)
 
     return update_attrs(ctx.attr, _archive_attrs.keys(), {})
 

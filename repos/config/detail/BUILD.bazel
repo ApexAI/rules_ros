@@ -49,3 +49,5 @@ sh_test(
         REPOS_SETUP_FILE,
     ],
 )
+
+exports_files(["generate_ros2_config.py", "lock_repos.py"])
