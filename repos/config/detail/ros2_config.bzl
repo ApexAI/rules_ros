@@ -48,15 +48,23 @@ exports_files(glob(["**/*"]))
 def _ros2_config_impl(ctx):
     ctx.symlink(ctx.attr.repos_index, "ros.repos")
     ctx.symlink(ctx.attr.setup_file, "setup.bzl")
-    i = 0
     overlay_files = []
-    for file in ctx.attr.repos_index_overlays:
-        filname = "overlay_{}.bzl".format(i)
-        ctx.symlink(file, filname)
-        i += 1
-        overlay_files.append(filname)
-    ctx.file("WORKSPACE", content = "workspace(name = {})".format(ctx.name), executable = False)
-    ctx.file("BUILD.bazel", content = BUILD_FILE_CONTENT.format(overlays="\n".join(['        "{}",'.format(filename) for filename in overlay_files])), executable = False)
+    for i, file in enumerate(ctx.attr.repos_index_overlays):
+        filename = "overlay_{}.bzl".format(i)
+        ctx.symlink(file, filename)
+        overlay_files.append(filename)
+    ctx.file(
+        "WORKSPACE",
+        content = "workspace(name = {})".format(ctx.name),
+        executable = False
+    )
+    ctx.file(
+        "BUILD.bazel",
+        content = BUILD_FILE_CONTENT.format(
+            overlays="\n".join(['        "{}",'.format(filename) for filename in overlay_files])
+        ),
+        executable = False
+    )
 
     return update_attrs(ctx.attr, _archive_attrs.keys(), {})
 
