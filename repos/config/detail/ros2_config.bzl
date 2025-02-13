@@ -56,14 +56,14 @@ def _ros2_config_impl(ctx):
     ctx.file(
         "WORKSPACE",
         content = "workspace(name = {})".format(ctx.name),
-        executable = False
+        executable = False,
     )
     ctx.file(
         "BUILD.bazel",
         content = BUILD_FILE_CONTENT.format(
-            overlays="\n".join(['        "{}",'.format(filename) for filename in overlay_files])
+            overlays = "\n".join(['        "{}",'.format(filename) for filename in overlay_files]),
         ),
-        executable = False
+        executable = False,
     )
 
     return update_attrs(ctx.attr, _archive_attrs.keys(), {})
