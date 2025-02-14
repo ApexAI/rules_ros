@@ -16,5 +16,5 @@ exports_files(["bazel.repos"] + glob(["*.lock.bzl"]))
 
 alias(
     name = "repos_lock.update",
-    actual = "//repos/config/detail:repos_lock.update",
+    actual = "@ros2_config//:repos_lock.update",
 )
