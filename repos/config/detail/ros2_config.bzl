@@ -31,12 +31,12 @@ _archive_attrs = {
 }
 
 BUILD_FILE_CONTENT = """\
-load("@rules_ros//repos/config/detail:generate_repos_lock.bzl", "generate_repos_lock")
+load("@rules_ros//repos/config/detail:generate_repos_lock.bzl", "repos_lock_updater")
 
-generate_repos_lock(
+repos_lock_updater(
     name = "repos_lock.update",
-    repos_file = "ros.repos",  # Custom repos file
-    setup_file = "setup.bzl",  # Custom setup file
+    repos_file = "ros.repos",
+    setup_file = "setup.bzl",
     overlay_files = [
 {overlays}
     ],

@@ -1,8 +1,8 @@
 load("@python_deps//:requirements.bzl", "requirement")
 load("@rules_python//python:defs.bzl", "py_binary")
 
-def generate_repos_lock(*, name, repos_file, setup_file, overlay_files):
-    """Macro to create a py_binary for generating repos_lock.update"""
+def repos_lock_updater(*, name, repos_file, setup_file, overlay_files):
+    """Executable rule for updating the `setup_file` from a `repos_file` and `overlay_files`."""
 
     py_binary(
         name = name,
