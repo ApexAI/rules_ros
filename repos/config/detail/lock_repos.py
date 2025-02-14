@@ -40,6 +40,17 @@ def main():
     with open(args.repos, "r") as repos_file:
         repos = yaml.safe_load(repos_file)
 
+    for overlay in args.overlays:
+        with open(overlay, "r") as overlay_file:
+            try:
+                overlay_content = yaml.safe_load(overlay_file)
+            except yaml.YAMLError as exc:
+                print(f"Error parsing YAML file {overlay}: {exc}")
+                continue
+            if "repositories" in overlay_content:
+                for repo, spec in overlay_content["repositories"].items():
+                    repos["repositories"].setdefault(repo, {}).update(spec)
+                    repos["repositories"].get(repo, {}).update(spec)
     if repos.get("repositories") is None:
         raise ValueError("No repositories attribute found")
 
