@@ -46,11 +46,12 @@ def configure_ros2(*, name = "ros2_config", repos_index_overlays = [], distro):
         fail("repos_index_overlays needs to be a list of *.repos files")
     _configure_ros2(name = name, distro_src = distro_src, repos_index_overlays = repos_index_overlays)
 
-def configure_repos(*, name = "ros2_config", repos_index, repos_index_overlays = [], setup_file):
+def configure_repos(*, name, repos_index, setup_file, repos_index_overlays = []):
     """Configure ROS 2 repositories based on the custom *.repos file."""
 
     if not type(repos_index_overlays) == type([]):
         fail("repos_index_overlays needs to be a list of *.repos files")
+
     ros2_config(
         name = name,
         repos_index = repos_index,
