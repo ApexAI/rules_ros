@@ -33,7 +33,7 @@ def print_setup(repos, output_file, repos_file, use_tar = False):
 #
 # To update, call `{BZL_CMD}` with the right distro set in the WORKSPACE
 #
-# SHA256 of {repos_file}: {get_sha256sum(repos_file)}
+# SHA256 of @{workspace_name}//:ros.repos: {get_sha256sum(repos_file)}
 
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", _maybe = "maybe")
 load("@rules_ros//repos/config/detail:git_repository.bzl", "git_repository")
