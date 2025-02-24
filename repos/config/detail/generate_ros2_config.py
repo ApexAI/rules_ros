@@ -14,6 +14,7 @@
 
 import yaml
 import hashlib
+import os
 
 def get_sha256sum(file):
     sha256_hash = hashlib.sha256()
@@ -23,7 +24,8 @@ def get_sha256sum(file):
     return sha256_hash.hexdigest()
 
 def print_setup(repos, output_file, repos_file, use_tar = False):
-    BZL_CMD = "bazel run @rules_ros//repos/config:repos_lock.update"
+    workspace_name = os.getenv("WORKSPACE_NAME", "Unknown")
+    BZL_CMD = f"bazel run @{workspace_name}//:repos_lock.update"
     if use_tar:
         BZL_CMD += " -- --tar"
     HEADER = f"""#
