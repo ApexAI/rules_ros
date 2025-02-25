@@ -23,8 +23,7 @@ def get_sha256sum(file):
             sha256_hash.update(byte_block)
     return sha256_hash.hexdigest()
 
-def print_setup(repos, output_file, repos_file, overlay_files, use_tar = False):
-    workspace_name = os.getenv("WORKSPACE_NAME", "Unknown")
+def print_setup(repos, output_file, repos_file, overlay_files, workspace_name, use_tar = False):
     BZL_CMD = f"bazel run @{workspace_name}//:repos_lock.update"
     if use_tar:
         BZL_CMD += " -- --tar"
@@ -129,9 +128,9 @@ def merge_dict(origin, to_add):
             origin[key]=value
 
 
-def print_setup_file(repos, overlay_files, output_file, repos_file, use_tar = False):
+def print_setup_file(repos, overlay_files, output_file, repos_file, workspace_name, use_tar = False):
     for input_path in overlay_files:
         with (open(input_path,"r")) as repo_file:
             merge_dict(repos, yaml.safe_load(repo_file)["repositories"])
 
-    print_setup(repos, output_file, repos_file, overlay_files, use_tar)
+    print_setup(repos, output_file, repos_file, overlay_files, workspace_name, use_tar)

@@ -40,7 +40,6 @@ repos_lock_updater(
     overlay_files = [
 {overlays}
     ],
-    workspace_name = "{workspace_name}",
 )
 
 exports_files(glob(["**/*"]))
