@@ -174,3 +174,54 @@ bazel run @rules_ros//repos/config:repos_lock.update
 ```
 
 In the future there will be a possibility to inject any customization in the WORKSPACE file.
+
+## Adding more ROS2 repositories using custom `.repos` file
+
+To use `rules_ros` in a workspace with a custom `.repos` file, follow these steps:
+
+1. Create your custom `.repos` file with the desired ROS 2 repositories in your workspace.
+2. Update the `WORKSPACE` file to use the `configure_repos` rule with the custom `.repos` file:
+
+  ```python
+  load("@rules_ros//repos/config:defs.bzl", "configure_repos")
+  configure_repos(
+      name = "<custom_config_workspace_name>",  # Required
+      repos_index = "<path_to_your_custom_repos_file>",  # Required
+      setup_file = "<path_to_your_custom_setup_file>",  # Required
+      repos_index_overlays = [
+          "<path_to_your_overlay_file_1>",
+          "<path_to_your_overlay_file_2>"
+      ]  # Optional
+  )
+  ```
+
+  #### A few things to note:
+
+  a. The `setup_file` needs to have the following content:
+
+  ```python
+  load("@bazel_tools//tools/build_defs/repo:utils.bzl", _maybe = "maybe")
+  load("@rules_ros//repos/config/detail:git_repository.bzl", "git_repository")
+  load("@rules_ros//repos/config/detail:http_archive.bzl", "http_archive")
+  load("@rules_ros//repos/config/detail:new_local_repository.bzl", "new_local_repository")
+
+  def setup():
+    pass
+  ```
+
+  b. The `repos_index_overlays` field is optional and can be used to pass additional `*.repos` files declaring BUILD.bazel files to be injected into the ROS2 repositories.
+
+3. Generate the `setup.bzl` file by running the `repos_lock.update` command:
+
+  ```shell
+  bazel run @<custom_config_workspace_name>//:repos_lock.update
+  ```
+4. Load the `setup.bzl`
+
+  ```shell
+
+  load("@<custom_config_workspace_name>//:setup.bzl", "setup")
+  setup()
+
+  ```
+This will configure your workspace to use the specified additonal ROS2 repositories.
