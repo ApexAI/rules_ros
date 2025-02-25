@@ -78,8 +78,8 @@ def build_build_files_attr(build_files):
 
 
 def build_http_archive_load_command(repo, spec):
-    patches = ',\n            '.join(f'"{i}"' for i in spec.get('patches', []))
-    patch_args = ',\n            '.join(f'"{i}"' for i in spec.get('patch_args', []))
+    patches = {''.join(f'\n            "{i}",' for i in spec.get('patches', []))}
+    patches_args = {''.join(f'\n            "{{i}}",' for i in spec.get('patch_args', []))}
     return f"""
     _maybe(
         name = "{repo.replace('/','.')}",
@@ -88,9 +88,11 @@ def build_http_archive_load_command(repo, spec):
         sha256 = "{spec['hash']}",
         strip_prefix = "{spec['strip_prefix']}",
         repo_rule = http_archive,
-        patches = [{patches}
+        patches = [
+            {patches}
         ],
-        patch_args = [{patch_args}
+        patch_args = [
+            {patches_args}
         ],
     )
 """

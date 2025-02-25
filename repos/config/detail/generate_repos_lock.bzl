@@ -10,10 +10,10 @@ def repos_lock_updater(*, name, repos_file, setup_file, overlay_files):
         main = Label("lock_repos.py"),
         data = [repos_file, setup_file] + overlay_files,
         args = [
-            "$(execpath {})".format(repos_file),
-            "$(execpath {})".format(setup_file),
-        ] + ["$(execpath {})".format(f) for f in overlay_files]
-          + ["--workspace_name {}".format(native.repo_name())],
+                   "$(execpath {})".format(repos_file),
+                   "$(execpath {})".format(setup_file),
+               ] + ["$(execpath {})".format(f) for f in overlay_files] +
+               ["--workspace_name {}".format(native.repo_name())],
         deps = [requirement("pyyaml")],
         visibility = ["//visibility:public"],
     )
