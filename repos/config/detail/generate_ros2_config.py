@@ -23,7 +23,7 @@ def get_sha256sum(file):
             sha256_hash.update(byte_block)
     return sha256_hash.hexdigest()
 
-def print_setup(repos, output_file, repos_file, use_tar = False):
+def print_setup(repos, output_file, repos_file, overlay_files, use_tar = False):
     workspace_name = os.getenv("WORKSPACE_NAME", "Unknown")
     BZL_CMD = f"bazel run @{workspace_name}//:repos_lock.update"
     if use_tar:
@@ -34,6 +34,8 @@ def print_setup(repos, output_file, repos_file, use_tar = False):
 # To update, call `{BZL_CMD}` with the right distro set in the WORKSPACE
 #
 # SHA256 of @{workspace_name}//:ros.repos: {get_sha256sum(repos_file)}
+# SHA256 of overlays:
+#{', '.join([f' @{workspace_name}//:{os.path.basename(overlay)}: {get_sha256sum(overlay)}' for overlay in overlay_files]) if overlay_files else ""}
 
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", _maybe = "maybe")
 load("@rules_ros//repos/config/detail:git_repository.bzl", "git_repository")
@@ -127,9 +129,9 @@ def merge_dict(origin, to_add):
             origin[key]=value
 
 
-def print_setup_file(repos, yaml_files, output_file, repos_file, use_tar = False):
-    for input_path in yaml_files:
+def print_setup_file(repos, overlay_files, output_file, repos_file, use_tar = False):
+    for input_path in overlay_files:
         with (open(input_path,"r")) as repo_file:
             merge_dict(repos, yaml.safe_load(repo_file)["repositories"])
 
-    print_setup(repos, output_file, repos_file, use_tar)
+    print_setup(repos, output_file, repos_file, overlay_files, use_tar)

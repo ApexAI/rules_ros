@@ -52,7 +52,7 @@ def main():
 
     with open(args.setup_bzl, mode='w', encoding='utf8') as setup_bzl:
         print_setup_file(repos = repos["repositories"],
-                         yaml_files=args.overlays,
+                         overlay_files=args.overlays,
                          output_file=setup_bzl,
                          repos_file = args.repos,
                          use_tar=args.tar)
