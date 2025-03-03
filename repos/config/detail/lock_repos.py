@@ -33,6 +33,7 @@ def main():
     parser.add_argument('overlays', type=str, nargs='*', help='Additional YAML files are used as '
         'overlays for *.repos file, e.g., to declare BUILD files for a repo.')
     parser.add_argument('--tar', action='store_true', help='Use the GitHub archive download.')
+    parser.add_argument('--workspace_name', type=str, help='Workspace name to use in the setup file.')
 
     args = parser.parse_args()
     print(f"Using {args.repos} to generate {args.setup_bzl}")
@@ -52,10 +53,11 @@ def main():
 
     with open(args.setup_bzl, mode='w', encoding='utf8') as setup_bzl:
         print_setup_file(repos = repos["repositories"],
-                         yaml_files=args.overlays,
+                         overlay_files=args.overlays,
                          output_file=setup_bzl,
                          repos_file = args.repos,
-                         use_tar=args.tar)
+                         use_tar=args.tar,
+                         workspace_name=args.workspace_name)
 
 
 def fetch_dependency_details(*, use_tar, type, **kwargs):
