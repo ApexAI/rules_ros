@@ -77,9 +77,18 @@ def build_build_files_attr(build_files):
         }},"""
 
 
+def build_list_attr(name, list_attr):
+    if not name:
+        raise ValueError("Cannot build an attribute without a name")
+    if not list_attr:
+        return ""
+    content = '\n'.join(f'            "{i}",' for i in list_attr)
+    return f"""{name} = [
+{content}
+        ],"""
+
+
 def build_http_archive_load_command(repo, spec):
-    patches = {''.join(f'\n            "{i}",' for i in spec.get('patches', []))}
-    patches_args = {''.join(f'\n            "{{i}}",' for i in spec.get('patch_args', []))}
     return f"""
     _maybe(
         name = "{repo.replace('/','.')}",
@@ -88,14 +97,11 @@ def build_http_archive_load_command(repo, spec):
         sha256 = "{spec['hash']}",
         strip_prefix = "{spec['strip_prefix']}",
         repo_rule = http_archive,
-        patches = [
-            {patches}
-        ],
-        patch_args = [
-            {patches_args}
-        ],
+        {build_list_attr('patches', spec.get('patches'))}
+        {build_list_attr('patch_args', spec.get('patch_args'))}
     )
 """
+
 
 def build_local_load_command(repo, spec):
     return f"""\
@@ -107,6 +113,7 @@ def build_local_load_command(repo, spec):
         repo_rule = new_local_repository,
     )
 """
+
 
 def build_git_load_command(repo, spec):
     return f"""\

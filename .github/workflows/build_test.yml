@@ -23,7 +23,6 @@ jobs:
         os:
           - ubuntu
         version:
-          - 20.04
           - 22.04
     runs-on: ${{ matrix.os }}-${{ matrix.version }}
     steps:
