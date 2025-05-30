@@ -83,7 +83,7 @@ def build_list_attr(name, list_attr):
     if not list_attr:
         return ""
     content = '\n'.join(f'            "{i}",' for i in list_attr)
-    return f"""{name} = [
+    return f"""\n{name} = [
 {content}
         ],"""
 
@@ -96,9 +96,7 @@ def build_http_archive_load_command(repo, spec):
         url = "{spec['url']}",
         sha256 = "{spec['hash']}",
         strip_prefix = "{spec['strip_prefix']}",
-        repo_rule = http_archive,
-        {build_list_attr('patches', spec.get('patches'))}
-        {build_list_attr('patch_args', spec.get('patch_args'))}
+        repo_rule = http_archive,{build_list_attr('patches', spec.get('patches'))}{build_list_attr('patch_args', spec.get('patch_args'))}
     )
 """
 
