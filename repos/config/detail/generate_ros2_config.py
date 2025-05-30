@@ -32,7 +32,7 @@ def print_setup(repos, output_file, repos_file, overlay_files, workspace_name, u
 #
 # To update, call `{BZL_CMD}` with the right distro set in the WORKSPACE
 #
-# SHA256 of @{workspace_name}//:ros.repos: {get_sha256sum(repos_file)}
+# SHA256 of @{workspace_name}//:{repos_file}: {get_sha256sum(repos_file)}
 # SHA256 of overlays:
 #{', '.join([f' @{workspace_name}//:{os.path.basename(overlay)}: {get_sha256sum(overlay)}' for overlay in overlay_files]) if overlay_files else ""}
 
