@@ -3,7 +3,7 @@
 #
 # To update, call `bazel run @ros2_config//:repos_lock.update` with the right distro set in the WORKSPACE
 #
-# SHA256 of @ros2_config//:ros.repos: 09a14ede568810d8120e3f3228af03a35c192cff5c718422cb2d88c5cd4b2824
+# SHA256 of @ros2_config//:external/ros2_config/ros.repos: 09a14ede568810d8120e3f3228af03a35c192cff5c718422cb2d88c5cd4b2824
 # SHA256 of overlays:
 # @ros2_config//:overlay_0.bzl: 43155011b10a9af3dce4fa93380de34278ab3a639a3e7a8932aefed2383a49e8
 

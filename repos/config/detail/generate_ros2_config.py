@@ -32,7 +32,7 @@ def print_setup(repos, output_file, repos_file, overlay_files, workspace_name, u
 #
 # To update, call `{BZL_CMD}` with the right distro set in the WORKSPACE
 #
-# SHA256 of @{workspace_name}//:ros.repos: {get_sha256sum(repos_file)}
+# SHA256 of @{workspace_name}//:{repos_file}: {get_sha256sum(repos_file)}
 # SHA256 of overlays:
 #{', '.join([f' @{workspace_name}//:{os.path.basename(overlay)}: {get_sha256sum(overlay)}' for overlay in overlay_files]) if overlay_files else ""}
 
@@ -83,7 +83,7 @@ def build_list_attr(name, list_attr):
     if not list_attr:
         return ""
     content = '\n'.join(f'            "{i}",' for i in list_attr)
-    return f"""{name} = [
+    return f"""\n{name} = [
 {content}
         ],"""
 
@@ -96,9 +96,7 @@ def build_http_archive_load_command(repo, spec):
         url = "{spec['url']}",
         sha256 = "{spec['hash']}",
         strip_prefix = "{spec['strip_prefix']}",
-        repo_rule = http_archive,
-        {build_list_attr('patches', spec.get('patches'))}
-        {build_list_attr('patch_args', spec.get('patch_args'))}
+        repo_rule = http_archive,{build_list_attr('patches', spec.get('patches'))}{build_list_attr('patch_args', spec.get('patch_args'))}
     )
 """
 
