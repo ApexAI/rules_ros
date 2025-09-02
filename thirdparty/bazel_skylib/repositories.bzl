@@ -15,8 +15,8 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 
-BAZEL_SKYLIB_VERSION = "1.3.0"
-BAZEL_SKYLIB_SHA = "74d544d96f4a5bb630d465ca8bbcfe231e3594e5aae57e1edbf17a6eb3ca2506"
+BAZEL_SKYLIB_VERSION = "1.8.1"
+BAZEL_SKYLIB_SHA = "51b5105a760b353773f904d2bbc5e664d0987fbaf22265164de65d43e910d8ac"
 
 def load_bazel_skylib_repositories():
     maybe(

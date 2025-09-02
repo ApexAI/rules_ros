@@ -15,9 +15,9 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 
-PYTHON_VERSION = "3.8.13"
-RULES_PYTHON_VERSION = "0.12.0"
-RULES_PYTHON_SHA = "b593d13bb43c94ce94b483c2858e53a9b811f6f10e1e0eedc61073bd90e58d9c"
+PYTHON_VERSION = "3.10.12"
+RULES_PYTHON_VERSION = "1.5.1"
+RULES_PYTHON_SHA = "fa532d635f29c038a64c8062724af700c30cf6b31174dd4fac120bc561a1a560"
 
 def load_rules_python_repositories():
     maybe(
