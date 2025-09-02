@@ -13,6 +13,7 @@
 # limitations under the License.
 
 load("@bazel_skylib//rules:copy_file.bzl", "copy_file")
+load("@rules_python//python:py_library.bzl", "py_library")
 
 py_library(
     name = "rosidl_typesupport_c_python",
@@ -67,7 +68,7 @@ cc_library(
 
 filegroup(
     name = "config_files",
-    srcs = glob(["resource/*.in"]),
+    srcs = glob(["resource/*.in"], allow_empty = True),
     visibility = ["//visibility:public"],
 )
 

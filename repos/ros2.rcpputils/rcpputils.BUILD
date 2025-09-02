@@ -14,7 +14,7 @@
 
 cc_library(
     name = "rcpputils",
-    srcs = glob(["src/**/*.c"]),
+    srcs = glob(["src/**/*.c"], allow_empty = True),
     hdrs = glob(["include/**/*.hpp"]),
     strip_include_prefix = "include",
     visibility = ["//visibility:public"],

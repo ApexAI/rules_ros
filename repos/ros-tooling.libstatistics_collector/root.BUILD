@@ -12,18 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@bazel_skylib//rules:expand_template.bzl","expand_template")
+load("@bazel_skylib//rules:expand_template.bzl", "expand_template")
 
 cc_library(
     name = "libstatistics_collector",
     srcs = glob([
         "src/**/*.c",
         "src/**/*.cpp",
-    ]),
+    ], allow_empty = True),
     hdrs = glob([
         "include/**/*.h",
         "include/**/*.hpp",
-    ]),
+    ], allow_empty = True),
     strip_include_prefix = "include",
     deps = [
         "@ros2.rcl_interfaces//builtin_interfaces",
