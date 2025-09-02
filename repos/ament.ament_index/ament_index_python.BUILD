@@ -13,7 +13,8 @@
 # limitations under the License.
 
 load("@rules_python//python:packaging.bzl", "py_wheel")
-load("@rules_python//python:python.bzl", "py_test")
+load("@rules_python//python:py_library.bzl", "py_library")
+load("@rules_python//python:py_test.bzl", "py_test")
 load("@rules_ros//pkg:defs.bzl", "ros_pkg")
 load("@python_deps//:requirements.bzl", "requirement")
 

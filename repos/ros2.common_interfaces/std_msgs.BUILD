@@ -20,10 +20,9 @@ msgs_library(
         "msg/*.idl",
         "msg/*.msg",
         "srv/*.srv",
-    ]),
+    ], allow_empty = True),
     visibility = ["//visibility:public"],
     deps = [
         "@ros2.rcl_interfaces//builtin_interfaces",
     ],
 )
-

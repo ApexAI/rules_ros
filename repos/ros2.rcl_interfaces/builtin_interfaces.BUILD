@@ -20,6 +20,6 @@ msgs_library(
         "msg/*.msg",
         "msg/*.idl",
         "srv/*.srv",
-    ]),
+    ], allow_empty = True),
     visibility = ["//visibility:public"],
 )

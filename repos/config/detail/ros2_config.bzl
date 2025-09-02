@@ -59,6 +59,11 @@ def _ros2_config_impl(ctx):
         executable = False,
     )
     ctx.file(
+        "MODULE.bazel",
+        content = "module(name = {})".format(ctx.name),
+        executable = False,
+    )
+    ctx.file(
         "BUILD.bazel",
         content = BUILD_FILE_CONTENT.format(
             overlays = "\n".join(['        "{}",'.format(filename) for filename in overlay_files]),
