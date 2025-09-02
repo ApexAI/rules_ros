@@ -49,7 +49,7 @@ Create an empty folder and add the following files to it:
   load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
   RULES_ROS_VERSION = "xxx"  # TODO: where to find the right version
-  RUIES_ROS_SHA = "xxx"
+  RULES_ROS_SHA = "xxx"
 
   # until there is an initial release, use the following:
   git_repository(
